@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import Overview from './components/overview-components/overview/overview.component.jsx';
 import QnA from './components/qna-components/qna/qna.component.jsx';
 import Review from './components/review-components/review/review.component.jsx';
