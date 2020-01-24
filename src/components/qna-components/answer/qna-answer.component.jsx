@@ -3,20 +3,20 @@ import propTypes from 'prop-types';
 import Image from '../image/qna-image.component';
 import './qna-answer.styles.scss';
 
-const QnAAnswer = ({ answerBody, answerImages }) => (
+const Answer = ({ answerBody, answerImages }) => (
   <div className="qna-answer-container">
     <ul>
       <li>
         {answerBody}
         <div className="qna-images-container">
-          {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`}/>)}
+          {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`} />)}
         </div>
       </li>
     </ul>
   </div>
 );
 
-QnAAnswer.propTypes = {
+Answer.propTypes = {
   answerBody: propTypes.string.isRequired,
   // questionAnswers: propTypes.shape({
   //   id: propTypes.number,
@@ -24,8 +24,8 @@ QnAAnswer.propTypes = {
   //   date: propTypes.string,
   //   answerer_name: propTypes.string,
   //   helpfulness: propTypes.string,
-  answerImages: propTypes.arrayOf(propTypes.string),
+  answerImages: propTypes.arrayOf(propTypes.string).isRequired,
   // }).isRequired,
 };
 
-export default QnAAnswer;
+export default Answer;
