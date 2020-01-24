@@ -27,8 +27,6 @@ class Review extends React.Component {
      this.setState({ rating: array.map(el => el.rating).reduce((a, b) => (a + b) / array.length) });
   }
 
-
-
   render() {
     const { reviews, rating } = this.state;
     return (
