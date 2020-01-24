@@ -1,12 +1,14 @@
 import React from 'react';
+import propTypes from 'prop-types';
+import ReviewList from '../reviewlist/ReviewList-component';
 import './review.styles.scss';
-// import ReviewList from './components/review-components/reviewlist/ReviewList-component';
 
 class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: {},
+      count: 0,
+      reviews: [],
     };
   }
 
@@ -15,16 +17,23 @@ class Review extends React.Component {
 
     fetch(`http://3.134.102.30/reviews/${id}/list`)
       .then((data) => data.json())
-      .then((results) => this.setState({ reviews: results }))
+      .then((res) => this.setState({ count: res.count, reviews: res.results }))
       .catch((err) => err);
   }
 
   render() {
+    const { reviews, count } = this.state;
+
     return (
       <div>
-        <p>Hi, reviews container will go here</p>
+        <ReviewList reviews={reviews} reviewCount={count} />
       </div>
     );
   }
 }
+
 export default Review;
+
+Review.propTypes = {
+  id: propTypes.string.isRequired,
+};
