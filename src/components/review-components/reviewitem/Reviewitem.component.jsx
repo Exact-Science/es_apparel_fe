@@ -6,19 +6,13 @@ const ReviewItem = (props) => {
   return (
     <li>
       <p>
-        Rating: {rating}
-      </p>
-      <p>
-        Summary: {summary}
-      </p>
-      <p>
-        Recommended: {rec}
-      </p>
-      <p>
-        Response: {response}
+        Rating: {rating} ---
+        Summary: {summary} ---
+        Recommended: {rec} ---
+        Response: {response} ---
       </p>
     </li>
-  )
+  );
 
 };
 
