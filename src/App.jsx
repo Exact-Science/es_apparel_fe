@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import './App.scss';
 import Overview from './components/overview-components/overview/overview.component';
 import QnA from './components/qna-components/qna/qna.component';
-import Review from './components/review-components/review/review.component';
+import Review from './components/review-components/reviewapp/review.component';
 
 class App extends React.Component {
   constructor(props) {
