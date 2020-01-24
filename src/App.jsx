@@ -1,15 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './App.scss';
 import Overview from './components/overview-components/overview/overview.component';
 import QnA from './components/qna-components/qna/qna.component';
 import Review from './components/review-components/review/review.component';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
+    const { location } = this.props;
     this.state = {
-      productId: 1,
+      productId: location.pathname.substr(1) || '1',
     };
   }
 
@@ -25,4 +27,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
