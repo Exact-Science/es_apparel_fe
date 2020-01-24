@@ -11,6 +11,11 @@ class Utility extends React.component {
       }
     }
   }
+
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div>

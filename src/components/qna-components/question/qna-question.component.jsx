@@ -6,7 +6,7 @@ import './qna-question.styles.scss';
 const Question = ({ questionBody, questionAnswers }) => (
   <div className="qna-Question">
     <br />
-    <div>{questionBody}</div>
+    <div>{questionBody}</div><Utility questionId={questionId}/>
     {Object.keys(questionAnswers).map(
       (answer) => <QnAAnswer answerBody={questionAnswers[answer].body} answerImage={questionAnswers[answer].photos} key={`a${questionAnswers[answer].id}`} />,
     )}
