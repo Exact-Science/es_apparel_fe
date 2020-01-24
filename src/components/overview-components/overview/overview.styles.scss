@@ -7,4 +7,10 @@
     display: flex;
     max-width: 50vw;
   }
+
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 30px auto;
+  }
 }
