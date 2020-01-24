@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import ReviewList from '../reviewlist/ReviewList-component';
+import ReviewList from '../list/list.component';
+import Breakdown from '../breakdown/breakdown.component';
 import './review.styles.scss';
 
 class Review extends React.Component {
@@ -25,7 +26,8 @@ class Review extends React.Component {
     const { reviews, count } = this.state;
 
     return (
-      <div>
+      <div className="reviewsContainer">
+        <Breakdown />
         <ReviewList reviews={reviews} reviewCount={count} />
       </div>
     );
