@@ -8,7 +8,10 @@ import './styles-container.styles.scss';
 const StylesContainer = ({ styles }) => (
   <div className="styles-container">
     {styles.map((style) => (
-      <StyleItem image={style.photos[0].thumbnail_url} />
+      <StyleItem
+        key={`si${style.photos[0].thumbnail_url}`}
+        image={style.photos[0].thumbnail_url}
+      />
     ))}
   </div>
 );
