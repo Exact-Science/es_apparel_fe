@@ -3,21 +3,15 @@ import propTypes from 'prop-types';
 import QnAAnswer from '../qna-answer/qna-answer.component'
 import './qna-question.styles.scss';
 
-const QnAQuestion = ({ questionBody, questionAnswers }) => {
-  // console.log("the props: ", props);
-  return (
-    // const {question_body} = props.question_body;}
-    <div className="qna-Question">
-      <br />
-      <div>{questionBody}</div>
-      {/* {questionAnswers} */}
-      {/* {questionAnswers.forEach((answer)=>{console.log(answer.id)})} */}
-      {Object.keys(questionAnswers).map(
-        (answer) => <QnAAnswer answerBody={questionAnswers[answer].body} />,
-      )}
-    </div>
-  );
-};
+const QnAQuestion = ({ questionBody, questionAnswers }) => (
+  <div className="qna-Question">
+    <br />
+    <div>{questionBody}</div>
+    {Object.keys(questionAnswers).map(
+      (answer) => <QnAAnswer answerBody={questionAnswers[answer].body} key={`a${questionAnswers[answer].id}`} />,
+    )}
+  </div>
+);
 
 QnAQuestion.propTypes = {
   questionBody: propTypes.string.isRequired,
