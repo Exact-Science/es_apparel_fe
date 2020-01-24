@@ -1,19 +1,15 @@
 import React from 'react';
-import './qna-answer.styles.scss';
+import './qna-image.styles.scss';
 import propTypes from 'prop-types';
 
-const QnAAnswer = ({ answerBody }) => (
-  <div className="qna-answer-container">
-    <ul>
-      <li>
-        {answerBody}
-      </li>
-    </ul>
+const Image = ({ imageUrl }) => (
+  <div className="qna-image">
+    <img src={imageUrl} alt="test" />
   </div>
 );
 
-QnAAnswer.propTypes = {
-  answerBody: propTypes.string.isRequired,
+Image.propTypes = {
+  imageUrl: propTypes.string.isRequired,
   // questionAnswers: propTypes.shape({
   //   id: propTypes.number,
   //   body: propTypes.string,
@@ -24,4 +20,4 @@ QnAAnswer.propTypes = {
   // }).isRequired,
 };
 
-export default QnAAnswer;
+export default Image;

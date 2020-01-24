@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import QnAAnswer from '../qna-answer/qna-answer.component'
+import QnAAnswer from '../answer/qna-answer.component';
 import './qna-question.styles.scss';
 
 const QnAQuestion = ({ questionBody, questionAnswers }) => (
@@ -8,7 +8,7 @@ const QnAQuestion = ({ questionBody, questionAnswers }) => (
     <br />
     <div>{questionBody}</div>
     {Object.keys(questionAnswers).map(
-      (answer) => <QnAAnswer answerBody={questionAnswers[answer].body} key={`a${questionAnswers[answer].id}`} />,
+      (answer) => <QnAAnswer answerBody={questionAnswers[answer].body} answerImages={questionAnswers[answer].photos} key={`a${questionAnswers[answer].id}`} />,
     )}
   </div>
 );
@@ -16,11 +16,11 @@ const QnAQuestion = ({ questionBody, questionAnswers }) => (
 QnAQuestion.propTypes = {
   questionBody: propTypes.string.isRequired,
   questionAnswers: propTypes.shape({
-    id: propTypes.number,
+    // id: propTypes.number,
     body: propTypes.string,
-    date: propTypes.string,
-    answerer_name: propTypes.string,
-    helpfulness: propTypes.string,
+    // date: propTypes.string,
+    // answerer_name: propTypes.string,
+    // helpfulness: propTypes.string,
     photos: propTypes.arrayOf(propTypes.string),
   }).isRequired,
 };
