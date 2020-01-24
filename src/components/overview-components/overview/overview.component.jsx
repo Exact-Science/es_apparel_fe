@@ -1,6 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import styleData from '../../../exampleData/overview.styles';
+import productData from '../../../exampleData/overview.product-info';
+
+import ProductContainer from '../product-container/product-container.component';
 import Gallery from '../gallery/gallery.component';
 
 import './overview.styles.scss';
@@ -9,12 +13,8 @@ class Overview extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
     this.state = {
-      productInfo: {
-        name: 'Camo Onesie',
-      },
-      productStyles: [{
-        photos: [],
-      }],
+      productInfo: productData,
+      productStyles: styleData.results,
       mainImage: 'https://images.unsplash.com/photo-1519862170344-6cd5e49cb996?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
     };
   }
@@ -44,8 +44,11 @@ class Overview extends React.Component {
             mainImage={mainImage}
           />
         </div>
-        <div className="product-info-container">
-          {productInfo.name}
+        <div className="product-container">
+          <ProductContainer
+            title={productInfo.name}
+            styles={productStyles}
+          />
         </div>
       </div>
     );
