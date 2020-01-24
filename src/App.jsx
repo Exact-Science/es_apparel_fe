@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     const { location } = this.props;
     this.state = {
-      productId: location.pathname.substr(1) || '1',
+      productId: location.pathname.substr(1) || '5',
     };
   }
 

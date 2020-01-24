@@ -6,7 +6,8 @@ const QnAList = (props) => {
   const question_body = props.question_body;
   return (
     // const {question_body} = props.question_body;}
-    <div>
+    <div className="qna-List-container">
+      <br />
       <div>{question_body}</div>
     </div>
   );
