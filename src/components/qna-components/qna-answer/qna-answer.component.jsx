@@ -8,8 +8,11 @@ const QnAAnswer = ({ answerBody }) => {
   return (
     // const {question_body} = props.question_body;}
     <div className="qna-answer-container">
-      <br />
-      {answerBody}
+      <ul>
+        <li>
+          {answerBody}
+        </li>
+      </ul>
     </div>
   );
 };

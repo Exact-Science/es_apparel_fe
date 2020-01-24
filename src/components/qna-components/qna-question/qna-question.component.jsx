@@ -12,7 +12,9 @@ const QnAQuestion = ({ questionBody, questionAnswers }) => {
       <div>{questionBody}</div>
       {/* {questionAnswers} */}
       {/* {questionAnswers.forEach((answer)=>{console.log(answer.id)})} */}
-      {Object.keys(questionAnswers).map((answer) => console.log(answer.body)) }
+      {Object.keys(questionAnswers).map(
+        (answer) => <QnAAnswer answerBody={questionAnswers[answer].body} />,
+      )}
     </div>
   );
 };
