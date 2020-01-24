@@ -1,6 +1,7 @@
 import React from 'react';
 // import propTypes from 'prop-types';
-import './breakdown-styles.scss'
+import Rating from '../rating/rating.component';
+import './breakdown-styles.scss';
 
 class Breakdown extends React.Component {
   constructor(props, { id }) {
@@ -9,7 +10,12 @@ class Breakdown extends React.Component {
   }
 
   render() {
-    return <div className="breakdownContainer">R&R Breakdown here</div>;
+    const { rating } = this.props;
+    return (
+      <div className="breakdownContainer">
+        <Rating rating={rating} />
+      </div>
+    );
   }
 }
 
