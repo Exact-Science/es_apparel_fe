@@ -28,7 +28,7 @@ class QnA extends React.Component {
         &amp;
         ANSWERS
 
-        { list.map((q) => <QnAList questionAnswers={q.Answers} questionBody={q.question_body} key={`q${q.question_id}`} />) }
+        { list.map((q) => <QnAList questionAnswers={q.answers} questionBody={q.question_body} key={`q${q.question_id}`} />) }
       </div>
     );
   }

@@ -1,22 +1,28 @@
 import React from 'react';
 import './qna-answer.styles.scss';
 import propTypes from 'prop-types';
-import Question from '../qna-question/qna-question.component';
 
-const QnAAnswer = (props) => {
-  // console.log("the props: ", props);
-  const { questionBody } = props;
+const QnAAnswer = ({ answerBody }) => {
+  console.log("The Answer: ", answerBody);
+
   return (
     // const {question_body} = props.question_body;}
-    <div className="qna-List-container">
+    <div className="qna-answer-container">
       <br />
-      <Question questionBody={questionBody} />
+      {answerBody}
     </div>
   );
 };
 
-QnA.propTypes = {
-  questionBody: propTypes.string.isRequired,
+QnAAnswer.propTypes = {
+  questionAnswers: propTypes.shape({
+    id: propTypes.number,
+    body: propTypes.string,
+    date: propTypes.string,
+    answerer_name: propTypes.string,
+    helpfulness: propTypes.string,
+    photos: propTypes.arrayOf(propTypes.string),
+  }).isRequired,
 };
 
-export default QnAList;
+export default QnAAnswer;
