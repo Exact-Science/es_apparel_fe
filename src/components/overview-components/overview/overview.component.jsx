@@ -12,7 +12,9 @@ class Overview extends React.Component {
       productInfo: {
         name: 'Camo Onesie',
       },
-      productStyles: [],
+      productStyles: [{
+        photos: [],
+      }],
       mainImage: 'https://images.unsplash.com/photo-1519862170344-6cd5e49cb996?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
     };
   }
@@ -33,11 +35,12 @@ class Overview extends React.Component {
 
   render() {
     const { productInfo, productStyles, mainImage } = this.state;
+
     return (
       <div className="overview-container">
         <div className="gallery-container">
           <Gallery
-            productStyles={productStyles}
+            productStyles={productStyles[0]}
             mainImage={mainImage}
           />
         </div>
