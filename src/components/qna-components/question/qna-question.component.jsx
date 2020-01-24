@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import QnAAnswer from '../qna-answer/qna-answer.component'
+import QnAAnswer from '../answer/qna-answer.component';
 import './qna-question.styles.scss';
 
 const QnAQuestion = ({ questionBody, questionAnswers }) => (

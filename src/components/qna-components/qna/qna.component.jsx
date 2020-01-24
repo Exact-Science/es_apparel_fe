@@ -1,7 +1,7 @@
 import React from 'react';
 import './qna.styles.scss';
 import propTypes from 'prop-types';
-import QnAList from '../qna-List/qna-List.component';
+import QnAList from '../list/qna-list.component';
 
 
 class QnA extends React.Component {

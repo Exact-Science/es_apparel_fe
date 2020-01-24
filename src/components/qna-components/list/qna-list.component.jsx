@@ -1,7 +1,7 @@
 import React from 'react';
-import './qna-List.styles.scss';
+import './qna-list.styles.scss';
 import propTypes from 'prop-types';
-import Question from '../qna-question/qna-question.component';
+import Question from '../question/qna-question.component';
 
 const QnAList = ({ questionBody, questionAnswers }) => {
   // console.log("the props: ", props);
