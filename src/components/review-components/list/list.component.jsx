@@ -3,10 +3,10 @@ import ReviewItem from '../item/item.component';
 import './list-styles.scss';
 // import propTypes from 'prop-types';
 
-const ReviewList = (props) => {
-  const { reviews } = props;
+const ReviewList = ({ reviews }) => {
   return (
     <div className="reviewListContainer">
+      <h3>There are {reviews.length} reviews</h3>
       <ul>
         {reviews.map((review) => {
           return (
