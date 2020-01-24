@@ -5,11 +5,13 @@ const ReviewItem = (props) => {
   const { summary, rec, response } = props;
 
   return (
-    <li>
-      Summary: {summary}
-      Recommended: {rec}
-      Response: {response}
-    </li>
+    <div>
+      <li>
+        Summary: {summary}
+        Recommended: {rec}
+        Response: {response}
+      </li>
+    </div>
   );
 };
 
