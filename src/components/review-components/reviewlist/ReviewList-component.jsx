@@ -1,13 +1,29 @@
 import React from 'react';
+import ReviewItem from '../reviewitem/Reviewitem.component';
+// import propTypes from 'prop-types';
 
 const ReviewList = (props) => {
+  const { reviews } = props;
   return (
     <ul>
-      <li>Review 1 </li>
-      <li>Review 2 </li>
-      <li>Review 3 </li>
+      {reviews.map((review) => {
+        return (
+          <ReviewItem
+            key={review.review_id}
+            rating={review.rating}
+            summary={review.summary}
+            rec={review.recommend}
+            response={review.response}
+          />
+        );
+      })}
     </ul>
   );
 };
 
 export default ReviewList;
+
+// ReviewList.propTypes = {
+//   reviews: propTypes.array
+
+// }
