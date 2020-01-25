@@ -2,14 +2,20 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const ReviewItem = (props) => {
-  const { summary, rec, response } = props;
+  const { summary, response } = props;
 
   return (
-    <li>
-      Summary: {summary}
-      Recommended: {rec}
-      Response: {response}
-    </li>
+    <div className="itemTile">
+      <li>
+        <h4>
+          {summary}
+        </h4>
+        <p>
+          Response:
+          {response}
+        </p>
+      </li>
+    </div>
   );
 };
 
@@ -21,6 +27,5 @@ ReviewItem.defaultProps = {
 
 ReviewItem.propTypes = {
   summary: propTypes.string.isRequired,
-  rec: propTypes.number.isRequired,
   response: propTypes.string,
 };
