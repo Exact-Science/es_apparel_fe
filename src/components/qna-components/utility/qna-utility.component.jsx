@@ -7,6 +7,7 @@ class Utility extends React.Component {
     super(props);
     this.state = {
       questionHelpfulness: 0,
+      questionHelpfulClicked: false,
       // answerModal: false,
     };
   }
@@ -20,7 +21,11 @@ class Utility extends React.Component {
     e.preventDefault();
     this.setState((previousState) => ({
       questionHelpfulness: previousState.questionHelpfulness + 1,
-    }));
+    }),
+    () => {
+      const { questionHelpfulClicked } = this.state;
+      this.setState({ questionHelpfulClicked: !questionHelpfulClicked });
+    });
   }
 
   // showAddAnswerModal = (e) => {
@@ -29,12 +34,13 @@ class Utility extends React.Component {
 
   render() {
     const { questionHelpfulness } = this.state;
+    const { questionHelpfulClicked } = this.state;
     return (
       <div>
         <div className="qna-q-utility">
           <span>Helpful? </span>
           <button
-            className="helpfulButton"
+            className={ questionHelpfulClicked ? 'helpfulButtonOff' : 'helpfulButtonOn'}
             type="submit"
             onClick={(e) => this.updateHelpful(e)}
           >
