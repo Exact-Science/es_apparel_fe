@@ -11,17 +11,15 @@ const ReviewList = ({ reviews }) => (
       reviews
     </h3>
     <ul>
-      {reviews.map(review => {
-        return (
-          <ReviewItem
-            key={review.review_id}
-            rating={review.rating}
-            summary={review.summary}
-            rec={review.recommend}
-            response={review.response}
-          />
-        );
-      })}
+      {reviews.map((review) => (
+        <ReviewItem
+          key={review.review_id}
+          rating={review.rating}
+          summary={review.summary}
+          rec={review.recommend}
+          response={review.response}
+        />
+      ))}
     </ul>
   </div>
 );
@@ -30,5 +28,5 @@ const ReviewList = ({ reviews }) => (
 export default ReviewList;
 
 ReviewList.propTypes = {
-  reviews: propTypes.array.isRequired
+  reviews: propTypes.arrayOf(propTypes.objects).isRequired,
 };
