@@ -5,11 +5,15 @@ const ReviewItem = (props) => {
   const { summary, rec, response } = props;
 
   return (
-    <div>
+    <div className="itemTile">
       <li>
-        Summary: {summary}
-        Recommended: {rec}
-        Response: {response}
+        <h4>
+          {summary}
+        </h4>
+        <p>
+          Recommended: {rec} ::::
+          Response: {response}
+        </p>
       </li>
     </div>
   );
