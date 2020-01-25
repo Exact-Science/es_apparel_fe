@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 
 import CustomTitle from '../custom-title/custom-title.component';
 import StylesContainer from '../styles-container/styles-container.component';
+import CheckoutContainer from '../checkout-container/checkout-container.component';
 
 import './product-container.styles.scss';
 
@@ -21,6 +22,7 @@ class ProductContainer extends React.Component {
       styles,
       changeMainImage,
       currentStyle,
+      currentStyleIdx,
     } = this.props;
 
     return (
@@ -38,6 +40,10 @@ class ProductContainer extends React.Component {
           changeMainImage={changeMainImage}
           styles={styles}
         />
+        <CheckoutContainer
+          styles={styles}
+          currentStyleIdx={currentStyleIdx}
+        />
       </>
     );
   }
@@ -50,4 +56,5 @@ ProductContainer.propTypes = {
   styles: propTypes.arrayOf(propTypes.object).isRequired,
   changeMainImage: propTypes.func.isRequired,
   currentStyle: propTypes.string.isRequired,
+  currentStyleIdx: propTypes.number.isRequired,
 };
