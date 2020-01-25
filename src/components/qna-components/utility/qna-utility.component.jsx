@@ -18,13 +18,17 @@ class Utility extends React.Component {
   }
 
   updateHelpful = (e) => {
+    const { questionId } = this.props;
     e.preventDefault();
     this.setState((previousState) => ({
       questionHelpfulness: previousState.questionHelpfulness + 1,
     }),
     () => {
       const { questionHelpfulClicked } = this.state;
-      this.setState({ questionHelpfulClicked: !questionHelpfulClicked });
+      this.setState({ questionHelpfulClicked: !questionHelpfulClicked }, () => {
+        fetch(`http://3.134.102.30/qa/question/${questionId}/helpful`,
+          { method: 'PUT' });
+      });
     });
   }
 
@@ -63,7 +67,7 @@ class Utility extends React.Component {
 
 
 Utility.propTypes = {
-  // questionId: propTypes.number.isRequired,
+  questionId: propTypes.number.isRequired,
   questionHelpfulness: propTypes.number.isRequired,
 };
 
