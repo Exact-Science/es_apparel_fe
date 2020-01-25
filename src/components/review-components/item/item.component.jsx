@@ -11,7 +11,8 @@ const ReviewItem = (props) => {
           {summary}
         </h4>
         <p>
-          Response: {response}
+          Response:
+          {response}
         </p>
       </li>
     </div>
@@ -26,6 +27,5 @@ ReviewItem.defaultProps = {
 
 ReviewItem.propTypes = {
   summary: propTypes.string.isRequired,
-  rec: propTypes.number.isRequired,
   response: propTypes.string,
 };
