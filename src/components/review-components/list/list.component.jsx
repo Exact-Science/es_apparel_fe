@@ -11,16 +11,18 @@ const ReviewList = ({ reviews, reviewCount }) => (
       <ReviewListHeader reviewCount={reviewCount} />
     </header>
     {reviews.map((review) => (
-      <ul>
+      <ul key={review.review_id}>
         <header>
           <ListItemHeader
-            key={review.review_id}
             rating={review.rating}
             user={review.reviewer_name}
             date={review.date}
           />
         </header>
-        <ListItemBody summary={review.summary} body={review.body} />
+        <ListItemBody
+          summary={review.summary}
+          body={review.body}
+        />
       </ul>
     ))}
   </div>
