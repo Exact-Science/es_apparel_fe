@@ -12,7 +12,7 @@ class Metrics extends React.Component {
   render() {
     const { rating } = this.props;
     return (
-      <div className="breakdownContainer">
+      <div className="metricsContainer">
         <Number rating={rating} />
       </div>
     );
