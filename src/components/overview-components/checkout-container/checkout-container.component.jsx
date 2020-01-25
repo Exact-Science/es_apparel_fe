@@ -5,28 +5,14 @@ import DropDownButton from '../dropdown-button/dropdown-button.component';
 
 import './checkout-container.styles.scss';
 
-class CheckoutContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-
-    };
-  }
-
-  render() {
-    const { styles, currentStyleIdx } = this.props;
-
-    return (
-      <div className="checkout-container">
-        <DropDownButton
-          styles={styles}
-          currentStyleIdx={currentStyleIdx}
-        />
-      </div>
-    );
-  }
-}
+const CheckoutContainer = ({ styles, currentStyleIdx }) => (
+  <div className="checkout-container">
+    <DropDownButton
+      styles={styles}
+      currentStyleIdx={currentStyleIdx}
+    />
+  </div>
+);
 
 export default CheckoutContainer;
 
