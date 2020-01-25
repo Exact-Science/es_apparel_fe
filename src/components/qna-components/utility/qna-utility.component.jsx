@@ -15,7 +15,11 @@ class Utility extends React.Component {
     this.setState({ questionHelpfulness });
   }
 
-  // updateHelpful()
+  updateHelpful = () => {
+    this.setState((previousState) => ({
+      questionHelpfulness: previousState.questionHelpfulness + 1,
+    }));
+  }
 
   render() {
     const { questionHelpfulness } = this.state;
@@ -23,7 +27,12 @@ class Utility extends React.Component {
       <div>
         <span>
           Helpful?
-          <button type="submit">yes</button>
+          <button
+            type="submit"
+            onClick={this.updateHelpful}
+          >
+          yes
+          </button>
           {questionHelpfulness}
         </span>
       </div>
