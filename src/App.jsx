@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import './App.scss';
 import Overview from './components/overview-components/overview/overview.component';
 import QnA from './components/qna-components/qna/qna.component';
-import Review from './components/review-components/app/review.component';
+import Reviews from './components/review-components/reviews/reviews.component';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends React.Component {
       <div className="App">
         <Overview id={productId} />
         <QnA id={productId} />
-        <Review id={productId} />
+        <Reviews id={productId} />
       </div>
     );
   }

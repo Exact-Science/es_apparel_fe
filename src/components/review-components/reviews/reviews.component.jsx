@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import ReviewList from '../list/list.component';
-import Metrics from '../metrics/metrics.component';
-import './review-styles.scss';
+import Ratings from '../ratings/ratings.component';
+import './reviews-styles.scss';
 
 class Reviews extends React.Component {
   constructor(props, { id }) {
@@ -31,18 +31,18 @@ class Reviews extends React.Component {
       .catch((err) => err);
   }
 
-  // getRatings = (array) => {
-  //   if (array.length > 0) {
-  //     this.setState({ rating: array.map(el => el.rating).reduce((a, b) => (a + b) / array.length) });
-  //   }
-  // }
+  getRatings = (array) => {
+    if (array.length > 0) {
+      this.setState({ rating: array.map(el => el.rating).reduce((a, b) => (a + b) / array.length) });
+    }
+  }
 
   render() {
-    const { reviews, rating } = this.state;
+    const { reviews, rating, count } = this.state;
     return (
       <div className="reviewsContainer">
-        <Metrics rating={rating} id={this.props.id} />
-        <ReviewList reviews={reviews} />
+        <Ratings rating={rating} id={this.props.id} />
+        <ReviewList reviews={reviews} reviewCount={count} />
       </div>
     );
   }

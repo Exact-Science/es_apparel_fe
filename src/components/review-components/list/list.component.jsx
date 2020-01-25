@@ -1,26 +1,28 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import ReviewItem from '../item/item.component';
+import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
+import ListItemHeader from '../listitemheader/listitemheader.component';
+import ListItemBody from '../listitembody/listitembody.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews }) => (
+const ReviewList = ({ reviews, reviewCount }) => (
   <div className="reviewListContainer">
-    <h3>
-      There are
-      {reviews.length}
-      reviews
-    </h3>
-    <ul>
-      {reviews.map((review) => (
-        <ReviewItem
-          key={review.review_id}
-          rating={review.rating}
-          summary={review.summary}
-          rec={review.recommend}
-          response={review.response}
-        />
-      ))}
-    </ul>
+    <header>
+      <ReviewListHeader reviewCount={reviewCount} />
+    </header>
+    {reviews.map((review) => (
+      <ul>
+        <header>
+          <ListItemHeader
+            key={review.review_id}
+            rating={review.rating}
+            user={review.reviewer_name}
+            date={review.date}
+          />
+        </header>
+        <ListItemBody summary={review.summary} body={review.body} />
+      </ul>
+    ))}
   </div>
 );
 
@@ -28,4 +30,5 @@ export default ReviewList;
 
 ReviewList.propTypes = {
   reviews: propTypes.arrayOf(propTypes.object).isRequired,
+  reviewCount: propTypes.number.isRequired,
 };
