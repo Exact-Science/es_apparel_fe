@@ -61,10 +61,11 @@ class DropDownButton extends React.Component {
 
     const containerStyles = {
       width: 200,
+      padding: '10px',
     };
 
     return (
-      <div className="tester">
+      <div className="size-quantity-container">
         <Select
           label="Size"
           options={this.createSizes()}
