@@ -1,0 +1,20 @@
+.arrow {
+  width: 50px;
+  margin: 0px auto;
+
+  :hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+}
+
+.up {
+  position: absolute;
+  top: 2.5%;
+  left: 45%;
+  margin: 10px auto;
+  img {
+    transform: rotateY(180deg);
+    -webkit-transform: rotate(180deg);
+  }
+}
