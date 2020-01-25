@@ -6,7 +6,26 @@ import './breakdown-styles.scss';
 class Breakdown extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
-    this.state = {};
+    this.state = {
+      ratings: {},
+      recommended: {},
+      characteristics: {}
+    };
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+
+    fetch(`http://3.134.102.30/reviews/${id}/meta`)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          ratings: data.ratings,
+          recommended: data.recommended,
+          characteristics: data.characteristics
+        })
+      )
+      .catch(err => err);
   }
 
   render() {

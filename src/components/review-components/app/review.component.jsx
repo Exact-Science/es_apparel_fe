@@ -5,8 +5,8 @@ import Breakdown from '../breakdown/breakdown.component';
 import './review.styles.scss';
 
 class Review extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, { id }) {
+    super(props, { id });
     this.state = {
       reviews: [],
       rating: 0,
@@ -33,7 +33,7 @@ class Review extends React.Component {
     const { reviews, rating } = this.state;
     return (
       <div className="reviewsContainer">
-        <Breakdown rating={rating} />
+        <Breakdown rating={rating} id={this.props.id}/>
         <ReviewList reviews={reviews} />
       </div>
     );
