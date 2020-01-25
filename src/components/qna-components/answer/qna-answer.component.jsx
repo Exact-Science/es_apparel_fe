@@ -18,14 +18,7 @@ const Answer = ({ answerBody, answerImages }) => (
 
 Answer.propTypes = {
   answerBody: propTypes.string.isRequired,
-  // questionAnswers: propTypes.shape({
-  //   id: propTypes.number,
-  //   body: propTypes.string,
-  //   date: propTypes.string,
-  //   answerer_name: propTypes.string,
-  //   helpfulness: propTypes.string,
   answerImages: propTypes.arrayOf(propTypes.string).isRequired,
-  // }).isRequired,
 };
 
 export default Answer;

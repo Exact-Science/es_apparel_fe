@@ -1,34 +1,40 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Question from '../question/qna-question.component';
 import './qna-utility.styles.scss';
 
-class Utility extends React.component {
+class Utility extends React.Component {
   constructor(props) {
-    super(props) {
-      this.state = {
-        helpful: 0;
-      }
-    }
+    super(props);
+    this.state = {
+      questionHelpfulness: 0,
+    };
   }
 
   componentDidMount() {
-
+    const { questionHelpfulness } = this.props;
+    this.setState({ questionHelpfulness });
   }
 
+  // updateHelpful()
+
   render() {
+    const { questionHelpfulness } = this.state;
     return (
       <div>
-        Helpful?
-        <a href="#">yes</a>
+        <span>
+          Helpful?
+          <button type="submit">yes</button>
+          {questionHelpfulness}
+        </span>
       </div>
     )
   }
 }
 
 
-QnAQuestion.propTypes = {
-  questionId: propTypes.string.isRequired,
+Utility.propTypes = {
+  // questionId: propTypes.number.isRequired,
+  questionHelpfulness: propTypes.number.isRequired,
 };
 
 export default Utility;

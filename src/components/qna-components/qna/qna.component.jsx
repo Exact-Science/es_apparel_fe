@@ -1,7 +1,7 @@
 import React from 'react';
 import './qna.styles.scss';
 import propTypes from 'prop-types';
-import QnAList from '../list/qna-list.component';
+import List from '../list/qna-list.component';
 
 
 class QnA extends React.Component {
@@ -28,7 +28,7 @@ class QnA extends React.Component {
         &amp;
         ANSWERS
 
-        { list.map((q) => <QnAList questionAnswers={q.answers} questionBody={q.question_body} key={`q${q.question_id}`} />) }
+        {list.map((q) => <List questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
       </div>
     );
   }
