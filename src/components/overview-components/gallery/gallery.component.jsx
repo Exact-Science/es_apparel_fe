@@ -16,24 +16,26 @@ class Gallery extends React.Component {
   }
 
   render() {
-    const { mainImage, productStyles } = this.props;
+    const { mainImage, productStyles, changeMainImage } = this.props;
 
     return (
       <>
-        <div className="thumbnails-container">
-          {
-            productStyles.photos.map((img) => (
-              <Thumbnail
-                key={img.thumbnail_url}
-                thumbnail={img.thumbnail_url}
-              />
-            ))
-          }
-        </div>
         <div className="main-image">
           <MainImage
             image={mainImage}
           />
+        </div>
+        <div className="thumbnails-container">
+          {
+            productStyles.photos.map((img, idx) => (
+              <Thumbnail
+                key={img.thumbnail_url}
+                idx={idx}
+                changeMainImage={changeMainImage}
+                thumbnail={img.thumbnail_url}
+              />
+            ))
+          }
         </div>
       </>
     );
@@ -47,4 +49,5 @@ Gallery.propTypes = {
   productStyles: propTypes.shape({
     photos: propTypes.array,
   }).isRequired,
+  changeMainImage: propTypes.func.isRequired,
 };

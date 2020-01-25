@@ -4,7 +4,11 @@
 }
 
 .thumbnails-container {
-  max-height: 700px;
-  overflow: scroll;
+  height: 700px;
+  position: absolute;
+  padding-left: 30px;
+  padding-top: 30px;
+  float: left;
+  overflow: hidden;
   overflow-x: hidden;
 }
