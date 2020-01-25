@@ -16,7 +16,12 @@ class ProductContainer extends React.Component {
   }
 
   render() {
-    const { title, styles } = this.props;
+    const {
+      title,
+      styles,
+      changeMainImage,
+      currentStyle,
+    } = this.props;
 
     return (
       <>
@@ -29,6 +34,8 @@ class ProductContainer extends React.Component {
           {`$${styles[0].original_price}`}
         </h3>
         <StylesContainer
+          currentStyle={currentStyle}
+          changeMainImage={changeMainImage}
           styles={styles}
         />
       </>
@@ -41,4 +48,6 @@ export default ProductContainer;
 ProductContainer.propTypes = {
   title: propTypes.string.isRequired,
   styles: propTypes.arrayOf(propTypes.object).isRequired,
+  changeMainImage: propTypes.func.isRequired,
+  currentStyle: propTypes.string.isRequired,
 };

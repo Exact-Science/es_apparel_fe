@@ -8,8 +8,8 @@ class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
       reviews: [],
+      rating: 0,
     };
   }
 
@@ -19,16 +19,20 @@ class Review extends React.Component {
     fetch(`http://3.134.102.30/reviews/${id}/list`)
       .then((data) => data.json())
       .then((res) => this.setState({ count: res.count, reviews: res.results }))
-      .catch((err) => err);
+      .catch((err) => err)
+      .then(() => this.getRatings(this.state.reviews))
+  }
+
+  getRatings = (array) => {
+     this.setState({ rating: array.map(el => el.rating).reduce((a, b) => (a + b) / array.length) });
   }
 
   render() {
-    const { reviews, count } = this.state;
-
+    const { reviews, rating } = this.state;
     return (
       <div className="reviewsContainer">
-        <Breakdown />
-        <ReviewList reviews={reviews} reviewCount={count} />
+        <Breakdown rating={rating} />
+        <ReviewList reviews={reviews} />
       </div>
     );
   }
