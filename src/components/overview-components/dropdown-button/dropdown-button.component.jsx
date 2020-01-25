@@ -10,29 +10,72 @@ class DropDownButton extends React.Component {
     super(props);
 
     this.state = {
+      currentSize: 'Select a size',
     };
   }
 
-  render() {
+  handleChange = (e) => {
+    this.setState({ currentSize: e.target.value });
+  }
+
+  createSizes = () => {
     const { styles, currentStyleIdx } = this.props;
+
+    const sizes = [{
+      value: 'Select a size',
+      label: 'Select a size',
+    }];
+
+    Object.keys(styles[currentStyleIdx].skus).map((size) => (
+      sizes.push({
+        value: size,
+        label: size,
+      })
+    ));
+
+    return sizes;
+  }
+
+  createQuantity = () => {
+    const { styles, currentStyleIdx } = this.props;
+    const { currentSize } = this.state;
+
+    const quantity = [{
+      value: 'Select a quantity',
+      label: 'Select a quantity',
+    }];
+
+    for (let i = 1; i < styles[currentStyleIdx].skus[currentSize]; i += 1) {
+      if (i > 7) break;
+      quantity.push({
+        value: i,
+        label: i,
+      });
+    }
+
+    return quantity;
+  }
+
+  render() {
+    const { currentSize } = this.state;
 
     const containerStyles = {
       width: 200,
     };
-    const options = [];
 
     return (
       <div className="tester">
         <Select
           label="Size"
-          options={options}
+          options={this.createSizes()}
           onChange={this.handleChange}
           style={containerStyles}
         />
         <Select
           label="Quantity"
-          options={options}
+          options={this.createQuantity()}
           style={containerStyles}
+          disabled={currentSize === 'Select a size'}
         />
       </div>
     );
