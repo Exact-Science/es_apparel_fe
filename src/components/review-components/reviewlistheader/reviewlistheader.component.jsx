@@ -4,7 +4,7 @@ import './reviewlistheader-styles.scss';
 
 const ReviewListHeader = ({ reviewCount }) => (
   <h2>
-    {`There are ${reviewCount} reviews, sorted by:`}
+    {`There are ${reviewCount} reviews, sorted by: 'dropdown box here'`}
   </h2>
 );
 
