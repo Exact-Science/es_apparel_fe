@@ -4,9 +4,7 @@ import './reviewlistheader-styles.scss';
 
 const ReviewListHeader = ({ reviewCount }) => (
   <h2>
-    There are
-    { reviewCount }
-    reviews, sorted by relevance
+    {`There are ${reviewCount} reviews, sorted by:`}
   </h2>
 );
 

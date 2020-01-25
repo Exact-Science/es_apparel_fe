@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const ListItemFooter = ({ helpfulness }) => (
   <div>
-    {helpfulness} people found this review helpful.
+    {`${helpfulness} people found this review helpful`}
   </div>
 );
 
