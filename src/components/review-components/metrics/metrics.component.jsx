@@ -1,9 +1,9 @@
 import React from 'react';
 // import propTypes from 'prop-types';
-import Rating from '../rating/rating.component';
-import './breakdown-styles.scss';
+import Number from '../number/number.component';
+import './metrics-styles.scss';
 
-class Breakdown extends React.Component {
+class Metrics extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
     this.state = {
@@ -20,9 +20,7 @@ class Breakdown extends React.Component {
       .then(res => res.json())
       .then(data =>
         this.setState({
-          ratings: data.ratings,
-          recommended: data.recommended,
-          characteristics: data.characteristics
+          ratings: data,
         })
       )
       .catch(err => err);
@@ -32,10 +30,10 @@ class Breakdown extends React.Component {
     const { rating } = this.props;
     return (
       <div className="breakdownContainer">
-        <Rating rating={rating} />
+        <Number rating={rating} />
       </div>
     );
   }
 }
 
-export default Breakdown;
+export default Metrics;

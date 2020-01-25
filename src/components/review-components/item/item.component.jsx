@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const ReviewItem = (props) => {
-  const { summary, rec, response } = props;
+  const { summary, response } = props;
 
   return (
     <div className="itemTile">
@@ -11,7 +11,6 @@ const ReviewItem = (props) => {
           {summary}
         </h4>
         <p>
-          Recommended: {rec} ::::
           Response: {response}
         </p>
       </li>
