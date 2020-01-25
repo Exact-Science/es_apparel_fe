@@ -1,6 +1,6 @@
 .style-item {
   display: flex;
-  margin: 5px;
+  padding: 5px;
   height: 100px;
   width: 100px;
 
@@ -8,4 +8,9 @@
     padding: 0px 10px 0px 10px;
     border-radius: 50%;
   }
+}
+
+.style-item:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
