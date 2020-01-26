@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import propTypes from 'prop-types';
 import './listitemfooter-styles.scss';
@@ -16,6 +18,7 @@ class ListItemFooter extends React.Component {
     const { id } = this.props;
     const { clicked, helpfulness } = this.state;
     this.setState({ helpfulness: helpfulness + 1 });
+
     try {
       await fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
         method: 'PUT',
@@ -31,7 +34,7 @@ class ListItemFooter extends React.Component {
     return (
       <div>
         <span> Helpful? </span>
-        <span onClick={this.handleClick} className={ clicked ? "clicked" : "unclicked" }> Yes </span>
+        <span className={clicked ? 'clicked' : 'unclicked'} onClick={this.handleClick} > Yes </span>
         <span>{`(${helpfulness})`}</span>
       </div>
     );
