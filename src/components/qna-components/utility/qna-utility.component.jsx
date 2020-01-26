@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import AnswerModal from '../answer-modal/qna-answer-modal.component';
 import './qna-utility.styles.scss';
 
 class Utility extends React.Component {
@@ -8,7 +9,7 @@ class Utility extends React.Component {
     this.state = {
       questionHelpfulness: 0,
       questionHelpfulClicked: false,
-      // answerModal: false,
+      openAnswerModal: false,
     };
   }
 
@@ -32,19 +33,24 @@ class Utility extends React.Component {
     });
   }
 
-  // showAddAnswerModal = (e) => {
-  // e.preventDefault();
-  // }
+  showAddAnswerModal = (e) => {
+    e.preventDefault();
+    const { openAnswerModal } = this.state;
+    this.setState({ openAnswerModal: !openAnswerModal });
+  }
 
   render() {
     const { questionHelpfulness } = this.state;
     const { questionHelpfulClicked } = this.state;
+    const { openAnswerModal } = this.state;
+    const { questionId } = this.props;
     return (
       <div>
+        {questionId}
         <div className="qna-q-utility">
           <span>Helpful? </span>
           <button
-            className={ questionHelpfulClicked ? 'helpfulButtonOff' : 'helpfulButtonOn'}
+            className={questionHelpfulClicked ? 'helpfulButtonOff' : 'helpfulButtonOn'}
             type="submit"
             onClick={(e) => this.updateHelpful(e)}
           >
@@ -58,8 +64,9 @@ class Utility extends React.Component {
         </div>
         <div className="qna-utility-divider" />
         <div className="qna-a-utility">
-          <button className="addAnswerButton" type="submit">Add Answer</button>
+          <button className="addAnswerButton" type="submit" onClick={(e) => this.showAddAnswerModal(e)}>Add Answer</button>
         </div>
+        {openAnswerModal ? <AnswerModal questionId={questionId} showAddAnswerModal={this.showAddAnswerModal} /> : null }
       </div>
     );
   }

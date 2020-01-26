@@ -20,7 +20,10 @@ const List = ({
       />
     </div>
     <div>
-      <Utility questionId={questionId} questionHelpfulness={questionHelpfulness} />
+      <Utility
+        questionId={questionId}
+        questionHelpfulness={questionHelpfulness}
+      />
     </div>
   </div>
 );
