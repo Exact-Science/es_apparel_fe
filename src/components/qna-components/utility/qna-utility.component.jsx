@@ -42,10 +42,11 @@ class Utility extends React.Component {
   render() {
     const { questionHelpfulness } = this.state;
     const { questionHelpfulClicked } = this.state;
-    const { questionId } = this.state;
     const { openAnswerModal } = this.state;
+    const { questionId } = this.props;
     return (
       <div>
+        {questionId}
         <div className="qna-q-utility">
           <span>Helpful? </span>
           <button
@@ -63,9 +64,9 @@ class Utility extends React.Component {
         </div>
         <div className="qna-utility-divider" />
         <div className="qna-a-utility">
-          <button className="addAnswerButton" type="submit" onClick={(e) => this.showAddAnswerModal(e, questionId)}>Add Answer</button>
+          <button className="addAnswerButton" type="submit" onClick={(e) => this.showAddAnswerModal(e)}>Add Answer</button>
         </div>
-        {openAnswerModal ? <AnswerModal questionId={questionId} /> : null }
+        {openAnswerModal ? <AnswerModal questionId={questionId} showAddAnswerModal={this.showAddAnswerModal} /> : null }
       </div>
     );
   }
