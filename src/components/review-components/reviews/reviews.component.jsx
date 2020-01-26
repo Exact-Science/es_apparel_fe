@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import ReviewList from '../list/list.component';
-import Metrics from '../metrics/metrics.component';
-import './review-styles.scss';
+import Ratings from '../ratings/ratings.component';
+import './reviews-styles.scss';
 
 class Reviews extends React.Component {
   constructor(props, { id }) {
@@ -17,16 +17,17 @@ class Reviews extends React.Component {
 
   componentDidMount() {
     const { id } = this.props;
+    const { reviews } = this.state;
 
     fetch(`http://3.134.102.30/reviews/${id}/list`)
       .then((data) => data.json())
       .then((res) => this.setState({ reviews: res.results, count: res.count }))
       .catch((err) => err)
-      .then(() => this.getRatings(this.state.reviews));
+      .then(() => this.getRatings(reviews));
 
     fetch(`http://3.134.102.30/reviews/${id}/meta`)
       .then((res) => res.json())
-      .then((res) => this.setState({ ratings: res}))
+      .then((res) => this.setState({ ratings: res }))
       .catch((err) => err);
   }
 
@@ -37,11 +38,11 @@ class Reviews extends React.Component {
   }
 
   render() {
-    const { reviews, rating } = this.state;
+    const { reviews, rating, count } = this.state;
     return (
       <div className="reviewsContainer">
-        <Metrics rating={rating} id={this.props.id}/>
-        <ReviewList reviews={reviews} />
+        <Ratings rating={rating} id={this.props.id} />
+        <ReviewList reviews={reviews} reviewCount={count} />
       </div>
     );
   }

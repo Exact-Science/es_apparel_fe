@@ -75,6 +75,7 @@ class Overview extends React.Component {
           <ProductContainer
             currentStyle={currentStyle}
             changeMainImage={this.changeMainImage}
+            currentStyleIdx={currentStyleIdx}
             title={productInfo.name}
             styles={productStyles}
           />

@@ -7,6 +7,8 @@ class Utility extends React.Component {
     super(props);
     this.state = {
       questionHelpfulness: 0,
+      questionHelpfulClicked: false,
+      // answerModal: false,
     };
   }
 
@@ -15,34 +17,57 @@ class Utility extends React.Component {
     this.setState({ questionHelpfulness });
   }
 
-  updateHelpful = () => {
+  updateHelpful = (e) => {
+    const { questionId } = this.props;
+    e.preventDefault();
     this.setState((previousState) => ({
       questionHelpfulness: previousState.questionHelpfulness + 1,
-    }));
+    }),
+    () => {
+      const { questionHelpfulClicked } = this.state;
+      this.setState({ questionHelpfulClicked: !questionHelpfulClicked }, () => {
+        fetch(`http://3.134.102.30/qa/question/${questionId}/helpful`,
+          { method: 'PUT' });
+      });
+    });
   }
+
+  // showAddAnswerModal = (e) => {
+  // e.preventDefault();
+  // }
 
   render() {
     const { questionHelpfulness } = this.state;
+    const { questionHelpfulClicked } = this.state;
     return (
       <div>
-        <span>
-          Helpful?
+        <div className="qna-q-utility">
+          <span>Helpful? </span>
           <button
+            className={ questionHelpfulClicked ? 'helpfulButtonOff' : 'helpfulButtonOn'}
             type="submit"
-            onClick={this.updateHelpful}
+            onClick={(e) => this.updateHelpful(e)}
           >
-          yes
+          Yes
           </button>
-          {questionHelpfulness}
-        </span>
+          <span> (</span>
+          <span>
+            {questionHelpfulness}
+            )
+          </span>
+        </div>
+        <div className="qna-utility-divider" />
+        <div className="qna-a-utility">
+          <button className="addAnswerButton" type="submit">Add Answer</button>
+        </div>
       </div>
-    )
+    );
   }
 }
 
 
 Utility.propTypes = {
-  // questionId: propTypes.number.isRequired,
+  questionId: propTypes.number.isRequired,
   questionHelpfulness: propTypes.number.isRequired,
 };
 

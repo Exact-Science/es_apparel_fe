@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Number from '../number/number.component';
-import './metrics-styles.scss';
+import './ratings-styles.scss';
 
-class Metrics extends React.Component {
+class Ratings extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
     this.state = {};
@@ -19,8 +19,8 @@ class Metrics extends React.Component {
   }
 }
 
-export default Metrics;
+export default Ratings;
 
-Metrics.propTypes = {
+Ratings.propTypes = {
   rating: propTypes.number.isRequired,
 };

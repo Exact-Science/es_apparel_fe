@@ -1,5 +1,47 @@
-.qna-utility
--container {
-  margin-left: 40px;
+.qna-q-utility{
+  display: inline-block;
+}
 
+.qna-a-utility{
+  display: inline-block;
+}
+
+.qna-utility-divider {
+  display: inline-block;
+  border-left: 1px solid black;
+  height: 21px;
+  vertical-align: bottom;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.helpfulButtonOn {
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.helpfulButtonOff {
+  border: none;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 50%;
+}
+
+.helpfulButtonOn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.addAnswerButton {
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+  box-sizing: border-box;
+  padding: 0px;
+}
+
+.addAnswerButton:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
