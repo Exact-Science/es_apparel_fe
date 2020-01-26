@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 import './reviewlistheader-styles.scss';
 
 const ReviewListHeader = ({ reviewCount }) => (
-  <h2>
+  <h3>
     {`There are ${reviewCount} reviews, sorted by: 'dropdown box here'`}
-  </h2>
+  </h3>
 );
 
 export default ReviewListHeader;

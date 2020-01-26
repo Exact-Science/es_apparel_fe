@@ -3,17 +3,18 @@ import propTypes from 'prop-types';
 import ListItemHeader from '../listitemheader/listitemheader.component';
 import ListItemFooter from '../listitemfooter/listitemfooter.component';
 import ListItemBody from '../listitembody/listitembody.component';
+import './listitem-styles.scss';
 
 const ListItem = ({
-  rating, user, date, summary, body, helpfulness,
+  rating, user, date, summary, body, helpfulness, id,
 }) => (
-  <div>
+  <div className="listItem">
     <header>
       <ListItemHeader rating={rating} user={user} date={date} />
     </header>
     <ListItemBody summary={summary} body={body} />
     <footer>
-      <ListItemFooter helpfulness={helpfulness} />
+      <ListItemFooter helpfulness={helpfulness} id={id} />
     </footer>
   </div>
 );
@@ -27,4 +28,5 @@ ListItem.propTypes = {
   summary: propTypes.string.isRequired,
   body: propTypes.string.isRequired,
   helpfulness: propTypes.number.isRequired,
+  id: propTypes.number.isRequired,
 };
