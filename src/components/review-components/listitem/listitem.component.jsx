@@ -6,7 +6,7 @@ import ListItemBody from '../listitembody/listitembody.component';
 import './listitem-styles.scss';
 
 const ListItem = ({
-  rating, user, date, summary, body, helpfulness,
+  rating, user, date, summary, body, helpfulness, id,
 }) => (
   <div className="listItem">
     <header>
@@ -14,7 +14,7 @@ const ListItem = ({
     </header>
     <ListItemBody summary={summary} body={body} />
     <footer>
-      <ListItemFooter helpfulness={helpfulness} />
+      <ListItemFooter helpfulness={helpfulness} id={id} />
     </footer>
   </div>
 );
@@ -28,4 +28,5 @@ ListItem.propTypes = {
   summary: propTypes.string.isRequired,
   body: propTypes.string.isRequired,
   helpfulness: propTypes.number.isRequired,
+  id: propTypes.number.isRequired,
 };

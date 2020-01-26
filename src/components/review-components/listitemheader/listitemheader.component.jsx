@@ -5,7 +5,7 @@ import './listitemheader-styles.scss';
 
 const ListItemHeader = ({ rating, user, date }) => (
   <header>
-    <h4>{`${rating} stars, ${user}, ${moment(date).format('MMMM D, YYYY')}`}</h4>
+    <h5>{`${rating} stars, ${user}, ${moment(date).format('MMMM D, YYYY')}`}</h5>
   </header>
 );
 

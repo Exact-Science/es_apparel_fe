@@ -1,12 +1,22 @@
 .thumbnail {
   margin: 10px;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border: 1px solid black;
+  transition: transform .2s;
+}
+
+.thumbnail-target {
+  border: 2px solid #dadada;
+  border-radius: 7px;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
 }
 
 .thumbnail:hover {
   cursor: pointer;
-  opacity: 0.8;  
-  box-shadow: 0px 0px 5px #fff;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.2); 
+  box-shadow: 0px 0px 30px #fff;
 }

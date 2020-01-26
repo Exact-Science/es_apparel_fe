@@ -6,13 +6,31 @@ import './ratings-styles.scss';
 class Ratings extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
-    this.state = {};
+    this.state = {
+      ratings: {},
+      rating: 4.7,
+    };
   }
 
+  componentDidMount() {
+    const { id } = this.props;
+
+    fetch(`http://3.134.102.30/reviews/${id}/meta`)
+      .then((res) => res.json())
+      .then((res) => this.setState({ ratings: res }))
+      .catch((err) => err);
+  }
+
+  // getRatings = (array) => {
+  //   if (array.length > 0) {
+  //     this.setState({ rating: array.map((el) => el.rating).reduce((a, b) => (a + b) / array.length) });
+  //   }
+  // }
+
   render() {
-    const { rating } = this.props;
+    const { rating } = this.state;
     return (
-      <div className="metricsContainer">
+      <div className="ratingsContainer">
         <Number rating={rating} />
       </div>
     );
@@ -22,5 +40,5 @@ class Ratings extends React.Component {
 export default Ratings;
 
 Ratings.propTypes = {
-  rating: propTypes.number.isRequired,
+  id: propTypes.string.isRequired,
 };

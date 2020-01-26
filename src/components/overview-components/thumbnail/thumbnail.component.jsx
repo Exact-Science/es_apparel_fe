@@ -9,9 +9,10 @@ const Thumbnail = ({
   idx,
   startIdx,
   endIdx,
+  target,
 }) => (
   <div
-    className="thumbnail"
+    className={`thumbnail ${target ? 'thumbnail-target' : ''}`}
     role="presentation"
     onClick={() => changeMainImage(idx, 'thumbnail')}
     style={{ display: (idx <= endIdx && idx >= startIdx) ? '' : 'none' }}
@@ -28,4 +29,5 @@ Thumbnail.propTypes = {
   idx: propTypes.number.isRequired,
   startIdx: propTypes.number.isRequired,
   endIdx: propTypes.number.isRequired,
+  target: propTypes.bool.isRequired,
 };
