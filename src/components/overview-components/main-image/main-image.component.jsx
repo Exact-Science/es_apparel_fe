@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import './main-image.styles.scss';
 
 const MainImage = ({ image }) => (
-  <img src={image} alt="school" />
+  <img className="main-image" src={image} alt="school" />
 );
 
 export default MainImage;

@@ -40,10 +40,7 @@ class DropDownButton extends React.Component {
     const { styles, currentStyleIdx } = this.props;
     const { currentSize } = this.state;
 
-    const quantity = [{
-      value: 'Select a quantity',
-      label: 'Select a quantity',
-    }];
+    const quantity = [];
 
     for (let i = 1; i < styles[currentStyleIdx].skus[currentSize]; i += 1) {
       if (i > 7) break;
@@ -59,24 +56,29 @@ class DropDownButton extends React.Component {
   render() {
     const { currentSize } = this.state;
 
-    const containerStyles = {
+    const sizeStyles = {
       width: 200,
-      padding: '10px',
+      padding: 10,
+    };
+
+    const quantityStyles = {
+      width: 100,
+      padding: 10,
     };
 
     return (
       <div className="size-quantity-container">
         <Select
-          label="Size"
           options={this.createSizes()}
           onChange={this.handleChange}
-          style={containerStyles}
+          style={sizeStyles}
+          className="selector"
         />
         <Select
-          label="Quantity"
           options={this.createQuantity()}
-          style={containerStyles}
+          style={quantityStyles}
           disabled={currentSize === 'Select a size'}
+          className="selector"
         />
       </div>
     );

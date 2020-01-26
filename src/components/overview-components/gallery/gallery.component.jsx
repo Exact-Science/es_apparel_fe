@@ -58,6 +58,7 @@ class Gallery extends React.Component {
               <Thumbnail
                 key={img.thumbnail_url}
                 idx={idx}
+                target={img.url === mainImage}
                 startIdx={startIdx}
                 endIdx={endIdx}
                 changeMainImage={changeMainImage}
@@ -66,7 +67,7 @@ class Gallery extends React.Component {
             ))
           }
           {
-            endIdx < productStyles.photos.length ? (
+            endIdx < productStyles.photos.length - 1 ? (
               <ThumbnailScroll
                 arrow="down"
                 updateRange={this.updateRange}
