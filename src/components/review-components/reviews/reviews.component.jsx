@@ -33,7 +33,7 @@ class Reviews extends React.Component {
 
   getRatings = (array) => {
     if (array.length > 0) {
-      this.setState({ rating: array.map(el => el.rating).reduce((a, b) => (a + b) / array.length) });
+      this.setState({ rating: array.map((el) => el.rating).reduce((a, b) => (a + b) / array.length) });
     }
   }
 

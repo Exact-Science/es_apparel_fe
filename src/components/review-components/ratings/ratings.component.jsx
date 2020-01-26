@@ -12,7 +12,7 @@ class Ratings extends React.Component {
   render() {
     const { rating } = this.props;
     return (
-      <div className="metricsContainer">
+      <div className="ratingsContainer">
         <Number rating={rating} />
       </div>
     );
