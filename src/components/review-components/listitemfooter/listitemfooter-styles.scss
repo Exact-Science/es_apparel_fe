@@ -1,0 +1,17 @@
+.unclicked {
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+}
+.clicked {
+  border: none;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 50%;
+}
+
+.unclicked:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+

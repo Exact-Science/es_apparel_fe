@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import './listitemfooter-styles.scss';
 
 class ListItemFooter extends React.Component {
   constructor(props) {
@@ -9,18 +10,19 @@ class ListItemFooter extends React.Component {
     };
   }
 
-  handleClick = (reviewid) => {
-    fetch(`http://3.134.102.30/reviews/helpful/${reviewid}`, {
+  handleClick = ({ id }) => {
+    fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
       method: 'PUT',
-    }).then(() => console.log('clicked'));
+    }).then(() => this.setState({ clicked: !this.state.clicked }));
   }
 
   render() {
-    const { helpfulness, id } = this.props;
+    const { helpfulness } = this.props;
+    const { clicked } = this.state;
     return (
       <div>
-        <span onClick={this.handleClick(id)}> Yes </span>
-        <span>{helpfulness}</span>
+        <span onClick={this.handleClick} className={ clicked ? "clicked" : "unclicked" }> Yes </span>
+        <span>{`(${helpfulness})`}</span>
       </div>
     );
   }
