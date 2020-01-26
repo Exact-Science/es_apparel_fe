@@ -7,7 +7,6 @@ const Answer = ({ answerBody, answerImages }) => (
   <div className="qna-answer-container">
     <ul>
       <li>
-        {answerBody}
         <div className="qna-images-container">
           {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`} />)}
         </div>
