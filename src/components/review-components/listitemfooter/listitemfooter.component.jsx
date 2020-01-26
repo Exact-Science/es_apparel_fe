@@ -5,20 +5,24 @@ import './listitemfooter-styles.scss';
 class ListItemFooter extends React.Component {
   constructor(props) {
     super(props);
+    const { helpfulness } = this.props;
     this.state = {
       clicked: false,
+      helpfulness,
     };
   }
 
-  handleClick = ({ id }) => {
+  handleClick = () => {
+    const { id } = this.props;
+    const { clicked, helpfulness } = this.state;
     fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
       method: 'PUT',
-    }).then(() => this.setState({ clicked: !this.state.clicked }));
+    })
+    .then(() => this.setState({ clicked: !clicked, helpfulness }));
   }
 
   render() {
-    const { helpfulness } = this.props;
-    const { clicked } = this.state;
+    const { clicked, helpfulness } = this.state;
     return (
       <div>
         <span> Helpful? </span>
