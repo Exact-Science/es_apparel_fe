@@ -58,6 +58,7 @@ class Gallery extends React.Component {
               <Thumbnail
                 key={img.thumbnail_url}
                 idx={idx}
+                target={img.url === mainImage}
                 startIdx={startIdx}
                 endIdx={endIdx}
                 changeMainImage={changeMainImage}
