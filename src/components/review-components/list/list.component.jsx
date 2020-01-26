@@ -5,25 +5,27 @@ import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
 const ReviewList = ({ reviews, reviewCount, helpfulUtil }) => (
-  <div className="reviewListContainer">
+  <div className="reviewListHeader">
     <header>
       <ReviewListHeader reviewCount={reviewCount} />
     </header>
-    {reviews.map((review) => (
-      <ListItem
-        key={review.review_id}
-        id={review.review_id}
-        rating={review.rating}
-        user={review.reviewer_name}
-        date={review.date}
-        summary={review.summary}
-        body={review.body}
-        recommend={review.recommend}
-        response={review.response}
-        helpfulness={review.helpfulness}
-        photos={review.photos}
-      />
-    ))}
+    <div className="reviewListContainer">
+      {reviews.map((review) => (
+        <ListItem
+          key={review.review_id}
+          id={review.review_id}
+          rating={review.rating}
+          user={review.reviewer_name}
+          date={review.date}
+          summary={review.summary}
+          body={review.body}
+          recommend={review.recommend}
+          response={review.response}
+          helpfulness={review.helpfulness}
+          photos={review.photos}
+        />
+      ))}
+    </div>
   </div>
 );
 
