@@ -18,6 +18,7 @@ const StylesContainer = ({ styles, changeMainImage, currentStyle }) => (
         <StyleItem
           key={`si${style.photos[0].thumbnail_url}`}
           idx={idx}
+          currentStyle={style.name === currentStyle}
           changeMainImage={changeMainImage}
           image={style.photos[0].thumbnail_url}
         />

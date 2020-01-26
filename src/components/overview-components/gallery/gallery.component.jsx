@@ -66,7 +66,7 @@ class Gallery extends React.Component {
             ))
           }
           {
-            endIdx < productStyles.photos.length ? (
+            endIdx < productStyles.photos.length - 1 ? (
               <ThumbnailScroll
                 arrow="down"
                 updateRange={this.updateRange}

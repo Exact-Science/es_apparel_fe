@@ -1,6 +1,6 @@
 .style-item {
   display: flex;
-  padding: 5px;
+  padding: 5px 5px 30px 5px;
   height: 100px;
   width: 100px;
 
@@ -8,6 +8,13 @@
     padding: 0px 10px 0px 10px;
     border-radius: 50%;
   }
+}
+
+#style-target {
+  position: absolute;
+  margin-left: 65px;
+  width: 40px;
+  height: 40px;
 }
 
 .style-item:hover {
