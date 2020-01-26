@@ -2,6 +2,7 @@ import React from 'react';
 import './qna.styles.scss';
 import propTypes from 'prop-types';
 import List from '../list/qna-list.component';
+import Search from '../search/qna-search.component';
 
 
 class QnA extends React.Component {
@@ -24,6 +25,8 @@ class QnA extends React.Component {
     const { list } = this.state;
     return (
       <div className="qna-container">
+        <Search />
+        <br />
         QUESTIONS
         &amp;
         ANSWERS
