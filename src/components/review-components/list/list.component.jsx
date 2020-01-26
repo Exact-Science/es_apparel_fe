@@ -4,7 +4,7 @@ import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews, reviewCount, helpfulUtil }) => (
+const ReviewList = ({ reviews, reviewCount }) => (
   <div className="reviewListHeader">
     <header>
       <ReviewListHeader reviewCount={reviewCount} />
@@ -22,7 +22,7 @@ const ReviewList = ({ reviews, reviewCount, helpfulUtil }) => (
           recommend={review.recommend}
           response={review.response}
           helpfulness={review.helpfulness}
-          photos={review.photos}
+          images={review.photos}
         />
       ))}
     </div>
@@ -30,6 +30,10 @@ const ReviewList = ({ reviews, reviewCount, helpfulUtil }) => (
 );
 
 export default ReviewList;
+
+ListItem.defaultProps = {
+  response: '',
+};
 
 ReviewList.propTypes = {
   reviews: propTypes.arrayOf(propTypes.object).isRequired,
