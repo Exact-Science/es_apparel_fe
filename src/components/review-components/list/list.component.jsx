@@ -12,6 +12,7 @@ const ReviewList = ({ reviews, reviewCount, helpfulUtil }) => (
     {reviews.map((review) => (
       <ListItem
         key={review.review_id}
+        id={review.review_id}
         rating={review.rating}
         user={review.reviewer_name}
         date={review.date}
