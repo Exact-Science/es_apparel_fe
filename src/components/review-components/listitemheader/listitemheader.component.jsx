@@ -1,9 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import moment from 'moment';
 import './listitemheader-styles.scss';
 
 const ListItemHeader = ({ rating, user, date }) => (
-  <header>{`${rating} stars, ${user}, ${date}`}</header>
+  <header>
+    <h4>{`${rating} stars, ${user}, ${moment(date).format('MMMM D, YYYY')}`}</h4>
+  </header>
 );
 
 export default ListItemHeader;
