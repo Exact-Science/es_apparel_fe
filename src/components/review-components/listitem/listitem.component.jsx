@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import ListItemHeader from '../listitemheader/listitemheader.component';
 import ListItemFooter from '../listitemfooter/listitemfooter.component';
 import ListItemBody from '../listitembody/listitembody.component';
+import './listitem-styles.scss';
 
 const ListItem = ({
   rating, user, date, summary, body, helpfulness,
