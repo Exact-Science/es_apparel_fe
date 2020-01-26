@@ -12,13 +12,18 @@ class ListItemFooter extends React.Component {
     };
   }
 
-  handleClick = () => {
+  handleClick = async () => {
     const { id } = this.props;
     const { clicked, helpfulness } = this.state;
-    fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
-      method: 'PUT',
-    })
-    .then(() => this.setState({ clicked: !clicked, helpfulness }));
+    this.setState({ helpfulness: helpfulness + 1 });
+    try {
+      await fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
+        method: 'PUT',
+      });
+      this.setState({ clicked: !clicked });
+    } catch {
+      this.setState({ helpfulness: helpfulness - 1 });
+    }
   }
 
   render() {
