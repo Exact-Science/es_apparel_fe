@@ -1,16 +1,19 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Thumbnail from './thumbnail.component';
+import './thumbnails-styles.scss';
 
-const Thumbnails = ({ images }) => {
-  if (images.length) {
-    images.map((img) => (
-      <div>
-        <img src={img.url} key={img.id} alt="user-provided product review thumbnail" />
-      </div>
-    ));
-  }
-  return null;
-};
+const Thumbnails = ({ images }) => (
+  <div className="thumbnails">
+    {images.map((img) => (
+      <Thumbnail
+        image={img.url}
+        key={img.id}
+        alt="User-provided product review thumbnail"
+      />
+    ))}
+  </div>
+);
 
 export default Thumbnails;
 
