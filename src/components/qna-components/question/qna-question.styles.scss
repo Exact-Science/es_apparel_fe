@@ -1,25 +1,24 @@
+.qna-question {
+  padding-bottom: 30px;
+}
 .question-utility-container {
   display: flex;
   // justify-content: space-between;
 }
 
-.qna-question {
-  // display: inline-block;
-  border: 1px solid black;
-}
-.question-utility {
-  display: flex;
-  justify-content: space-between;
-}
-
 .question-identifier {
-  display: flex;
   font-weight: bold;
-  border: 1px solid black;
   padding-right: 15px;
 }
 
+.question-utility {
+  display: inline-flex;
+  flex: 0 1 100%;
+  justify-content: space-between;
+}
+
 .question-body {
+  display: inline-flex;
   font-weight: bold;
 }
 
@@ -30,6 +29,5 @@
 .answer-identifier {
   display: flex;
   font-weight: bold;
-  border: 1px solid black;
   padding-right: 15px;
 }

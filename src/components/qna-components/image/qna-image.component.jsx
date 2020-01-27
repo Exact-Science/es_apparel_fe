@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 const Image = ({ imageUrl }) => (
   <div className="qna-image">
-    <img src={imageUrl} alt="Suporting img for answer" />
+    <img className="answer-image" src={imageUrl} alt="Suporting img for answer" />
   </div>
 );
 

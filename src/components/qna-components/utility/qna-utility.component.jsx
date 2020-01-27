@@ -45,8 +45,8 @@ class Utility extends React.Component {
     const { openAnswerModal } = this.state;
     const { questionId } = this.props;
     return (
-      <div>
-        <div className="qna-q-utility">
+      <div className="qna-utility-container">
+        <div className="`qna-q-helpfulness`">
           <span>Helpful? </span>
           <button
             className={questionHelpfulClicked ? 'helpfulButtonOff' : 'helpfulButtonOn'}
@@ -62,7 +62,7 @@ class Utility extends React.Component {
           </span>
         </div>
         <div className="qna-utility-divider" />
-        <div className="qna-a-utility">
+        <div className="qna-add-answer-utility">
           <button className="addAnswerButton" type="submit" onClick={(e) => this.showAddAnswerModal(e)}>Add Answer</button>
         </div>
         {openAnswerModal ? <AnswerModal questionId={questionId} showAddAnswerModal={this.showAddAnswerModal} /> : null }

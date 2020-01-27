@@ -10,12 +10,10 @@ const Question = ({ questionId, questionBody, questionHelpfulness, questionAnswe
       <div className="question-identifier">Q</div>
       <div className="question-utility">
         <div className="question-body">{questionBody}</div>
-        <div>
-          <Utility
-            questionId={questionId}
-            questionHelpfulness={questionHelpfulness}
-          />
-        </div>
+        <Utility
+          questionId={questionId}
+          questionHelpfulness={questionHelpfulness}
+        />
       </div>
     </div>
     <div className="qna-answer-container">
