@@ -11,6 +11,10 @@ const Response = ({ response }) => {
 
 export default Response;
 
+Response.defaultProps = {
+  response: '',
+};
+
 Response.propTypes = {
-  response: propTypes.string.isRequired,
+  response: propTypes.string,
 };

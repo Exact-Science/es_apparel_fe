@@ -23,6 +23,10 @@ const ListItem = ({
 
 export default ListItem;
 
+ListItem.defaultProps = {
+  response: '',
+};
+
 ListItem.propTypes = {
   rating: propTypes.number.isRequired,
   user: propTypes.string.isRequired,
@@ -31,6 +35,6 @@ ListItem.propTypes = {
   body: propTypes.string.isRequired,
   helpfulness: propTypes.number.isRequired,
   id: propTypes.number.isRequired,
-  response: propTypes.string.isRequired,
+  response: propTypes.string,
   images: propTypes.arrayOf(propTypes.object).isRequired,
 };
