@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const Thumbnail = ({ image, alt }) => (
-  <img src={image} alt={alt} />
+  <img className="reviewThumbs" src={image} alt={alt} />
 );
 
 export default Thumbnail;
