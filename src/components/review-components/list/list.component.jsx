@@ -4,7 +4,7 @@ import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews, reviewCount }) => (
+const ReviewList = ({ reviews }) => (
   <div className="reviewListHeader">
     <header>
       <ReviewListHeader reviews={reviews} />

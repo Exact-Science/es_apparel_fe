@@ -14,11 +14,15 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props;
+    this.refresh();
+  }
 
-    fetch(`http://3.134.102.30/reviews/${id}/list`)
+  refresh = () => {
+    const { id } = this.props;
+    const { sort } = this.state;
+    fetch(`http://3.134.102.30/reviews/${id}/list?count=20&sort=${sort}`)
       .then((data) => data.json())
-      .then((res) => this.setState({ reviews: res.results, count: res.count }))
+      .then((res) => this.setState({ reviews: res.results }))
       .catch((err) => err);
   }
 
