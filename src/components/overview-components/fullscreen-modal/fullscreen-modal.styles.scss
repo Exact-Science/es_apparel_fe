@@ -5,13 +5,12 @@
   transform: translate(-50%, -50%);
   height: 100%;
   width: 100%;
-  margin: auto;
   background-color: black;
-  opacity: 0.8;
 }
 
 .fullscreen-modal-content {
-  display: flex;
-  width: 90%;
-  height: 90%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
