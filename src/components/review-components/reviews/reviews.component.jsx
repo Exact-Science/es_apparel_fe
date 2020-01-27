@@ -26,13 +26,18 @@ class Reviews extends React.Component {
       .catch((err) => err);
   }
 
+  handleChange = async (e) => {
+    await this.setState({ sort: e.target.value });
+    this.refresh();
+  }
+
   render() {
     const { reviews } = this.state;
     const { id } = this.props;
     return (
       <div className="reviewsContainer">
         <Ratings id={id} />
-        <ReviewList reviews={reviews} />
+        <ReviewList reviews={reviews} handleChange={this.handleChange} />
       </div>
     );
   }

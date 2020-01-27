@@ -4,10 +4,10 @@ import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews }) => (
+const ReviewList = ({ reviews, handleChange }) => (
   <div className="reviewListHeader">
     <header>
-      <ReviewListHeader reviews={reviews} />
+      <ReviewListHeader reviews={reviews} handleChange={handleChange} />
     </header>
     <div className="reviewListContainer">
       {reviews.map((review) => (
