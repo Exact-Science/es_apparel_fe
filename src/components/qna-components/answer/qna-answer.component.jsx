@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Moment from 'moment';
 import Image from '../image/qna-image.component';
-import 
 import './qna-answer.styles.scss';
 
 const Answer = ({ answerId, answerBody, answerDate, answererName, answerHelpfulness, answerImages }) => (
@@ -19,7 +19,7 @@ const Answer = ({ answerId, answerBody, answerDate, answererName, answerHelpfuln
         <span> </span>
         {answererName}
         <span>, </span>
-        {answerDate}
+        {Moment(answerDate).format('MMM Do YYYY')}
         |
       </div>
     </div>
