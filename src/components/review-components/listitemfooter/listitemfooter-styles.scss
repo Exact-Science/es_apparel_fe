@@ -1,5 +1,15 @@
 .reviewFooter {
   font-size: 12px;
+  margin: 1px;
+}
+
+.divider {
+    display: inline-block;
+    border-left: 1px solid black;
+    height: 16px;
+    vertical-align: bottom;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .unclicked {

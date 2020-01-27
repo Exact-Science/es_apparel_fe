@@ -14,13 +14,13 @@ class ListItemFooter extends React.Component {
     };
   }
 
-  handleClick = async () => {
+  handleClick = async (route) => {
     const { id } = this.props;
-    const { clicked, helpfulness } = this.state;
+    const { helpfulness, clicked } = this.state;
     this.setState({ helpfulness: helpfulness + 1 });
 
     try {
-      await fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
+      await fetch(`http://3.134.102.30/reviews/${route}/${id}`, {
         method: 'PUT',
       });
       this.setState({ clicked: !clicked });
@@ -36,6 +36,8 @@ class ListItemFooter extends React.Component {
         <span> Helpful? </span>
         <span className={clicked ? 'clicked' : 'unclicked'} onClick={this.handleClick}> Yes </span>
         <span>{`(${helpfulness})`}</span>
+        <span className="divider" />
+        <span className={clicked ? 'clicked' : 'unclicked'}> Report </span>
       </div>
     );
   }
