@@ -1,6 +1,5 @@
 .styles-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-top: 25px;
 }
