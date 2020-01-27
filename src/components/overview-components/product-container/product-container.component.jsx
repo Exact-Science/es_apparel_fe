@@ -7,6 +7,7 @@ import CheckoutContainer from '../checkout-container/checkout-container.componen
 
 import './product-container.styles.scss';
 import ProductPrice from '../product-price/product-price.component';
+import ReviewsCallback from '../reviews-callback/reviews-callback.component';
 
 class ProductContainer extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class ProductContainer extends React.Component {
 
     return (
       <>
+        <ReviewsCallback />
         <h3 style={{ marginBottom: 0 }}>
           {category}
         </h3>
