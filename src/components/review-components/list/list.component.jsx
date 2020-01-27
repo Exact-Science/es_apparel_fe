@@ -7,7 +7,7 @@ import './list-styles.scss';
 const ReviewList = ({ reviews, reviewCount }) => (
   <div className="reviewListHeader">
     <header>
-      <ReviewListHeader reviewCount={reviewCount} />
+      <ReviewListHeader reviews={reviews} />
     </header>
     <div className="reviewListContainer">
       {reviews.map((review) => (
@@ -41,5 +41,4 @@ ListItem.defaultProps = {
 
 ReviewList.propTypes = {
   reviews: propTypes.arrayOf(propTypes.object).isRequired,
-  reviewCount: propTypes.number.isRequired,
 };

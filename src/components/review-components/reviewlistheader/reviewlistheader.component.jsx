@@ -2,14 +2,14 @@ import React from 'react';
 import propTypes from 'prop-types';
 import './reviewlistheader-styles.scss';
 
-const ReviewListHeader = ({ reviewCount }) => (
+const ReviewListHeader = ({ reviews }) => (
   <h3>
-    {`There are ${reviewCount} reviews, sorted by: 'dropdown box here'`}
+    {`There are ${reviews.length} reviews, sorted by: 'dropdown box here'`}
   </h3>
 );
 
 export default ReviewListHeader;
 
 ReviewListHeader.propTypes = {
-  reviewCount: propTypes.number.isRequired,
+  reviews: propTypes.arrayOf(propTypes.object).isRequired,
 };

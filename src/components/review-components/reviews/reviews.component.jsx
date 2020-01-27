@@ -8,8 +8,8 @@ class Reviews extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
     this.state = {
-      count: 0,
       reviews: [],
+      sort: 'newest',
     };
   }
 
@@ -23,12 +23,12 @@ class Reviews extends React.Component {
   }
 
   render() {
-    const { reviews, count } = this.state;
+    const { reviews } = this.state;
     const { id } = this.props;
     return (
       <div className="reviewsContainer">
         <Ratings id={id} />
-        <ReviewList reviews={reviews} reviewCount={count} />
+        <ReviewList reviews={reviews} />
       </div>
     );
   }
