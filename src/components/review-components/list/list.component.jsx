@@ -26,6 +26,10 @@ const ReviewList = ({ reviews, reviewCount }) => (
         />
       ))}
     </div>
+    <div className="reviewListFooter">
+      <button type="submit"> More Reviews </button>
+      <button type="submit"> Add a review + </button>
+    </div>
   </div>
 );
 

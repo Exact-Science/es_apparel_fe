@@ -5,7 +5,7 @@ const Thumbnails = ({ images }) => {
   if (images.length) {
     images.map((img) => (
       <div>
-        <img className="thumbnail" src={img.url} key={img.id} alt="product thumbnail" />
+        <img src={img.url} key={img.id} alt="user-provided product review thumbnail" />
       </div>
     ));
   }
