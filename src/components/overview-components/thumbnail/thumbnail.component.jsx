@@ -12,7 +12,7 @@ const Thumbnail = ({
   target,
 }) => (
   <div
-    className={`thumbnail ${target ? 'thumbnail-target' : ''}`}
+    className={`overview-thumbnail ${target ? 'overview-thumbnail-target' : ''}`}
     role="presentation"
     onClick={() => changeMainImage(idx, 'thumbnail')}
     style={{ display: (idx <= endIdx && idx >= startIdx) ? '' : 'none' }}
