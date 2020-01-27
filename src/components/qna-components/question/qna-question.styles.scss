@@ -1,4 +1,35 @@
-.qna-Question-container {
-  margin-left: 40px;
+.question-utility-container {
+  display: flex;
+  // justify-content: space-between;
+}
 
+.qna-question {
+  // display: inline-block;
+  border: 1px solid black;
+}
+.question-utility {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-identifier {
+  display: flex;
+  font-weight: bold;
+  border: 1px solid black;
+  padding-right: 15px;
+}
+
+.question-body {
+  font-weight: bold;
+}
+
+.qna-answer-container {
+  display: flex;
+}
+
+.answer-identifier {
+  display: flex;
+  font-weight: bold;
+  border: 1px solid black;
+  padding-right: 15px;
 }

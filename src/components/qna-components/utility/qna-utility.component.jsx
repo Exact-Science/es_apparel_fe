@@ -46,7 +46,6 @@ class Utility extends React.Component {
     const { questionId } = this.props;
     return (
       <div>
-        {questionId}
         <div className="qna-q-utility">
           <span>Helpful? </span>
           <button

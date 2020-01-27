@@ -25,12 +25,8 @@ class QnA extends React.Component {
     const { list } = this.state;
     return (
       <div className="qna-container">
+        <p className="qna-title">QUESTIONS &amp; ANSWERS</p>
         <Search />
-        <br />
-        QUESTIONS
-        &amp;
-        ANSWERS
-
         {list.map((q) => <List questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
       </div>
     );
