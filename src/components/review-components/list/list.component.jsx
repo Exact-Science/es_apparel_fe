@@ -4,10 +4,10 @@ import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews, reviewCount }) => (
+const ReviewList = ({ reviews, handleChange }) => (
   <div className="reviewListHeader">
     <header>
-      <ReviewListHeader reviewCount={reviewCount} />
+      <ReviewListHeader reviews={reviews} handleChange={handleChange} />
     </header>
     <div className="reviewListContainer">
       {reviews.map((review) => (
@@ -41,5 +41,4 @@ ListItem.defaultProps = {
 
 ReviewList.propTypes = {
   reviews: propTypes.arrayOf(propTypes.object).isRequired,
-  reviewCount: propTypes.number.isRequired,
 };

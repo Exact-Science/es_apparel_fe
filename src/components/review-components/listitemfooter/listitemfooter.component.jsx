@@ -32,7 +32,7 @@ class ListItemFooter extends React.Component {
   render() {
     const { clicked, helpfulness } = this.state;
     return (
-      <div>
+      <div className="reviewFooter">
         <span> Helpful? </span>
         <span className={clicked ? 'clicked' : 'unclicked'} onClick={this.handleClick}> Yes </span>
         <span>{`(${helpfulness})`}</span>

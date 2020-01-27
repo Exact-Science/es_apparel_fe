@@ -4,9 +4,10 @@ import moment from 'moment';
 import './listitemheader-styles.scss';
 
 const ListItemHeader = ({ rating, user, date }) => (
-  <header>
-    <h5>{`${rating} stars, ${user}, ${moment(date).format('MMMM D, YYYY')}`}</h5>
-  </header>
+  <h5 className="listItemHeader">
+    <span className="headingStars">{`${rating} stars`}</span>
+    <span className="userDate">{`${user}, ${moment(date).format('MMMM D, YYYY')}`}</span>
+  </h5>
 );
 
 export default ListItemHeader;

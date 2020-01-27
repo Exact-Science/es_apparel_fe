@@ -8,27 +8,36 @@ class Reviews extends React.Component {
   constructor(props, { id }) {
     super(props, { id });
     this.state = {
-      count: 0,
       reviews: [],
+      sort: 'newest',
     };
   }
 
   componentDidMount() {
-    const { id } = this.props;
+    this.refresh();
+  }
 
-    fetch(`http://3.134.102.30/reviews/${id}/list`)
+  refresh = () => {
+    const { id } = this.props;
+    const { sort } = this.state;
+    fetch(`http://3.134.102.30/reviews/${id}/list?count=20&sort=${sort}`)
       .then((data) => data.json())
-      .then((res) => this.setState({ reviews: res.results, count: res.count }))
+      .then((res) => this.setState({ reviews: res.results }))
       .catch((err) => err);
   }
 
+  handleChange = async (e) => {
+    await this.setState({ sort: e.target.value });
+    this.refresh();
+  }
+
   render() {
-    const { reviews, count } = this.state;
+    const { reviews } = this.state;
     const { id } = this.props;
     return (
       <div className="reviewsContainer">
         <Ratings id={id} />
-        <ReviewList reviews={reviews} reviewCount={count} />
+        <ReviewList reviews={reviews} handleChange={this.handleChange} />
       </div>
     );
   }
