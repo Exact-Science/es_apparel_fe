@@ -2,7 +2,6 @@ import React from 'react';
 import './qna-list.styles.scss';
 import propTypes from 'prop-types';
 import Question from '../question/qna-question.component';
-import Utility from '../utility/qna-utility.component';
 
 const List = ({
   questionBody,
@@ -10,21 +9,13 @@ const List = ({
   questionId,
   questionHelpfulness,
 }) => (
-  <div className="qna-List-container">
-    <div>
-      <Question
-        questionId={questionId}
-        questionBody={questionBody}
-        questionHelpfulness={questionHelpfulness}
-        questionAnswers={questionAnswers}
-      />
-    </div>
-    <div>
-      <Utility
-        questionId={questionId}
-        questionHelpfulness={questionHelpfulness}
-      />
-    </div>
+  <div className="qna-list-container">
+    <Question
+      questionId={questionId}
+      questionBody={questionBody}
+      questionHelpfulness={questionHelpfulness}
+      questionAnswers={questionAnswers}
+    />
   </div>
 );
 

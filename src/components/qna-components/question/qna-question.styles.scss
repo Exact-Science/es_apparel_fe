@@ -1,4 +1,33 @@
-.qna-Question-container {
-  margin-left: 40px;
+.qna-question {
+  padding-bottom: 30px;
+}
+.question-utility-container {
+  display: flex;
+  // justify-content: space-between;
+}
 
+.question-identifier {
+  font-weight: bold;
+  padding-right: 15px;
+}
+
+.question-utility {
+  display: inline-flex;
+  flex: 0 1 100%;
+  justify-content: space-between;
+}
+
+.question-body {
+  display: inline-flex;
+  font-weight: bold;
+}
+
+.qna-answer-container {
+  display: flex;
+}
+
+.answer-identifier {
+  display: flex;
+  font-weight: bold;
+  padding-right: 15px;
 }

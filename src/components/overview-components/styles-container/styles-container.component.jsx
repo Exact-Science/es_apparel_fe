@@ -11,6 +11,7 @@ const StylesContainer = ({ styles, changeMainImage, currentStyle }) => (
     <div className="style-utils">
       <StyleInfo
         currentStyle={currentStyle}
+        style={{ marginBottom: 0 }}
       />
     </div>
     <div className="styles-container">

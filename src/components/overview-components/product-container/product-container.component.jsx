@@ -6,6 +6,8 @@ import StylesContainer from '../styles-container/styles-container.component';
 import CheckoutContainer from '../checkout-container/checkout-container.component';
 
 import './product-container.styles.scss';
+import ProductPrice from '../product-price/product-price.component';
+import ReviewsCallback from '../reviews-callback/reviews-callback.component';
 
 class ProductContainer extends React.Component {
   constructor(props) {
@@ -23,18 +25,25 @@ class ProductContainer extends React.Component {
       changeMainImage,
       currentStyle,
       currentStyleIdx,
+      category,
     } = this.props;
 
     return (
       <>
+        <ReviewsCallback />
+        <h3 style={{ marginBottom: 0 }}>
+          {category}
+        </h3>
         <div className="title-container">
           <CustomTitle
             title={title}
+            style={{ marginTop: '10px' }}
           />
         </div>
-        <h3>
-          {`$${styles[0].original_price}`}
-        </h3>
+        <ProductPrice
+          originalPrice={styles[currentStyleIdx].original_price}
+          salesPrice={styles[currentStyleIdx].sale_price}
+        />
         <StylesContainer
           currentStyle={currentStyle}
           changeMainImage={changeMainImage}
@@ -57,4 +66,5 @@ ProductContainer.propTypes = {
   changeMainImage: propTypes.func.isRequired,
   currentStyle: propTypes.string.isRequired,
   currentStyleIdx: propTypes.number.isRequired,
+  category: propTypes.string.isRequired,
 };

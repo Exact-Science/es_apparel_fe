@@ -1,8 +1,13 @@
-.qna-q-utility{
-  display: inline-block;
+.qna-utility-container {
+  display: inline-flex;
 }
 
-.qna-a-utility{
+.qna-q-helpfulness{
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.qna-add-answer-utility{
   display: inline-block;
 }
 
