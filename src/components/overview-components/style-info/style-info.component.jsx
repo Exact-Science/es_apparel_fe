@@ -7,6 +7,8 @@ const StyleInfo = ({ currentStyle, style }) => (
   <div className="style-info">
     <p style={style}>
       STYLE &gt; &nbsp;
+    </p>
+    <p>
       {currentStyle}
     </p>
   </div>

@@ -1,7 +1,7 @@
 .size-quantity-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding-top: 30px;
+  padding-top: 15px;
 
   div {
     padding-left: 0px;
@@ -9,14 +9,14 @@
 }
 
 .selector {
-  div::after{
+  div::after {
     color: black;
   }
 
   select {
     font-size: 16px;
     font-weight: bold;
-    border-radius: 0px!important;
+    border-radius: 0px;
     height: 60px;
     border: 1px solid;
   }

@@ -1,3 +1,6 @@
 .style-info {
-  font-weight: bold;
+  display: flex;
+  :first-child {
+    font-weight: bold;
+  }
 }
