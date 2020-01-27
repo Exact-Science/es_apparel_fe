@@ -4,14 +4,11 @@ import Image from '../image/qna-image.component';
 import './qna-answer.styles.scss';
 
 const Answer = ({ answerBody, answerImages }) => (
-  <div className="qna-answer-container">
-    <ul>
-      <li>
-        <div className="qna-images-container">
-          {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`} />)}
-        </div>
-      </li>
-    </ul>
+  <div className="qna-answers-list">
+    {answerBody}
+    <div className="qna-images-container">
+      {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`} />)}
+    </div>
   </div>
 );
 
