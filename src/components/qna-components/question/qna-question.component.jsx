@@ -20,7 +20,17 @@ const Question = ({ questionId, questionBody, questionHelpfulness, questionAnswe
       <div className="answer-identifier">A: </div>
       <div>
         {Object.keys(questionAnswers).map(
-          (answer) => <Answer answerBody={questionAnswers[answer].body} answerImages={questionAnswers[answer].photos} key={`a${questionAnswers[answer].id}`} />,
+          (answer) => (
+            <Answer
+              answerId={questionAnswers[answer].id}
+              answerBody={questionAnswers[answer].body}
+              answerDate={questionAnswers[answer].date}
+              answerHelpfulness={questionAnswers[answer].helpfulness}
+              answererName={questionAnswers[answer].answerer_name}
+              answerImages={questionAnswers[answer].photos}
+              key={`a${questionAnswers[answer].id}`}
+            />
+          ),
         )}
       </div>
     </div>
