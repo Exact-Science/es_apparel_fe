@@ -36,7 +36,6 @@ class Reviews extends React.Component {
     const { count } = this.state;
     await this.setState({ count: count + 2 });
     this.refresh();
-    console.log(count)
   }
 
   render() {
