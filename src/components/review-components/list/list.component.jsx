@@ -4,7 +4,7 @@ import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews, handleChange }) => (
+const ReviewList = ({ reviews, handleChange, loadMoreReviews }) => (
   <div className="reviewListHeader">
     <header>
       <ReviewListHeader reviews={reviews} handleChange={handleChange} />
@@ -27,7 +27,7 @@ const ReviewList = ({ reviews, handleChange }) => (
       ))}
     </div>
     <div className="reviewListFooter">
-      <button type="submit"> More Reviews </button>
+      <button type="submit" onClick={loadMoreReviews}> More Reviews </button>
       <button type="submit"> Add a review + </button>
     </div>
   </div>
@@ -41,4 +41,6 @@ ListItem.defaultProps = {
 
 ReviewList.propTypes = {
   reviews: propTypes.arrayOf(propTypes.object).isRequired,
+  handleChange: propTypes.func.isRequired,
+  loadMoreReviews: propTypes.func.isRequired,
 };
