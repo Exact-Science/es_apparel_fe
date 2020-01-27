@@ -19,7 +19,7 @@ class Overview extends React.Component {
       currentStyle: 'None',
       currentStyleIdx: 0,
       mainImage: 'https://images.unsplash.com/photo-1519862170344-6cd5e49cb996?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
-      fullscreen: true,
+      fullscreen: false,
     };
   }
 
@@ -55,6 +55,12 @@ class Overview extends React.Component {
     }
   }
 
+  handleFullscreen = () => {
+    this.setState((prevState) => ({
+      fullscreen: !prevState.fullscreen,
+    }));
+  }
+
   render() {
     const {
       productInfo,
@@ -72,6 +78,7 @@ class Overview extends React.Component {
             <Gallery
               productStyles={productStyles[currentStyleIdx]}
               changeMainImage={this.changeMainImage}
+              handleFullscreen={this.handleFullscreen}
               mainImage={mainImage}
             />
           </div>
@@ -86,7 +93,13 @@ class Overview extends React.Component {
             />
           </div>
         </div>
-        {fullscreen ? <FullscreenModal>testest</FullscreenModal> : null}
+        {fullscreen ? (
+          <FullscreenModal
+            mainImage={mainImage}
+            changeMainImage={this.changeMainImage}
+            handleFullscreen={this.handleFullscreen}
+          />
+        ) : null}
       </>
     );
   }
