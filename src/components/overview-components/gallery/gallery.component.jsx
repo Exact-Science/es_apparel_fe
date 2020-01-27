@@ -32,12 +32,18 @@ class Gallery extends React.Component {
   }
 
   render() {
-    const { mainImage, productStyles, changeMainImage } = this.props;
+    const {
+      mainImage,
+      productStyles,
+      changeMainImage,
+      handleFullscreen,
+    } = this.props;
+
     const { startIdx, endIdx } = this.state;
 
     return (
       <>
-        <div className="main-image">
+        <div className="main-image" onClick={handleFullscreen} role="presentation">
           <MainImage
             image={mainImage}
           />
@@ -90,4 +96,5 @@ Gallery.propTypes = {
     photos: propTypes.array,
   }).isRequired,
   changeMainImage: propTypes.func.isRequired,
+  handleFullscreen: propTypes.func.isRequired,
 };
