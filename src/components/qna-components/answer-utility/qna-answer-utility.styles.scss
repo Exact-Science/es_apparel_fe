@@ -1,0 +1,58 @@
+.qna-answer-utility-container {
+  padding: 0px 0px 20px;
+}
+
+.qna-answer-userName {
+  opacity: 60%;
+}
+
+.qna-answer-utility-container {
+  display: inline-flex;
+}
+
+// .qna-answer-helpfulness{
+//   display: inline-block;
+//   border: 1px solid black;
+// }
+
+.qna-answer-utility-divider {
+  display: inline-block;
+  border-left: 1px solid black;
+  height: 21px;
+  vertical-align: bottom;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+// .helpfulButtonOn {
+//   border: none;
+//   font-size: 16px;
+//   text-decoration: underline;
+//   outline: none;
+// }
+
+// .helpfulButtonOff {
+//   border: none;
+//   font-size: 16px;
+//   pointer-events: none;
+//   opacity: 50%;
+//   outline: none;
+// }
+
+// .helpfulButtonOn:hover {
+//   cursor: pointer;
+//   opacity: 0.7;
+// }
+
+// .addAnswerButton {
+//   border: none;
+//   font-size: 16px;
+//   text-decoration: underline;
+//   box-sizing: border-box;
+//   padding: 0px;
+// }
+
+// .addAnswerButton:hover {
+//   cursor: pointer;
+//   opacity: 0.7;
+// }
