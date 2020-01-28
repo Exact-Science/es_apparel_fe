@@ -6,3 +6,17 @@
 .qna-title {
   padding-bottom: 10px;
 }
+
+.qna-add-question-button {
+  background: none;
+  border: 1px solid black;
+  color:black;
+  height: 50px;
+  width: 150px;
+}
+
+.qna-add-question-button:hover {
+  background: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
