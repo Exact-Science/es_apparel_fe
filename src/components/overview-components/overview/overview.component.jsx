@@ -16,6 +16,7 @@ class Overview extends React.Component {
     this.state = {
       productInfo: productData,
       productStyles: styleData.results,
+      photosLength: styleData.results[0].photos.length,
       currentStyle: 'None',
       currentStyleIdx: 0,
       mainImage: 'https://images.unsplash.com/photo-1519862170344-6cd5e49cb996?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
@@ -34,8 +35,9 @@ class Overview extends React.Component {
       .then((res) => res.json())
       .then((data) => this.setState({
         productStyles: data.results,
-        mainImage: data.results[0].photos[0].url,
+        photosLength: styleData.results[0].photos.length,
         currentStyle: data.results[0].name,
+        mainImage: data.results[0].photos[0].url,
       }));
   }
 
@@ -49,21 +51,32 @@ class Overview extends React.Component {
       });
     } else if (component === 'modal') {
       if (arrow === 'right') {
-        this.setState((prevState) => ({
-          mainImageIdx: prevState.mainImageIdx + 1,
-          mainImage: prevState.productStyles[prevState.currentStyleIdx]
-            .photos[prevState.mainImageIdx + 1].url,
-        }));
+        this.setState((prevState) => {
+          const indexCheck = prevState.mainImageIdx + 1 > prevState.photosLength - 1
+            ? 0 : prevState.mainImageIdx + 1;
+
+          return {
+            mainImageIdx: indexCheck,
+            mainImage: prevState.productStyles[prevState.currentStyleIdx]
+              .photos[indexCheck].url,
+          };
+        });
       } else {
-        this.setState((prevState) => ({
-          mainImageIdx: prevState.mainImageIdx - 1,
-          mainImage: prevState.productStyles[prevState.currentStyleIdx]
-            .photos[prevState.mainImageIdx - 1].url,
-        }));
+        this.setState((prevState) => {
+          const indexCheck = prevState.mainImageIdx - 1 < 0
+            ? prevState.photosLength - 1 : prevState.mainImageIdx - 1;
+
+          return {
+            mainImageIdx: indexCheck,
+            mainImage: prevState.productStyles[prevState.currentStyleIdx]
+              .photos[indexCheck].url,
+          };
+        });
       }
     } else {
       this.setState({
         mainImage: productStyles[idx].photos[0].url,
+        photosLength: productStyles[idx].photos.length,
         currentStyleIdx: idx,
         currentStyle: productStyles[idx].name,
       });
@@ -86,6 +99,7 @@ class Overview extends React.Component {
       currentStyle,
       currentStyleIdx,
       fullscreen,
+      photosLength,
     } = this.state;
 
     return (
@@ -97,6 +111,7 @@ class Overview extends React.Component {
               changeMainImage={this.changeMainImage}
               handleFullscreen={this.handleFullscreen}
               mainImage={mainImage}
+              photosLength={photosLength}
             />
           </div>
           <div className="product-container">
