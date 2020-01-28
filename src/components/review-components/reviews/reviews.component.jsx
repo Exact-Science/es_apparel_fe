@@ -60,7 +60,11 @@ class Reviews extends React.Component {
           />
         </div>
         <div>
-          <ReviewModal id={id} show={show} toggleModal={this.toggleModal} />
+          <ReviewModal
+            id={id}
+            show={show}
+            toggleModal={this.toggleModal}
+          />
         </div>
       </div>
     );

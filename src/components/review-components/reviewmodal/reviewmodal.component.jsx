@@ -1,5 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import ReviewForm from './reviewform/reviewform.component';
+import './reviewmodal-styles.scss';
 
 class ReviewModal extends React.Component {
   constructor(props, { id }) {
@@ -26,10 +28,13 @@ class ReviewModal extends React.Component {
     const { show, toggleModal } = this.props;
     if (show) {
       return (
-        <div className="reviewModal">
-          <h1>Write your review here</h1>
-          <h3>{`About the ${productName}`}</h3>
-          <button type="submit" onClick={toggleModal}>Cancel</button>
+        <div className="reviewmodal">
+          <div className="reviewmodal-main">
+            <h3>Write your review here</h3>
+            <h4>{`About the ${productName}`}</h4>
+            <ReviewForm />
+            <button type="submit" onClick={toggleModal}>Close</button>
+          </div>
         </div>
       );
     }
@@ -41,4 +46,6 @@ export default ReviewModal;
 
 ReviewModal.propTypes = {
   id: propTypes.string.isRequired,
+  toggleModal: propTypes.func.isRequired,
+  show: propTypes.bool.isRequired,
 };
