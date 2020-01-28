@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-update-set-state */
 import React from 'react';
 import propTypes from 'prop-types';
 
@@ -17,6 +18,14 @@ class Gallery extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { productStyles } = this.props;
+
+    if (prevProps.productStyles !== productStyles) {
+      this.setState({ startIdx: 0, endIdx: 3 });
+    }
+  }
+
   updateRange = (arrow) => {
     if (arrow === 'up') {
       this.setState((prevState) => ({
@@ -30,6 +39,7 @@ class Gallery extends React.Component {
       }));
     }
   }
+
 
   render() {
     const {

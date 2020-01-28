@@ -99,7 +99,6 @@ class Overview extends React.Component {
       currentStyle,
       currentStyleIdx,
       fullscreen,
-      photosLength,
     } = this.state;
 
     return (
@@ -111,7 +110,6 @@ class Overview extends React.Component {
               changeMainImage={this.changeMainImage}
               handleFullscreen={this.handleFullscreen}
               mainImage={mainImage}
-              photosLength={photosLength}
             />
           </div>
           <div className="product-container">
