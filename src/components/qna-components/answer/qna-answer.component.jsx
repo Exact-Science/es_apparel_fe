@@ -1,28 +1,31 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Moment from 'moment';
 import Image from '../image/qna-image.component';
+import AnswerUtility from '../answer-utility/qna-answer-utility.component';
 import './qna-answer.styles.scss';
 
-const Answer = ({ answerId, answerBody, answerDate, answererName, answerHelpfulness, answerImages }) => (
+const Answer = ({
+  answerId,
+  answerBody,
+  answerDate,
+  answererName,
+  answerHelpfulness,
+  answerImages,
+}) => (
   <div className="qna-answers-list">
-    {answerBody}
-    {answerImages.length > 0 ? (
+    <div className="qna-answer-bodyDescription">{answerBody}</div>
+    {answerImages.length ? (
       <div className="qna-images-container">
         {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`} />)}
       </div>
     )
       : null }
-    <div className="qna-answer-footerContainer">
-      <div className="qna-answer-userName">
-        by
-        <span> </span>
-        {answererName}
-        <span>, </span>
-        {Moment(answerDate).format('MMM Do YYYY')}
-        |
-      </div>
-    </div>
+    <AnswerUtility
+      answerId={answerId}
+      answerDate={answerDate}
+      answererName={answererName}
+      answerHelpfulness={answerHelpfulness}
+    />
   </div>
 );
 
