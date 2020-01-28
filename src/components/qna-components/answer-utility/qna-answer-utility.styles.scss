@@ -39,11 +39,13 @@
 }
 
 .helpfulButtonOn:hover {
+  background: none;
   cursor: pointer;
   opacity: 0.7;
 }
 
 .addAnswerButton {
+  background: none;
   border: none;
   font-size: 16px;
   text-decoration: underline;

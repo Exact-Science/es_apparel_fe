@@ -28,6 +28,7 @@
 }
 
 .helpfulButtonOff {
+  background: none;
   border: none;
   font-size: 16px;
   pointer-events: none;
@@ -36,6 +37,7 @@
 }
 
 .helpfulButtonOn:hover {
+  background: none;
   cursor: pointer;
   opacity: 0.7;
 }
