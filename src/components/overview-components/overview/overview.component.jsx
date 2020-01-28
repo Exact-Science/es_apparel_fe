@@ -55,10 +55,12 @@ class Overview extends React.Component {
     }
   }
 
-  handleFullscreen = () => {
-    this.setState((prevState) => ({
-      fullscreen: !prevState.fullscreen,
-    }));
+  handleFullscreen = (e, escape) => {
+    if (e.target.className === 'fullscreen-modal' || e.target.className === 'main-image' || escape) {
+      this.setState((prevState) => ({
+        fullscreen: !prevState.fullscreen,
+      }));
+    }
   }
 
   render() {
