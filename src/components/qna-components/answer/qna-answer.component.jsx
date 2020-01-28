@@ -13,7 +13,7 @@ const Answer = ({
   answerImages,
 }) => (
   <div className="qna-answers-list">
-    {answerBody}
+    <div className="qna-answer-bodyDescription">{answerBody}</div>
     {answerImages.length ? (
       <div className="qna-images-container">
         {answerImages.map((imageUrl) => <Image imageUrl={imageUrl} key={`i${imageUrl}`} />)}

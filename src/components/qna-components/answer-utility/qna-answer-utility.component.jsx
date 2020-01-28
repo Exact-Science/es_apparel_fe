@@ -21,7 +21,7 @@ class AnswerUtility extends React.Component {
     const { answerId } = this.props;
     e.preventDefault();
     this.setState((previousState) => ({
-      questionHelpfulness: previousState.questionHelpfulness + 1,
+      answerHelpfulness: previousState.answerHelpfulness + 1,
     }),
     () => {
       const { answerHelpfulClicked } = this.state;

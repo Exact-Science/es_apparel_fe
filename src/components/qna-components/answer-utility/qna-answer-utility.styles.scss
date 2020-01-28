@@ -10,10 +10,9 @@
   display: inline-flex;
 }
 
-// .qna-answer-helpfulness{
-//   display: inline-block;
-//   border: 1px solid black;
-// }
+.qna-answer-helpfulness{
+  display: inline-block;
+}
 
 .qna-answer-utility-divider {
   display: inline-block;
@@ -24,35 +23,30 @@
   margin-right: 20px;
 }
 
-// .helpfulButtonOn {
-//   border: none;
-//   font-size: 16px;
-//   text-decoration: underline;
-//   outline: none;
-// }
+.helpfulButtonOn {
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+  outline: none;
+}
 
-// .helpfulButtonOff {
-//   border: none;
-//   font-size: 16px;
-//   pointer-events: none;
-//   opacity: 50%;
-//   outline: none;
-// }
+.helpfulButtonOff {
+  border: none;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 50%;
+  outline: none;
+}
 
-// .helpfulButtonOn:hover {
-//   cursor: pointer;
-//   opacity: 0.7;
-// }
+.helpfulButtonOn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 
-// .addAnswerButton {
-//   border: none;
-//   font-size: 16px;
-//   text-decoration: underline;
-//   box-sizing: border-box;
-//   padding: 0px;
-// }
-
-// .addAnswerButton:hover {
-//   cursor: pointer;
-//   opacity: 0.7;
-// }
+.addAnswerButton {
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+  box-sizing: border-box;
+  padding: 0px;
+}
