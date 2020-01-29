@@ -12,7 +12,7 @@ class Reviews extends React.Component {
       reviews: [],
       sort: 'newest',
       count: 2,
-      show: false,
+      show: true,
     };
   }
 
