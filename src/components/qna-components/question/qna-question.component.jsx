@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import Answer from '../answer/qna-answer.component';
 import Utility from '../utility/qna-utility.component';
 import './qna-question.styles.scss';
 
@@ -18,9 +17,7 @@ class Question extends React.Component {
       questionId,
       questionBody,
       questionHelpfulness,
-      questionAnswers,
     } = this.props;
-    const { filteredList } = this.state;
     return (
       <div className="qna-question">
         <div className="question-utility-container">

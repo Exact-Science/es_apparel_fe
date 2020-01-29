@@ -16,7 +16,7 @@ class List extends React.Component {
 
   componentDidMount() {
     const { questionAnswers } = this.props;
-    const { count, filteredList } = this.state;
+    const { count } = this.state;
     const list = Object.entries(questionAnswers).map((answer) => answer[1]);
     this.setState({ list, filteredList: list.slice(0, count) });
   }
