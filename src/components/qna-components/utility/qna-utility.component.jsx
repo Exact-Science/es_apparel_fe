@@ -40,10 +40,8 @@ class Utility extends React.Component {
   }
 
   render() {
-    const { questionHelpfulness } = this.state;
-    const { questionHelpfulClicked } = this.state;
-    const { openAnswerModal } = this.state;
-    const { questionId } = this.props;
+    const { questionHelpfulness, questionHelpfulClicked, openAnswerModal} = this.state;
+    const { id, questionId, questionBody } = this.props;
     return (
       <div className="qna-utility-container">
         <div className="`qna-q-helpfulness`">
@@ -65,7 +63,15 @@ class Utility extends React.Component {
         <div className="qna-add-answer-utility">
           <button className="addAnswerButton" type="submit" onClick={(e) => this.showAddAnswerModal(e)}>Add Answer</button>
         </div>
-        {openAnswerModal ? <AnswerModal questionId={questionId} showAddAnswerModal={this.showAddAnswerModal} /> : null }
+        {openAnswerModal
+          ? (
+            <AnswerModal
+              id={id}
+              questionId={questionId}
+              questionBody={questionBody}
+              showAddAnswerModal={this.showAddAnswerModal}
+            />
+          ) : null }
       </div>
     );
   }
@@ -73,7 +79,9 @@ class Utility extends React.Component {
 
 
 Utility.propTypes = {
+  id: propTypes.string.isRequired,
   questionId: propTypes.number.isRequired,
+  questionBody: propTypes.string.isRequired,
   questionHelpfulness: propTypes.number.isRequired,
 };
 

@@ -36,7 +36,7 @@ class QnA extends React.Component {
       <div className="qna-container">
         <p className="qna-title">QUESTIONS &amp; ANSWERS</p>
         <Search />
-        {list.map((q) => <List questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
+        {list.map((q) => <List id={id} questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
         <button className="qna-add-question-button" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
         { openQuestionModal ? (
           <QuestionModal

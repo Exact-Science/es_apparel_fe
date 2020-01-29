@@ -6,8 +6,13 @@ class QuestionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      productName: '',
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(`http://3.134.102.30/products/${id}`)
   }
 
   addQuestion = (e) => {
@@ -35,7 +40,6 @@ class QuestionModal extends React.Component {
 
   render() {
     const { showAddQuestionModal } = this.props;
-    const { id } = this.props;
     return (
       <div className="qna-question-modal">
         <div className="qna-question-modal-content">

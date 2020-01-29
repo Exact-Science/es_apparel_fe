@@ -6,19 +6,26 @@ class AnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      name: '',
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    const { name } = this.state;
+    fetch(`http://3.134.102.30/products/${id}`)
+      .then((results) => results.json())
+      .then((data) => this.setState({ name: data.name }));
   }
 
   addAnswer = (e) => {
     e.persist();
     e.preventDefault();
-    const { showAddAnswerModal } = this.props;
-    const { questionId } = this.props;
+    const { questionId, showAddAnswerModal } = this.props;
     const form = document.querySelector('.qna-new-answer-form');
     const formData = new FormData(form);
     const data = {};
-    let imageUrls = [];
+    const imageUrls = [];
 
     for (var pair of formData.entries()) {
       if (pair[0].substr(0, 3) === 'url' && pair[1]) {
@@ -29,21 +36,20 @@ class AnswerModal extends React.Component {
     };
 
     data.photos = imageUrls;
-    console.log(data);
 
-    // fetch(`http://3.134.102.30/qa/${questionId}/answers`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then(() => showAddAnswerModal(e));
+    fetch(`http://3.134.102.30/qa/${questionId}/answers`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(() => showAddAnswerModal(e));
   }
 
   render() {
-    const { questionId, showAddAnswerModal } = this.props;
-    const { showImage } = this.state;
+    const { questionId, questionBody, showAddAnswerModal } = this.props;
+    const { name } = this.state;
     const { addAnswer } = this.addAnswer;
     return (
       <div className="qna-answer-modal">
@@ -53,7 +59,11 @@ class AnswerModal extends React.Component {
               Submit your Answer
             </div>
             <div>
-              Product Name: Question Body
+              <div className="answerTitle">
+                {name}
+                <span> : </span>
+                {questionBody}
+              </div>
               <div>
                 <p>Your Answer*</p>
                 <textarea className="qna-answer-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
@@ -91,7 +101,9 @@ class AnswerModal extends React.Component {
   }
 }
 AnswerModal.propTypes = {
+  id: propTypes.string.isRequired,
   questionId: propTypes.number.isRequired,
+  questionBody: propTypes.string.isRequired,
   showAddAnswerModal: propTypes.func.isRequired,
 };
 
