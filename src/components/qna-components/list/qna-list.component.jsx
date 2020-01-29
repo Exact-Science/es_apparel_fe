@@ -18,6 +18,9 @@ const List = ({
       questionHelpfulness={questionHelpfulness}
       questionAnswers={questionAnswers}
     />
+    <div className="qna-add-more-answers">
+      <button className="textButton" type="submit">Load More Answers</button>
+    </div>
   </div>
 );
 
