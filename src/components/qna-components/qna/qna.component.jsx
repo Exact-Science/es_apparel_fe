@@ -10,14 +10,17 @@ class QnA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      count: 4,
       list: [],
+      filteredList: [],
       openQuestionModal: false,
     };
   }
 
   componentDidMount() {
     const { id } = this.props;
-    fetch(`http://3.134.102.30/qa/${id}?count=2`)
+    const { count } = this.state;
+    fetch(`http://3.134.102.30/qa/${id}?count=${count}`)
       .then((results) => results.json())
       .then((list) => { this.setState({ list: list.results }); });
   }
@@ -28,6 +31,13 @@ class QnA extends React.Component {
     this.setState({ openQuestionModal: !openQuestionModal });
   }
 
+  // addMoreQuestions = (e) => {
+  //   e.preventDefault();
+  //   let { count, filteredList } = this.state;
+  //   this.setState((previousState) = {previousState.count})
+  //   this.setState({  })
+  // }
+
   render() {
     const { id } = this.props;
     const { list } = this.state;
@@ -37,7 +47,8 @@ class QnA extends React.Component {
         <p className="qna-title">QUESTIONS &amp; ANSWERS</p>
         <Search />
         {list.map((q) => <List id={id} questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
-        <button className="qna-add-question-button" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
+        <button className="questions" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button>
+        <button className="questions" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
         { openQuestionModal ? (
           <QuestionModal
             showAddQuestionModal={this.showAddQuestionModal}
