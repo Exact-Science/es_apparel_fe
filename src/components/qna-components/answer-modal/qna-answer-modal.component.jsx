@@ -6,77 +6,93 @@ class AnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answerBody: '',
-      nickName: '',
-      email: '',
-      showImage: false,
+      name: '',
     };
   }
 
-  handleFormChanges = (e) => {
-    this.setState({ [e.target.name]: e.target.value }, this.showImageOption());
+  componentDidMount() {
+    const { id } = this.props;
+    const { name } = this.state;
+    fetch(`http://3.134.102.30/products/${id}`)
+      .then((results) => results.json())
+      .then((data) => this.setState({ name: data.name }));
   }
 
-  showImageOption = () => {
-    const {
-      answerBody,
-      nickName,
-      email,
-      showImage,
-    } = this.state;
+  addAnswer = (e) => {
+    e.persist();
+    e.preventDefault();
+    const { questionId, showAddAnswerModal } = this.props;
+    const form = document.querySelector('.qna-new-answer-form');
+    const formData = new FormData(form);
+    const data = {};
+    const imageUrls = [];
 
-    if (answerBody && nickName && email) {
-      this.setState({ showImage: true });
-    } else if (!answerBody || !nickName || !email) {
-      this.setState({ showImage: false });
-    }
+    for (var pair of formData.entries()) {
+      if (pair[0].substr(0, 3) === 'url' && pair[1]) {
+        imageUrls.push(pair[1])
+      } else if (pair[0].substr(0, 3) !== 'url') {
+        data[pair[0]] = pair[1];
+      }
+    };
+
+    data.photos = imageUrls;
+
+    fetch(`http://3.134.102.30/qa/${questionId}/answers`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(() => showAddAnswerModal(e));
   }
 
   render() {
-    const { questionId, showAddAnswerModal } = this.props;
-    const { showImage } = this.state;
+    const { questionId, questionBody, showAddAnswerModal } = this.props;
+    const { name } = this.state;
+    const { addAnswer } = this.addAnswer;
     return (
       <div className="qna-answer-modal">
         <div className="qna-answer-modal-content">
-          <form>
+          <form className="qna-new-answer-form" name="answerForm">
             <div className="qna-answer-title">
               Submit your Answer
             </div>
             <div>
-              Product Name: Question Body
+              <div className="answerTitle">
+                {name}
+                <span> : </span>
+                {questionBody}
+              </div>
               <div>
                 <p>Your Answer*</p>
-                <textarea className="qna-answer-body" name="answerBody" maxLength="1000" onChange={this.handleFormChanges} />
+                <textarea className="qna-answer-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
                 <p>Nickname*</p>
-                <input type="text" className="qna-answer-email" name="nickName" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
+                <input type="text" className="qna-answer-email" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
                 <br />
                 For privacy reasons, do not use your full name or email address
                 <p>Email*</p>
                 <input type="email" className="qna-answer-email" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
                 <br />
                 For authentication reasons, you will not be emailed
-                {showImage
-                  ? (
-                    <div>
-                      <p>Add urls to your supporting images</p>
-                      <input className="qna-answer-url" type="url" />
-                      <br />
-                      <input className="qna-answer-url" type="url" />
-                      <br />
-                      <input className="qna-answer-url" type="url" />
-                      <br />
-                      <input className="qna-answer-url" type="url" />
-                      <br />
-                      <input className="qna-answer-url" type="url" />
-                      <br />
-                    </div>
-                  )
-                  : null}
+                <div className="qna-answer-image-urls">
+                  <p>Add urls to your supporting images</p>
+                  <input className="qna-answer-url" name="url1" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url2" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url3" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url4" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url5" type="url" />
+                  <br />
+                </div>
               </div>
             </div>
             <div className="qna-answer-button-container">
               <button className="qna-answer-modal-cancel-button" type="submit" onClick={(e) => showAddAnswerModal(e)}>Cancel</button>
-              <button className="qna-answer-modal-submit-button" type="submit" onClick={(e) => showAddAnswerModal(e)}>Submit</button>
+              <button className="qna-answer-modal-submit-button" type="submit" onClick={(e) => this.addAnswer(e)}>Submit</button>
             </div>
           </form>
         </div>
@@ -85,7 +101,9 @@ class AnswerModal extends React.Component {
   }
 }
 AnswerModal.propTypes = {
+  id: propTypes.string.isRequired,
   questionId: propTypes.number.isRequired,
+  questionBody: propTypes.string.isRequired,
   showAddAnswerModal: propTypes.func.isRequired,
 };
 

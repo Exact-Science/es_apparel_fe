@@ -4,14 +4,22 @@ import Answer from '../answer/qna-answer.component';
 import Utility from '../utility/qna-utility.component';
 import './qna-question.styles.scss';
 
-const Question = ({ questionId, questionBody, questionHelpfulness, questionAnswers }) => (
+const Question = ({
+  id,
+  questionId,
+  questionBody,
+  questionHelpfulness,
+  questionAnswers,
+}) => (
   <div className="qna-question">
     <div className="question-utility-container">
       <div className="question-identifier">Q</div>
       <div className="question-utility">
         <div className="question-body">{questionBody}</div>
         <Utility
+          id={id}
           questionId={questionId}
+          questionBody={questionBody}
           questionHelpfulness={questionHelpfulness}
         />
       </div>
@@ -38,6 +46,8 @@ const Question = ({ questionId, questionBody, questionHelpfulness, questionAnswe
 );
 
 Question.propTypes = {
+  id: propTypes.string.isRequired,
+  questionId: propTypes.number.isRequired,
   questionBody: propTypes.string.isRequired,
   questionHelpfulness: propTypes.number.isRequired,
   questionAnswers: propTypes.shape({}).isRequired,

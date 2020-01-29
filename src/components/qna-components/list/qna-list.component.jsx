@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import Question from '../question/qna-question.component';
 
 const List = ({
+  id,
   questionBody,
   questionAnswers,
   questionId,
@@ -11,6 +12,7 @@ const List = ({
 }) => (
   <div className="qna-list-container">
     <Question
+      id={id}
       questionId={questionId}
       questionBody={questionBody}
       questionHelpfulness={questionHelpfulness}
@@ -21,6 +23,7 @@ const List = ({
 
 
 List.propTypes = {
+  id: propTypes.string.isRequired,
   questionId: propTypes.number.isRequired,
   questionBody: propTypes.string.isRequired,
   questionHelpfulness: propTypes.number.isRequired,

@@ -6,8 +6,16 @@ class QuestionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      name: '',
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    const { name } = this.state;
+    fetch(`http://3.134.102.30/products/${id}`)
+      .then((results) => results.json())
+      .then((data) => this.setState({ name: data.name }));
   }
 
   addQuestion = (e) => {
@@ -34,8 +42,8 @@ class QuestionModal extends React.Component {
   }
 
   render() {
+    const { name } = this.state;
     const { showAddQuestionModal } = this.props;
-    const { id } = this.props;
     return (
       <div className="qna-question-modal">
         <div className="qna-question-modal-content">
@@ -43,8 +51,8 @@ class QuestionModal extends React.Component {
             <div className="qna-question-title">
               Ask your question
             </div>
-            <div>
-              About the Product Name Here
+            <div className="productTitle">
+              About the {name}
               <div>
                 <p>Your question*</p>
                 <textarea className="qna-question-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
