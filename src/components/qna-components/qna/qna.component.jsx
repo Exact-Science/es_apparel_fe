@@ -15,10 +15,9 @@ class QnA extends React.Component {
     };
   }
 
-
   componentDidMount() {
     const { id } = this.props;
-    fetch(`http://3.134.102.30/qa/${id}`)
+    fetch(`http://3.134.102.30/qa/${id}?count=2`)
       .then((results) => results.json())
       .then((list) => { this.setState({ list: list.results }); });
   }
@@ -30,6 +29,7 @@ class QnA extends React.Component {
   }
 
   render() {
+    const { id } = this.props;
     const { list } = this.state;
     const { openQuestionModal } = this.state;
     return (
@@ -38,12 +38,12 @@ class QnA extends React.Component {
         <Search />
         {list.map((q) => <List questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
         <button className="qna-add-question-button" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
-        {openQuestionModal ?
-          (
-            <QuestionModal
-              showAddQuestionModal={this.showAddQuestionModal}
-            />
-          ) : null}
+        { openQuestionModal ? (
+          <QuestionModal
+            showAddQuestionModal={this.showAddQuestionModal}
+            id={id}
+          />
+        ) : null}
       </div>
     );
   }
