@@ -4,8 +4,8 @@ import ReviewForm from './reviewform/reviewform.component';
 import './reviewmodal-styles.scss';
 
 class ReviewModal extends React.Component {
-  constructor(props, { id }) {
-    super(props, { id });
+  constructor(props) {
+    super(props);
     this.state = {
       productName: '',
     };
@@ -22,6 +22,11 @@ class ReviewModal extends React.Component {
     this.setState({ productName: results.name });
   }
 
+  handleSubmit = (e, data) => {
+    e.preventDefault();
+    console.log(data);
+  }
+
 
   render() {
     const { productName } = this.state;
@@ -30,10 +35,11 @@ class ReviewModal extends React.Component {
       return (
         <div className="reviewmodal">
           <div className="reviewmodal-main">
-            <h3>Write your review here</h3>
-            <h4>{`About the ${productName}`}</h4>
-            <ReviewForm />
+            <h2>Write your review here</h2>
+            <h4>{`About the ${productName}:`}</h4>
+            <ReviewForm handleSubmit={this.handleSubmit} />
             <button type="submit" onClick={toggleModal}>Close</button>
+            <button type="submit" onClick={this.handleSubmit}>Submit Review</button>
           </div>
         </div>
       );
