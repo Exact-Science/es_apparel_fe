@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import propTypes from 'prop-types';
 import './qna-answer-modal.styles.scss';
@@ -12,7 +14,6 @@ class AnswerModal extends React.Component {
 
   componentDidMount() {
     const { id } = this.props;
-    const { name } = this.state;
     fetch(`http://3.134.102.30/products/${id}`)
       .then((results) => results.json())
       .then((data) => this.setState({ name: data.name }));
@@ -27,13 +28,13 @@ class AnswerModal extends React.Component {
     const data = {};
     const imageUrls = [];
 
-    for (var pair of formData.entries()) {
+    for (const pair of formData.entries()) {
       if (pair[0].substr(0, 3) === 'url' && pair[1]) {
         imageUrls.push(pair[1])
       } else if (pair[0].substr(0, 3) !== 'url') {
         data[pair[0]] = pair[1];
       }
-    };
+    }
 
     data.photos = imageUrls;
 
@@ -48,9 +49,8 @@ class AnswerModal extends React.Component {
   }
 
   render() {
-    const { questionId, questionBody, showAddAnswerModal } = this.props;
+    const { questionBody, showAddAnswerModal } = this.props;
     const { name } = this.state;
-    const { addAnswer } = this.addAnswer;
     return (
       <div className="qna-answer-modal">
         <div className="qna-answer-modal-content">
@@ -66,13 +66,13 @@ class AnswerModal extends React.Component {
               </div>
               <div>
                 <p>Your Answer*</p>
-                <textarea className="qna-answer-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
+                <textarea required className="qna-answer-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
                 <p>Nickname*</p>
-                <input type="text" className="qna-answer-email" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
+                <input required type="text" className="qna-answer-email" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
                 <br />
                 For privacy reasons, do not use your full name or email address
                 <p>Email*</p>
-                <input type="email" className="qna-answer-email" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
+                <input required type="email" className="qna-answer-email" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
                 <br />
                 For authentication reasons, you will not be emailed
                 <div className="qna-answer-image-urls">
