@@ -22,6 +22,11 @@ class ReviewModal extends React.Component {
     this.setState({ productName: results.name });
   }
 
+  handleSubmit = (e, data) => {
+    e.preventDefault();
+    console.log(data);
+  }
+
 
   render() {
     const { productName } = this.state;
@@ -34,6 +39,7 @@ class ReviewModal extends React.Component {
             <h4>{`About the ${productName}`}</h4>
             <ReviewForm />
             <button type="submit" onClick={toggleModal}>Close</button>
+            <button type="submit" onClick={this.handleSubmit}>Submit Review</button>
           </div>
         </div>
       );

@@ -1,3 +1,20 @@
 .formContainer {
-  padding: 1px;
+  padding: 10px;
+  height: 500px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+// :valid {
+//   border: 1px solid black;
+// }
+
+// :invalid {
+//   border: 1px solid red;
+// }
+
+.formInput {
+  padding: 8px;
 }
