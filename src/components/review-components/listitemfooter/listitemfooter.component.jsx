@@ -14,13 +14,13 @@ class ListItemFooter extends React.Component {
     };
   }
 
-  handleClick = async (route) => {
+  handleClick = async () => {
     const { id } = this.props;
     const { helpfulness, clicked } = this.state;
     this.setState({ helpfulness: helpfulness + 1 });
 
     try {
-      await fetch(`http://3.134.102.30/reviews/${route}/${id}`, {
+      await fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
         method: 'PUT',
       });
       this.setState({ clicked: !clicked });
