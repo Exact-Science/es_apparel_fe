@@ -68,7 +68,7 @@ class List extends React.Component {
           </div>
         </div>
         <div className="qna-add-more-answers">
-          <button className="textButton" type="submit" onClick={this.updateCount}>Load More Answers</button>
+          <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button>
         </div>
       </div>
     );
