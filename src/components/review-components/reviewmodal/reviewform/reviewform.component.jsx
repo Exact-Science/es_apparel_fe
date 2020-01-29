@@ -8,6 +8,8 @@ class ReviewForm extends React.Component {
     this.state = {
       overall: 0,
       recommended: '',
+      summary: '',
+      body: '',
     };
   }
 
@@ -23,7 +25,7 @@ class ReviewForm extends React.Component {
   }
 
   render() {
-    const { overall } = this.state;
+    const { overall, summary, body } = this.state;
     return (
       <form className="formContainer" onSubmit={this.handleSubmit}>
         <label>
@@ -36,6 +38,13 @@ class ReviewForm extends React.Component {
           Yes
           <input type="radio" name="recommended" value={false} onChange={this.handleInputChange} />
           No
+        </label>
+        <label htmlFor="summary">
+          Summarize your experience with this product*
+          <input type="text" name="summary" value={summary} onChange={this.handleInputChange} />
+        </label>
+        <label htmlFor="body">
+          <input type="textarea" name="body" value={body} onChange={this.handleInputChange} />
         </label>
       </form>
     );
