@@ -4,8 +4,8 @@ import ReviewForm from './reviewform/reviewform.component';
 import './reviewmodal-styles.scss';
 
 class ReviewModal extends React.Component {
-  constructor(props, { id }) {
-    super(props, { id });
+  constructor(props) {
+    super(props);
     this.state = {
       productName: '',
     };
