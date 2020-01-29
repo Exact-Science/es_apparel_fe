@@ -40,7 +40,6 @@ class Gallery extends React.Component {
     }
   }
 
-
   render() {
     const {
       mainImage,

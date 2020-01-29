@@ -1,12 +1,12 @@
 .overview-arrow-left {
   cursor: pointer;
   height: 120px;
-  left: 10%;
+  left: 17.5%;
   position: absolute;
   top: 50%;
   transform: rotate(180deg);
   transition: transform .1s;
-  width: 80px;
+  width: 50px;
   
   $transition-time: .15s;
   
@@ -73,11 +73,11 @@
 .overview-arrow-right {
   cursor: pointer;
   height: 120px;
-  right: 10%;
+  right: 17.5%;
   position: absolute;
   top: 50%;
   transition: transform .1s;
-  width: 80px;
+  width: 50px;
   
   $transition-time: .15s;
   
