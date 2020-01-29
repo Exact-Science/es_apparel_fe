@@ -15,3 +15,13 @@
   cursor: pointer;
   opacity: 0.7;
 }
+
+.qna-answer-container {
+  display: flex;
+}
+
+.answer-identifier {
+  display: flex;
+  font-weight: bold;
+  padding-right: 15px;
+}

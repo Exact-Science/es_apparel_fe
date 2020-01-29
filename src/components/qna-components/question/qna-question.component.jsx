@@ -20,6 +20,7 @@ class Question extends React.Component {
       questionHelpfulness,
       questionAnswers,
     } = this.props;
+    const { filteredList } = this.state;
     return (
       <div className="qna-question">
         <div className="question-utility-container">
@@ -34,26 +35,8 @@ class Question extends React.Component {
             />
           </div>
         </div>
-        <div className="qna-answer-container">
-          <div className="answer-identifier">A: </div>
-          <div>
-            {Object.keys(questionAnswers).map(
-              (answer) => (
-                <Answer
-                  answerId={questionAnswers[answer].id}
-                  answerBody={questionAnswers[answer].body}
-                  answerDate={questionAnswers[answer].date}
-                  answerHelpfulness={questionAnswers[answer].helpfulness}
-                  answererName={questionAnswers[answer].answerer_name}
-                  answerImages={questionAnswers[answer].photos}
-                  key={`a${questionAnswers[answer].id}`}
-                />
-              ),
-            )}
-          </div>
-        </div>
       </div>
-    )
+    );
   }
 }
 
