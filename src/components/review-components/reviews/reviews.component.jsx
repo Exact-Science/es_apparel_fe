@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ReviewList from '../list/list.component';
 import Ratings from '../ratings/ratings.component';
+import ReviewModal from '../reviewmodal/reviewmodal.component';
 import './reviews-styles.scss';
 
 class Reviews extends React.Component {
@@ -11,6 +12,7 @@ class Reviews extends React.Component {
       reviews: [],
       sort: 'newest',
       count: 2,
+      show: false,
     };
   }
 
@@ -38,17 +40,32 @@ class Reviews extends React.Component {
     this.refresh();
   }
 
+  toggleModal = () => {
+    const { show } = this.state;
+    this.setState({ show: !show });
+  }
+
   render() {
-    const { reviews } = this.state;
+    const { reviews, show } = this.state;
     const { id } = this.props;
     return (
-      <div className="reviewsContainer">
-        <Ratings id={id} />
-        <ReviewList
-          reviews={reviews}
-          handleChange={this.handleChange}
-          loadMoreReviews={this.loadMoreReviews}
-        />
+      <div>
+        <div className="reviewsContainer">
+          <Ratings id={id} />
+          <ReviewList
+            reviews={reviews}
+            handleChange={this.handleChange}
+            loadMoreReviews={this.loadMoreReviews}
+            toggleModal={this.toggleModal}
+          />
+        </div>
+        <div>
+          <ReviewModal
+            id={id}
+            show={show}
+            toggleModal={this.toggleModal}
+          />
+        </div>
       </div>
     );
   }
