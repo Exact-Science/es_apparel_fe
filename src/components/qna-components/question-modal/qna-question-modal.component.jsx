@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-restricted-syntax */
 import React from 'react';
 import propTypes from 'prop-types';
 import './qna-question-modal.styles.scss';
@@ -12,7 +14,6 @@ class QuestionModal extends React.Component {
 
   componentDidMount() {
     const { id } = this.props;
-    const { name } = this.state;
     fetch(`http://3.134.102.30/products/${id}`)
       .then((results) => results.json())
       .then((data) => this.setState({ name: data.name }));
@@ -27,9 +28,9 @@ class QuestionModal extends React.Component {
     const formData = new FormData(form);
     const data = {};
 
-    for (var pair of formData.entries()) {
+    for (const pair of formData.entries()) {
       data[pair[0]] = pair[1];
-    };
+    }
 
     fetch(`http://3.134.102.30/qa/${id}`, {
       method: 'POST',
