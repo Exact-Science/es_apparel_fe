@@ -2,9 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import './reviewlistheader-styles.scss';
 
-const ReviewListHeader = ({ reviews, handleChange }) => (
+const ReviewListHeader = ({ handleChange, totalReviews }) => (
   <h3>
-    <span>{`There are ${reviews.length} reviews, sorted by `}</span>
+    <span>{`There are ${totalReviews} reviews, sorted by `}</span>
     <select className="sortSelector" onChange={handleChange}>
       <option default value="newest">Newest</option>
       <option value="relevance">Relevance</option>
@@ -16,6 +16,6 @@ const ReviewListHeader = ({ reviews, handleChange }) => (
 export default ReviewListHeader;
 
 ReviewListHeader.propTypes = {
-  reviews: propTypes.arrayOf(propTypes.object).isRequired,
   handleChange: propTypes.func.isRequired,
+  totalReviews: propTypes.number.isRequired,
 };

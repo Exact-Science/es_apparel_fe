@@ -22,8 +22,8 @@ class Reviews extends React.Component {
 
   refresh = () => {
     const { id } = this.props;
-    const { sort, count } = this.state;
-    fetch(`http://3.134.102.30/reviews/${id}/list?count=${count}&sort=${sort}`)
+    const { sort } = this.state;
+    fetch(`http://3.134.102.30/reviews/${id}/list?count=1000&sort=${sort}`)
       .then((data) => data.json())
       .then((res) => this.setState({ reviews: res.results }))
       .catch((err) => err);
@@ -46,14 +46,15 @@ class Reviews extends React.Component {
   }
 
   render() {
-    const { reviews, show } = this.state;
+    const { reviews, show, count } = this.state;
     const { id } = this.props;
     return (
       <div>
         <div className="reviewsContainer">
           <Ratings id={id} />
           <ReviewList
-            reviews={reviews}
+            totalReviews={reviews.length}
+            reviews={reviews.slice(0, count)}
             handleChange={this.handleChange}
             loadMoreReviews={this.loadMoreReviews}
             toggleModal={this.toggleModal}

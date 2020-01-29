@@ -5,11 +5,11 @@ import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
 const ReviewList = ({
-  reviews, handleChange, loadMoreReviews, toggleModal,
+  reviews, handleChange, loadMoreReviews, toggleModal, totalReviews,
 }) => (
   <div className="reviewListHeader">
     <header>
-      <ReviewListHeader reviews={reviews} handleChange={handleChange} />
+      <ReviewListHeader reviews={reviews} totalReviews={totalReviews} handleChange={handleChange} />
     </header>
     <div className="reviewListContainer">
       {reviews.map((review) => (
@@ -46,4 +46,5 @@ ReviewList.propTypes = {
   handleChange: propTypes.func.isRequired,
   loadMoreReviews: propTypes.func.isRequired,
   toggleModal: propTypes.func.isRequired,
+  totalReviews: propTypes.number.isRequired,
 };
