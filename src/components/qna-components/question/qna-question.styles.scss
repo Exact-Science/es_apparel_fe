@@ -1,6 +1,3 @@
-.qna-question {
-  padding-bottom: 30px;
-}
 .question-utility-container {
   display: flex;
   // justify-content: space-between;
@@ -20,14 +17,4 @@
 .question-body {
   display: inline-flex;
   font-weight: bold;
-}
-
-.qna-answer-container {
-  display: flex;
-}
-
-.answer-identifier {
-  display: flex;
-  font-weight: bold;
-  padding-right: 15px;
 }

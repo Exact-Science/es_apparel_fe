@@ -1,4 +1,31 @@
-.qna-list-container {
-  // display: flex;
-  // flex: flow;
+.qna-add-more-answers {
+  margin: 10px 0px 10px 25px;
+}
+
+.textButton {
+  background: none;
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+  outline: none;
+}
+
+.textButton:hover {
+  background: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.qna-answer-container {
+  display: flex;
+}
+
+.qna-answers-list {
+  padding: 0px 0px 20px
+}
+
+.answer-identifier {
+  display: flex;
+  font-weight: bold;
+  padding-right: 15px;
 }

@@ -64,6 +64,7 @@ class AnswerUtility extends React.Component {
           </span>
         </div>
         <div className="qna-answer-utility-divider" />
+        <button className="textButton">Report</button>
       </div>
     );
   }
