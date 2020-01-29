@@ -1,5 +1,4 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
 class ReviewForm extends React.Component {
   constructor(props) {
@@ -8,16 +7,14 @@ class ReviewForm extends React.Component {
   }
 
 
-  handleSubmit = (e) => {
-    console.log(e);
-  }
+  handleSubmit = (e) => e;
 
   render() {
     return (
       <form className="formContainer" onSubmit={this.handleSubmit}>
-        <label>
+        <label htmlFor="sampleInput">
           Placeholder input
-          <input type="text" />
+          <input type="text" name="sampleInput" />
         </label>
       </form>
     );

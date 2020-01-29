@@ -4,7 +4,9 @@ import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
 
-const ReviewList = ({ reviews, handleChange, loadMoreReviews, toggleModal }) => (
+const ReviewList = ({
+  reviews, handleChange, loadMoreReviews, toggleModal,
+}) => (
   <div className="reviewListHeader">
     <header>
       <ReviewListHeader reviews={reviews} handleChange={handleChange} />
