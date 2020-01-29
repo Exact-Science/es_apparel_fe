@@ -7,6 +7,10 @@
   border: 1px solid black;
 }
 
+button, input, select, textarea {
+  font-family: inherit;
+}
+
 // :valid {
 //   border: 1px solid black;
 // }
@@ -17,4 +21,5 @@
 
 .formInput {
   padding: 8px;
+  box-sizing: border-box;
 }

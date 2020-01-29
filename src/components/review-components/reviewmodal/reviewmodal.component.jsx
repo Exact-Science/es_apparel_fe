@@ -35,9 +35,9 @@ class ReviewModal extends React.Component {
       return (
         <div className="reviewmodal">
           <div className="reviewmodal-main">
-            <h3>Write your review here</h3>
-            <h4>{`About the ${productName}`}</h4>
-            <ReviewForm />
+            <h2>Write your review here</h2>
+            <h4>{`About the ${productName}:`}</h4>
+            <ReviewForm handleSubmit={this.handleSubmit} />
             <button type="submit" onClick={toggleModal}>Close</button>
             <button type="submit" onClick={this.handleSubmit}>Submit Review</button>
           </div>

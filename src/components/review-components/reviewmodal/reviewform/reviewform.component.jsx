@@ -20,13 +20,10 @@ class ReviewForm extends React.Component {
     const { target } = e;
     const { value, name } = target;
     this.setState({ [name]: value }, () => {
-      console.log(this.state);
     });
   }
 
-  onSubmit = (data) => {
-    console.log(data);
-  }
+  onSubmit = (data) => data;
 
   render() {
     const {
@@ -47,7 +44,7 @@ class ReviewForm extends React.Component {
           </label>
         </div>
         <div className="formInput" id="recommendedRadios">
-          <label htmlFor="recommend">
+          <label htmlFor="recommended">
             Do you recommend this product?*
             <input
               required
@@ -81,7 +78,7 @@ class ReviewForm extends React.Component {
             />
           </label>
         </div>
-        <div className="formInput">
+        <div className="formInput" id="reviewbody">
           <label htmlFor="body">
           Why did you like the product or not?
             <textarea
