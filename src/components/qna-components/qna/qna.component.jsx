@@ -10,7 +10,7 @@ class QnA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 4,
+      count: 2,
       list: [],
       filteredList: [],
       openQuestionModal: false,
@@ -56,13 +56,13 @@ class QnA extends React.Component {
       searchCount: e.target.value.length,
       });
     } else {
-      this.setState({ filteredList: list, searchCount: e.target.value.length, });
+      this.setState({ filteredList: list.slice(0, 2), searchCount: e.target.value.length, count: 2 });
     }
   }
 
   render() {
     const { id } = this.props;
-    const { openQuestionModal, filteredList, searchCount } = this.state;
+    const { openQuestionModal, filteredList, searchCount, count, list } = this.state;
     return (
       <div className="qna-container">
         <p className="qna-title">QUESTIONS &amp; ANSWERS</p>
@@ -71,7 +71,7 @@ class QnA extends React.Component {
           { searchCount > 2 ? `# of Search Results: ${filteredList.length}` : null }
         </div>
         {filteredList.map((q) => <List id={id} questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
-        <button className="questions" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button>
+        { count < list.length ? <button className="questions" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button> : null }
         <button className="questions" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
         { openQuestionModal ? (
           <QuestionModal
