@@ -29,15 +29,17 @@ class Reviews extends React.Component {
       .catch((err) => err);
   }
 
-  handleChange = async (e) => {
-    await this.setState({ sort: e.target.value });
-    this.refresh();
+  handleChange = (e) => {
+    this.setState({ sort: e.target.value }, () => {
+      this.refresh();
+    });
   }
 
-  loadMoreReviews = async () => {
+  loadMoreReviews = () => {
     const { count } = this.state;
-    await this.setState({ count: count + 2 });
-    this.refresh();
+    this.setState({ count: count + 2 }, () => {
+      this.refresh();
+    });
   }
 
   toggleModal = () => {
@@ -51,6 +53,7 @@ class Reviews extends React.Component {
     return (
       <div>
         <div className="reviewsContainer">
+          <p>Ratings and Reviews</p>
           <Ratings id={id} />
           <ReviewList
             totalReviews={reviews.length}
