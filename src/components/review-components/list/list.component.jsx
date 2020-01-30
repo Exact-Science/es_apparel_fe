@@ -29,8 +29,8 @@ const ReviewList = ({
       ))}
     </div>
     <div className="reviewListFooter">
-      <button type="submit" onClick={loadMoreReviews}> More Reviews </button>
-      <button type="submit" onClick={toggleModal}> Add a review + </button>
+      <button className="questions" type="submit" onClick={loadMoreReviews}> More Reviews </button>
+      <button className="questions" type="submit" onClick={toggleModal}> Add a review + </button>
     </div>
   </div>
 );

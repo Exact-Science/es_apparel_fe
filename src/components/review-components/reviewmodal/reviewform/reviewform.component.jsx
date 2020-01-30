@@ -26,7 +26,7 @@ class ReviewForm extends React.Component {
 
   render() {
     const {
-      overall, summary, body, nickname, email, recommended,
+      overall, summary, body, nickname, email,
     } = this.state;
     const { handleSubmit } = this.props;
     return (

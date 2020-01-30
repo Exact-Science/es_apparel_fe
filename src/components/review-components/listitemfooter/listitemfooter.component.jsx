@@ -37,7 +37,7 @@ class ListItemFooter extends React.Component {
         <span className={clicked ? 'clicked' : 'unclicked'} onClick={this.handleClick}> Yes </span>
         <span>{`(${helpfulness})`}</span>
         <span className="divider" />
-        <span className={clicked ? 'clicked' : 'unclicked'}> Report </span>
+        <span> Report </span>
       </div>
     );
   }

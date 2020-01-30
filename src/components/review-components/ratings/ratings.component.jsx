@@ -9,7 +9,8 @@ class Ratings extends React.Component {
     super(props, { id });
     this.state = {
       ratings: {},
-      rating: 3.6,
+      rating: 3.2,
+      recommended: 92,
     };
   }
 
@@ -23,25 +24,37 @@ class Ratings extends React.Component {
       const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
       const results = await data.json();
       this.setState({ ratings: results }, () => {
-        this.getAverage();
+        this.getPercentage();
+        this.getOverallRating();
       });
     } catch (err) {
       return err;
     }
   }
 
-  getAverage = () => {
+  getOverallRating = () => {
     const { ratings: { ratings } } = this.state;
-    const values = Object.values(ratings);
-    const average = values.reduce((a, b) => a + b / values.length).toFixed(1);
-    this.setState({ rating: average });
+    const totalReviews = Object.values(ratings).reduce((a, b) => a + b);
+    const entries = Object.entries(ratings);
+    const totalValue = entries.map((el) => el[0] * el[1]).reduce((a, b) => a + b);
+    const overallRating = (totalValue / totalReviews).toFixed(1);
+    this.setState({ rating: overallRating });
+  }
+
+  getPercentage = () => {
+    const { ratings: { recommended } } = this.state;
+    const totalRecommendations = Object.values(recommended).reduce((a, b) => a + b);
+    const percentage = Object.values(recommended)[1] / totalRecommendations;
+    if (!isNaN(percentage)) {
+      this.setState({ recommended: parseInt(percentage * 100, 0) });
+    }
   }
 
   render() {
-    const { rating } = this.state;
+    const { rating, recommended } = this.state;
     return (
       <div className="ratingsContainer">
-        <Number rating={parseFloat(rating)} />
+        <Number rating={parseFloat(rating)} recommended={recommended} />
       </div>
     );
   }
