@@ -44,13 +44,27 @@ class QnA extends React.Component {
     }));
   }
 
+  searchQuestions = (e) => {
+    const { list } = this.state;
+    if (e.target.value.length > 2) {
+      this.setState({ filteredList: list.filter(
+        (question) => question.question_body
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()),
+      ),
+      });
+    } else {
+      this.setState({ filteredList: list });
+    }
+  }
+
   render() {
     const { id } = this.props;
     const { openQuestionModal, filteredList } = this.state;
     return (
       <div className="qna-container">
         <p className="qna-title">QUESTIONS &amp; ANSWERS</p>
-        <Search />
+        <Search searchQuestions={this.searchQuestions} />
         {filteredList.map((q) => <List id={id} questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
         <button className="questions" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button>
         <button className="questions" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
