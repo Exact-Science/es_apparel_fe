@@ -1,3 +1,10 @@
 .ratingOverview {
   font-size: 72;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+.stars {
+  padding: 10px;
+  margin-left: 20px;
 }
