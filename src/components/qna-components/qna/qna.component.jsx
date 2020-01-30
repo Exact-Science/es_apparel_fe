@@ -14,6 +14,7 @@ class QnA extends React.Component {
       list: [],
       filteredList: [],
       openQuestionModal: false,
+      searchCount: 0,
     };
   }
 
@@ -44,13 +45,31 @@ class QnA extends React.Component {
     }));
   }
 
+  searchQuestions = (e) => {
+    const { list } = this.state;
+    if (e.target.value.length > 2) {
+      this.setState({ filteredList: list.filter(
+        (question) => question.question_body
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()),
+      ),
+      searchCount: e.target.value.length,
+      });
+    } else {
+      this.setState({ filteredList: list, searchCount: e.target.value.length, });
+    }
+  }
+
   render() {
     const { id } = this.props;
-    const { openQuestionModal, filteredList } = this.state;
+    const { openQuestionModal, filteredList, searchCount } = this.state;
     return (
       <div className="qna-container">
         <p className="qna-title">QUESTIONS &amp; ANSWERS</p>
-        <Search />
+        <Search searchQuestions={this.searchQuestions} />
+        <div className="searchResult">
+          { searchCount > 2 ? `# of Search Results: ${filteredList.length}` : null }
+        </div>
         {filteredList.map((q) => <List id={id} questionAnswers={q.answers} questionBody={q.question_body} questionId={q.question_id} questionHelpfulness={q.question_helpfulness} key={`q${q.question_id}`} />)}
         <button className="questions" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button>
         <button className="questions" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
