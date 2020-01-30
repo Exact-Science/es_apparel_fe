@@ -37,7 +37,8 @@ class List extends React.Component {
       questionId,
       questionHelpfulness,
     } = this.props;
-    const { filteredList } = this.state;
+    const { filteredList, count, list } = this.state;
+    console.log(list.length);
 
     return (
       <div className="qna-list-container">
@@ -68,7 +69,7 @@ class List extends React.Component {
           </div>
         </div>
         <div className="qna-add-more-answers">
-          <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button>
+          { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
         </div>
       </div>
     );
