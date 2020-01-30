@@ -9,7 +9,7 @@ class Ratings extends React.Component {
     super(props, { id });
     this.state = {
       ratings: {},
-      rating: 3.6,
+      rating: 3.7,
     };
   }
 
@@ -33,8 +33,12 @@ class Ratings extends React.Component {
   getAverage = () => {
     const { ratings: { ratings } } = this.state;
     const values = Object.values(ratings);
-    const average = values.reduce((a, b) => a + b / values.length).toFixed(1);
-    this.setState({ rating: average });
+    // const keys = Object.keys(ratings);
+
+
+    const totalReviews = values.reduce((a, b) => a + b);
+    console.log(totalReviews);
+    // this.setState({ rating: average });
   }
 
   render() {

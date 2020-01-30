@@ -37,9 +37,7 @@ class Reviews extends React.Component {
 
   loadMoreReviews = () => {
     const { count } = this.state;
-    this.setState({ count: count + 2 }, () => {
-      this.refresh();
-    });
+    this.setState({ count: count + 2 });
   }
 
   toggleModal = () => {
