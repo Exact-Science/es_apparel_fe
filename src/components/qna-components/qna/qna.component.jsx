@@ -10,7 +10,7 @@ class QnA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 4,
+      count: 2,
       list: [],
       filteredList: [],
       openQuestionModal: false,
@@ -56,7 +56,7 @@ class QnA extends React.Component {
       searchCount: e.target.value.length,
       });
     } else {
-      this.setState({ filteredList: list, searchCount: e.target.value.length, });
+      this.setState({ filteredList: list.slice(0, 2), searchCount: e.target.value.length, count: 2 });
     }
   }
 
