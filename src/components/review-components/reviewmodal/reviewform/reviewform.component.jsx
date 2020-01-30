@@ -19,15 +19,14 @@ class ReviewForm extends React.Component {
   handleInputChange = (e) => {
     const { target } = e;
     const { value, name } = target;
-    this.setState({ [name]: value }, () => {
-    });
+    this.setState({ [name]: value });
   }
 
   onSubmit = (data) => data;
 
   render() {
     const {
-      overall, summary, body, nickname, email,
+      overall, summary, body, nickname, email, recommended,
     } = this.state;
     const { handleSubmit } = this.props;
     return (

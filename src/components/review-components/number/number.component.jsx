@@ -1,9 +1,22 @@
 import React from 'react';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
+import Rating from '@material-ui/lab/Rating';
+import './number-styles.scss';
+
+
 const Number = ({ rating }) => (
-  <div>
-    <h2>Average Rating: {rating.toFixed(1)}</h2>
+  <div className="ratingOverview">
+    <h1>
+      {rating}
+    </h1>
+    <div>
+      <Rating name="rating-overview" value={rating} size="medium" readOnly />
+    </div>
   </div>
 );
 
 export default Number;
+
+Number.propTypes = {
+  rating: propTypes.number.isRequired,
+};

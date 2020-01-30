@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
 import Number from '../number/number.component';
@@ -8,30 +9,39 @@ class Ratings extends React.Component {
     super(props, { id });
     this.state = {
       ratings: {},
-      rating: 4.7,
+      rating: 3.6,
     };
   }
 
   componentDidMount() {
-    const { id } = this.props;
-
-    fetch(`http://3.134.102.30/reviews/${id}/meta`)
-      .then((res) => res.json())
-      .then((res) => this.setState({ ratings: res }))
-      .catch((err) => err);
+    this.getRatings();
   }
 
-  // getRatings = (array) => {
-  //   if (array.length > 0) {
-  //     this.setState({ rating: array.map((el) => el.rating).reduce((a, b) => (a + b) / array.length) });
-  //   }
-  // }
+  getRatings = async () => {
+    const { id } = this.props;
+    try {
+      const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
+      const results = await data.json();
+      this.setState({ ratings: results }, () => {
+        this.getAverage();
+      });
+    } catch (err) {
+      return err;
+    }
+  }
+
+  getAverage = () => {
+    const { ratings: { ratings } } = this.state;
+    const values = Object.values(ratings);
+    const average = values.reduce((a, b) => a + b / values.length).toFixed(1);
+    this.setState({ rating: average });
+  }
 
   render() {
     const { rating } = this.state;
     return (
       <div className="ratingsContainer">
-        <Number rating={rating} />
+        <Number rating={parseFloat(rating)} />
       </div>
     );
   }
