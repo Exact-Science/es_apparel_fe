@@ -10,7 +10,7 @@ const Number = ({ rating }) => (
       {rating}
     </h1>
     <div>
-      <Rating name="rating-overview" value={rating} size="medium" readOnly />
+      <Rating name="rating-overview" value={rating} size="medium" precision={0.25} />
     </div>
   </div>
 );

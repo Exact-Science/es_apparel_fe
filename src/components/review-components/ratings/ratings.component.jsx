@@ -9,7 +9,7 @@ class Ratings extends React.Component {
     super(props, { id });
     this.state = {
       ratings: {},
-      rating: 3.7,
+      rating: 3.2,
     };
   }
 
