@@ -26,7 +26,7 @@ class Image extends React.Component {
     const { fullImage } = this.state;
     return (
       <div className="qna-image" onClick={this.showFullImage} onKeyDown={this.showFullImage} role="button" tabIndex="0">
-        { fullImage ? <FullImageModal /> : null }
+        {/* { fullImage ? <FullImageModal imageUrl={imageUrl} /> : null } */}
         <img className="answer-image" src={imageUrl} alt="Suporting img for answer" />
       </div>
     );

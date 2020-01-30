@@ -47,22 +47,19 @@ class FullImageModal extends React.Component {
   // }
 
   render() {
-    const { questionBody, showAddAnswerModal } = this.props;
-    const { name } = this.state;
+    const { imageUrl } = this.props;
     return (
       <div className="qna-full-image-modal-container">
         <div className="qna-full-image-modal-content">
-
+          <img className="fullImage" src={imageUrl} alt="full size img" />
         </div>
       </div>
     );
   }
 }
+
 FullImageModal.propTypes = {
-  // id: propTypes.string.isRequired,
-  // questionId: propTypes.number.isRequired,
-  // questionBody: propTypes.string.isRequired,
-  // showAddAnswerModal: propTypes.func.isRequired,
+  imageUrl: propTypes.string.isRequired,
 };
 
 export default FullImageModal;

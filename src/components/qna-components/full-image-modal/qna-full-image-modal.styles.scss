@@ -1,7 +1,7 @@
 .qna-full-image-modal-container {
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 20px;
   left: 0;
   top: 0;
   width: 100%;
@@ -13,48 +13,8 @@
 .qna-full-image-modal-content {
   background-color: white;
   margin: auto;
-  padding: 20px;
+  // padding: 20px;
   border: 1px solid white;
-  width: 80%;
-}
-
-.qna-answer-modal {
-  padding: 40px
-}
-
-.qna-answer-modal-content p {
-  margin: 25px 0px 5px;
-}
-
-.qna-answer-modal-content input {
-  width: 400px;
-  font-size: 16px;
-}
-
-.qna-answer-button-container {
-  padding: 15px 0px 0px;
-}
-
-.qna-answer-title {
-  font-weight: bold;
-}
-
-.qna-answer-modal-cancel-button {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.qna-answer-modal-submit-button {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
-.qna-answer-body {
-  width: 400px;
-  height: 100px;
-  font-size: 16px;
-}
-
-.qna-answer-url {
-  margin: 5px 0px 0px;
+  width: 56%;
+  max-height: 200px;
 }
