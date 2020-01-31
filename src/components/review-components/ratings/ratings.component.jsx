@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
-import Number from '../number/number.component';
+import RatingsSummary from './ratingssummary/ratingssummary.component';
 import './ratings-styles.scss';
 
 class Ratings extends React.Component {
@@ -50,11 +50,15 @@ class Ratings extends React.Component {
     }
   }
 
+  handleClick = (e) => {
+    console.log('clicked!');
+  };
+
   render() {
     const { rating, recommended } = this.state;
     return (
       <div className="ratingsContainer">
-        <Number rating={parseFloat(rating)} recommended={recommended} />
+        <RatingsSummary rating={parseFloat(rating)} recommended={recommended} handleClick={this.handleClick} />
       </div>
     );
   }

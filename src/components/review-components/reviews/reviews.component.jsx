@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import ReviewList from '../list/list.component';
+import ReviewList from './list/list.component';
 import Ratings from '../ratings/ratings.component';
-import ReviewModal from '../reviewmodal/reviewmodal.component';
+import ReviewModal from './reviewmodal/reviewmodal.component';
 import './reviews-styles.scss';
 
 class Reviews extends React.Component {

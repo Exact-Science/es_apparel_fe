@@ -1,10 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import './number-styles.scss';
+import RatingsCharts from '../ratingscharts/ratingscharts.component';
+import './ratingssummary-styles.scss';
 
 
-const Number = ({ rating, recommended }) => (
+const RatingsSummary = ({ rating, recommended, handleClick }) => (
   <div className="ratingOverview">
     <div>
       <h1>
@@ -18,12 +19,16 @@ const Number = ({ rating, recommended }) => (
         % of reviewers recommend this product
       </h5>
     </div>
+    <div className="ratingschart-container">
+      <RatingsCharts handleClick={handleClick} />
+    </div>
   </div>
 );
 
-export default Number;
+export default RatingsSummary;
 
-Number.propTypes = {
+RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
   recommended: propTypes.number.isRequired,
+  handleClick: propTypes.func.isRequired,
 };
