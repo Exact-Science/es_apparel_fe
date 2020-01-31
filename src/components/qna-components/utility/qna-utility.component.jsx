@@ -19,7 +19,7 @@ class Utility extends React.Component {
   }
 
   updateHelpful = (e) => {
-    const { questionId } = this.props;
+    const { questionId, showAddedAnswer } = this.props;
     e.preventDefault();
     this.setState((previousState) => ({
       questionHelpfulness: previousState.questionHelpfulness + 1,
@@ -31,6 +31,7 @@ class Utility extends React.Component {
           { method: 'PUT' });
       });
     });
+
   }
 
   showAddAnswerModal = (e) => {
@@ -40,8 +41,8 @@ class Utility extends React.Component {
   }
 
   render() {
-    const { questionHelpfulness, questionHelpfulClicked, openAnswerModal} = this.state;
-    const { id, questionId, questionBody } = this.props;
+    const { questionHelpfulness, questionHelpfulClicked, openAnswerModal } = this.state;
+    const { id, questionId, questionBody, showAddedAnswer } = this.props;
     return (
       <div className="qna-utility-container">
         <div className="`qna-q-helpfulness`">
@@ -70,6 +71,7 @@ class Utility extends React.Component {
               questionId={questionId}
               questionBody={questionBody}
               showAddAnswerModal={this.showAddAnswerModal}
+              showAddedAnswer={showAddedAnswer}
             />
           ) : null }
       </div>
@@ -83,6 +85,7 @@ Utility.propTypes = {
   questionId: propTypes.number.isRequired,
   questionBody: propTypes.string.isRequired,
   questionHelpfulness: propTypes.number.isRequired,
+  showAddedAnswer: propTypes.func.isRequired,
 };
 
 export default Utility;

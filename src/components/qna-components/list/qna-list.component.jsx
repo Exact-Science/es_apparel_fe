@@ -16,9 +16,10 @@ class List extends React.Component {
 
   componentDidMount() {
     const { questionAnswers } = this.props;
-    const { count } = this.state;
+    console.log('before: ', questionAnswers);
+    const { count, filteredList } = this.state;
     const list = Object.entries(questionAnswers).map((answer) => answer[1]);
-    this.setState({ list, filteredList: list.slice(0, count) });
+    this.setState({ list, filteredList: list.slice(0, count) }, () => console.log('after: ', list, filteredList));
   }
 
   addMoreAnswers = (e) => {
@@ -27,6 +28,22 @@ class List extends React.Component {
       count: previousState.count + 2,
       filteredList: previousState.list.slice(0, previousState.count + 2),
     }));
+  }
+
+  showAddedAnswer = (id) => {
+    console.log('is this getting called?');
+    fetch(`http://3.134.102.30/qa/${id}/answers`)
+      .then((results) => results.json())
+      .then((answersList) => {
+        let newList = answersList.results;
+        newList = newList.map((answer) => {
+          answer.id = answer.answer_id;
+          answer.photos = answer.photos.map((photo) => photo.url);
+          return answer;
+        });
+        console.log('new list: ', newList.slice(0, 2));
+        this.setState({ list: newList, filteredList: newList.slice(0, 2) });
+      });
   }
 
   render() {
@@ -47,6 +64,7 @@ class List extends React.Component {
           questionBody={questionBody}
           questionHelpfulness={questionHelpfulness}
           questionAnswers={questionAnswers}
+          showAddedAnswer={this.showAddedAnswer}
         />
         <div className="qna-answer-container">
           <div className="answer-identifier">A: </div>

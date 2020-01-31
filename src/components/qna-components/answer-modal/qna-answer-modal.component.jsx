@@ -22,7 +22,7 @@ class AnswerModal extends React.Component {
   addAnswer = (e) => {
     e.persist();
     e.preventDefault();
-    const { questionId, showAddAnswerModal } = this.props;
+    const { questionId, showAddedAnswer, showAddAnswerModal } = this.props;
     const form = document.querySelector('.qna-new-answer-form');
     const formData = new FormData(form);
     const data = {};
@@ -30,7 +30,7 @@ class AnswerModal extends React.Component {
 
     for (const pair of formData.entries()) {
       if (pair[0].substr(0, 3) === 'url' && pair[1]) {
-        imageUrls.push(pair[1])
+        imageUrls.push(pair[1]);
       } else if (pair[0].substr(0, 3) !== 'url') {
         data[pair[0]] = pair[1];
       }
@@ -45,6 +45,7 @@ class AnswerModal extends React.Component {
       },
       body: JSON.stringify(data),
     })
+      .then(() => showAddedAnswer(questionId))
       .then(() => showAddAnswerModal(e));
   }
 
@@ -105,6 +106,7 @@ AnswerModal.propTypes = {
   questionId: propTypes.number.isRequired,
   questionBody: propTypes.string.isRequired,
   showAddAnswerModal: propTypes.func.isRequired,
+  showAddedAnswer: propTypes.func.isRequired,
 };
 
 export default AnswerModal;
