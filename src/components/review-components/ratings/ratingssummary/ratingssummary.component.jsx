@@ -2,10 +2,11 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import RatingsCharts from '../ratingscharts/ratingscharts.component';
+import Characteristics from '../characteristics/characteristics.component';
 import './ratingssummary-styles.scss';
 
 
-const RatingsSummary = ({ rating, recommended, handleClick }) => (
+const RatingsSummary = ({ rating, recommended, filterList }) => (
   <div className="ratingOverview">
     <div>
       <h1>
@@ -20,7 +21,10 @@ const RatingsSummary = ({ rating, recommended, handleClick }) => (
       </h5>
     </div>
     <div className="ratingschart-container">
-      <RatingsCharts handleClick={handleClick} />
+      <RatingsCharts filterList={filterList} />
+    </div>
+    <div className="characteristics-container">
+      <Characteristics />
     </div>
   </div>
 );
@@ -30,5 +34,5 @@ export default RatingsSummary;
 RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
   recommended: propTypes.number.isRequired,
-  handleClick: propTypes.func.isRequired,
+  filterList: propTypes.func.isRequired,
 };

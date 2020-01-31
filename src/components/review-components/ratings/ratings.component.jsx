@@ -50,15 +50,15 @@ class Ratings extends React.Component {
     }
   }
 
-  handleClick = (e) => {
-    console.log('clicked!');
+  filterList = (e) => {
+    console.log(e.target.value);
   };
 
   render() {
     const { rating, recommended } = this.state;
     return (
       <div className="ratingsContainer">
-        <RatingsSummary rating={parseFloat(rating)} recommended={recommended} handleClick={this.handleClick} />
+        <RatingsSummary rating={parseFloat(rating)} recommended={recommended} filterList={this.filterList} />
       </div>
     );
   }
