@@ -6,8 +6,7 @@ import './list-styles.scss';
 
 const ReviewList = ({
   reviews, handleChange, loadMoreReviews, toggleModal, totalReviews, filteredReviewsValue,
-}) => {
-  return (
+}) => (
     <div className="reviewListHeader">
       <header>
         <ReviewListHeader
@@ -49,8 +48,8 @@ const ReviewList = ({
         </button>
       </div>
     </div>
-  );
-};
+);
+
 
 export default ReviewList;
 
