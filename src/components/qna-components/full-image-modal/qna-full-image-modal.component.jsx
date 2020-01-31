@@ -14,9 +14,9 @@ class FullImageModal extends React.Component {
     const { imageUrl } = this.props;
     return (
       <div className="qna-full-image-modal-container">
+        <span className="closeModal">x</span>
         <div className="qna-size-reducer">
           <div className="qna-full-image-modal-content">
-            <span className="closeModal">x</span>
             <img className="fullImage" src={imageUrl} alt="full size img" />
           </div>
         </div>
