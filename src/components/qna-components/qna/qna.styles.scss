@@ -3,6 +3,12 @@
   max-width: 80vw;
 }
 
+.qna-body {
+  max-height: 38vw;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
 .qna-title {
   padding-bottom: 10px;
 }
