@@ -1,7 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './qna-search.styles.scss';
-// import propTypes from 'prop-types';
 
 class Search extends React.Component {
   constructor(props) {

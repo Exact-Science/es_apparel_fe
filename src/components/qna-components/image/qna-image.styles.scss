@@ -2,8 +2,14 @@
   width: 80px;
   height: 80px;
   padding-right: 20px;
+  border: none;
+  outline: none;
 }
 
 .answer-image {
   border: 1px solid black;
+}
+
+.qna-image:hover {
+  cursor: pointer;
 }

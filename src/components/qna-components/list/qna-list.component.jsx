@@ -38,7 +38,6 @@ class List extends React.Component {
       questionHelpfulness,
     } = this.props;
     const { filteredList, count, list } = this.state;
-    console.log(list.length);
 
     return (
       <div className="qna-list-container">
