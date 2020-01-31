@@ -11,6 +11,8 @@ class Reviews extends React.Component {
     super(props, { id });
     this.state = {
       reviews: [],
+      filteredReviews: [],
+      filteredReviewsValue: 0,
       sort: 'newest',
       count: 2,
       show: false,
@@ -29,9 +31,9 @@ class Reviews extends React.Component {
     const { id } = this.props;
     const { sort } = this.state;
     try {
-      const data = await fetch(`http://3.134.102.30/reviews/${id}/list?count=1000&sort=${sort}`)
+      const data = await fetch(`http://3.134.102.30/reviews/${id}/list?count=1000&sort=${sort}`);
       const res = await data.json();
-      this.setState({ reviews: res.results });
+      this.setState({ reviews: res.results, filteredReviews: res.results });
     } catch (err) {
       return err;
     }
@@ -69,9 +71,9 @@ class Reviews extends React.Component {
     }
   }
 
-  filterList = (e) => {
-    console.log(this.state.reviews);
-
+  getFilterValue = (e) => {
+    const { value } = e.target;
+    this.setState({ filteredReviewsValue: value });
   };
 
   handleChange = (e) => {
@@ -92,7 +94,7 @@ class Reviews extends React.Component {
 
   render() {
     const {
-      reviews, show, count, ratings, rating, recommended,
+      reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
     } = this.state;
     const { id } = this.props;
     return (
@@ -103,11 +105,13 @@ class Reviews extends React.Component {
             ratings={ratings}
             rating={rating}
             recommended={recommended}
-            filterList={this.filterList}
+            getFilterValue={this.getFilterValue}
           />
           <ReviewList
             totalReviews={reviews.length}
+            filteredReviews={filteredReviews}
             reviews={reviews.slice(0, count)}
+            filteredReviewsValue={filteredReviewsValue}
             handleChange={this.handleChange}
             loadMoreReviews={this.loadMoreReviews}
             toggleModal={this.toggleModal}

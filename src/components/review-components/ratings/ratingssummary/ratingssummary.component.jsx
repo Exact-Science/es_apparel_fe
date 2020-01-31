@@ -6,7 +6,7 @@ import Characteristics from '../characteristics/characteristics.component';
 import './ratingssummary-styles.scss';
 
 
-const RatingsSummary = ({ rating, recommended, filterList }) => (
+const RatingsSummary = ({ rating, recommended, getFilterValue }) => (
   <div className="ratingOverview">
     <div>
       <h1>
@@ -21,7 +21,7 @@ const RatingsSummary = ({ rating, recommended, filterList }) => (
       </h5>
     </div>
     <div className="ratingschart-container">
-      <RatingsCharts filterList={filterList} />
+      <RatingsCharts getFilterValue={getFilterValue} />
     </div>
     <div className="characteristics-container">
       <Characteristics />
@@ -34,5 +34,5 @@ export default RatingsSummary;
 RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
   recommended: propTypes.number.isRequired,
-  filterList: propTypes.func.isRequired,
+  getFilterValue: propTypes.func.isRequired,
 };
