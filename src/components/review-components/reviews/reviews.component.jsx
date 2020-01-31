@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
 import ReviewList from './list/list.component';
@@ -13,25 +14,69 @@ class Reviews extends React.Component {
       sort: 'newest',
       count: 2,
       show: false,
+      ratings: {},
+      rating: 3.2,
+      recommended: 92,
     };
   }
 
   componentDidMount() {
-    this.refresh();
+    this.getReviews();
+    this.getRatings();
   }
 
-  refresh = () => {
+  getReviews = async () => {
     const { id } = this.props;
     const { sort } = this.state;
-    fetch(`http://3.134.102.30/reviews/${id}/list?count=1000&sort=${sort}`)
-      .then((data) => data.json())
-      .then((res) => this.setState({ reviews: res.results }))
-      .catch((err) => err);
+    try {
+      const data = await fetch(`http://3.134.102.30/reviews/${id}/list?count=1000&sort=${sort}`)
+      const res = await data.json();
+      this.setState({ reviews: res.results });
+    } catch (err) {
+      return err;
+    }
   }
+
+  getRatings = async () => {
+    const { id } = this.props;
+    try {
+      const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
+      const results = await data.json();
+      this.setState({ ratings: results }, () => {
+        this.getPercentage();
+        this.getOverallRating();
+      });
+    } catch (err) {
+      return err;
+    }
+  }
+
+  getOverallRating = () => {
+    const { ratings: { ratings } } = this.state;
+    const totalReviews = Object.values(ratings).reduce((a, b) => a + b);
+    const entries = Object.entries(ratings);
+    const totalValue = entries.map((el) => el[0] * el[1]).reduce((a, b) => a + b);
+    const overallRating = (totalValue / totalReviews).toFixed(1);
+    this.setState({ rating: overallRating });
+  }
+
+  getPercentage = () => {
+    const { ratings: { recommended } } = this.state;
+    const totalRecommendations = Object.values(recommended).reduce((a, b) => a + b);
+    const percentage = Object.values(recommended)[1] / totalRecommendations;
+    if (!isNaN(percentage)) {
+      this.setState({ recommended: parseInt(percentage * 100, 0) });
+    }
+  }
+
+  filterList = (e) => {
+    console.log(this.state.reviews);
+
+  };
 
   handleChange = (e) => {
     this.setState({ sort: e.target.value }, () => {
-      this.refresh();
+      this.getReviews();
     });
   }
 
@@ -46,13 +91,20 @@ class Reviews extends React.Component {
   }
 
   render() {
-    const { reviews, show, count } = this.state;
+    const {
+      reviews, show, count, ratings, rating, recommended,
+    } = this.state;
     const { id } = this.props;
     return (
-      <div>
+      <div className="parent-container">
         <div className="reviewsContainer">
           <p>Ratings and Reviews</p>
-          <Ratings id={id} />
+          <Ratings
+            ratings={ratings}
+            rating={rating}
+            recommended={recommended}
+            filterList={this.filterList}
+          />
           <ReviewList
             totalReviews={reviews.length}
             reviews={reviews.slice(0, count)}

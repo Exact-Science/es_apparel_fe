@@ -32,5 +32,5 @@ const RatingsCharts = ({ filterList }) => {
 export default RatingsCharts;
 
 RatingsCharts.propTypes = {
-
+  filterList: propTypes.func.isRequired,
 };
