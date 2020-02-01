@@ -10,12 +10,13 @@
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 }
+
 .qna-answer-modal-content {
   background-color: white;
   margin: auto;
   padding: 20px;
   border: 1px solid white;
-  width: 80%;
+  width: 40%;
 }
 
 .qna-answer-modal {
@@ -39,12 +40,12 @@
   font-weight: bold;
 }
 
-.qna-answer-modal-cancel-button {
+.qna-main-button {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.qna-answer-modal-submit-button {
+.qna-main-button {
   cursor: pointer;
   opacity: 0.7;
 }

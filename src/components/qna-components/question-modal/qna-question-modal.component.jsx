@@ -68,8 +68,8 @@ class QuestionModal extends React.Component {
               </div>
             </div>
             <div className="qna-question-button-container">
-              <button className="qna-question-modal-cancel-button" type="submit" onClick={(e) => showAddQuestionModal(e)}>Cancel</button>
-              <button className="qna-question-modal-submit-button" type="submit" onClick={(e) => this.addQuestion(e)}>Submit</button>
+              <button className="main-button" type="submit" onClick={(e) => showAddQuestionModal(e)}>Cancel</button>
+              <button className="main-button" type="submit" onClick={(e) => this.addQuestion(e)}>Submit</button>
             </div>
           </form>
         </div>

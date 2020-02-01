@@ -19,7 +19,7 @@ class Utility extends React.Component {
   }
 
   updateHelpful = (e) => {
-    const { questionId, showAddedAnswer } = this.props;
+    const { questionId } = this.props;
     e.preventDefault();
     this.setState((previousState) => ({
       questionHelpfulness: previousState.questionHelpfulness + 1,

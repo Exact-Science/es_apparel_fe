@@ -105,8 +105,8 @@ class QnA extends React.Component {
             />
           ))}
         </div>
-        { count < list.length ? <button className="questions" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button> : null }
-        <button className="questions" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
+        { count < list.length ? <button className="main-button" type="submit" onClick={this.addMoreQuestions}>MORE ANSWERED QUESTIONS</button> : null }
+        <button className="main-button" type="submit" onClick={this.showAddQuestionModal}>ADD A QUESTION +</button>
         { openQuestionModal
           ? (
             <QuestionModal

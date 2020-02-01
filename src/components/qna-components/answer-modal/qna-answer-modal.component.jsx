@@ -92,8 +92,8 @@ class AnswerModal extends React.Component {
               </div>
             </div>
             <div className="qna-answer-button-container">
-              <button className="qna-answer-modal-cancel-button" type="submit" onClick={(e) => showAddAnswerModal(e)}>Cancel</button>
-              <button className="qna-answer-modal-submit-button" type="submit" onClick={(e) => this.addAnswer(e)}>Submit</button>
+              <button className="main-button" type="submit" onClick={(e) => showAddAnswerModal(e)}>Cancel</button>
+              <button className="main-button" type="submit" onClick={(e) => this.addAnswer(e)}>Submit</button>
             </div>
           </form>
         </div>
