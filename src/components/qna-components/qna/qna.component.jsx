@@ -10,6 +10,7 @@ class QnA extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      resetCount: 2,
       count: 2,
       list: [],
       filteredList: [],
@@ -48,20 +49,33 @@ class QnA extends React.Component {
   searchQuestions = (e) => {
     const { list } = this.state;
     if (e.target.value.length > 2) {
-      this.setState({ filteredList: list.filter(
-        (question) => question.question_body
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase()),
-      ),
-      searchCount: e.target.value.length,
+      this.setState({
+        filteredList: list.filter(
+          (question) => question.question_body
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()),
+        ),
+        searchCount: e.target.value.length,
       });
     } else {
-      this.setState({ filteredList: list.slice(0, 2),
+      this.setState({
+        filteredList: list.slice(0, 2),
         searchCount: e.target.value.length,
         count: 2,
       });
     }
   }
+
+  addNewQuestions = (id) => {
+    const { resetCount } = this.state;
+    fetch(`http://3.134.102.30/qa/${id}?count=1000`)
+      .then((results) => results.json())
+      .then((questionsList) => this.setState({
+        list: questionsList.results,
+        filteredList: questionsList.results.slice(0, resetCount),
+      }));
+  }
+
 
   render() {
     const { id } = this.props;
@@ -96,8 +110,9 @@ class QnA extends React.Component {
         { openQuestionModal
           ? (
             <QuestionModal
-              showAddQuestionModal={this.showAddQuestionModal}
               id={id}
+              showAddQuestionModal={this.showAddQuestionModal}
+              addNewQuestions={this.addNewQuestions}
             />
           )
           : null}

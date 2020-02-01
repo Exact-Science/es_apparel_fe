@@ -22,8 +22,7 @@ class QuestionModal extends React.Component {
   addQuestion = (e) => {
     e.persist();
     e.preventDefault();
-    const { showAddQuestionModal } = this.props;
-    const { id } = this.props;
+    const { id, showAddQuestionModal, addNewQuestions } = this.props;
     const form = document.querySelector('.qna-new-question-form');
     const formData = new FormData(form);
     const data = {};
@@ -39,7 +38,8 @@ class QuestionModal extends React.Component {
       },
       body: JSON.stringify(data),
     })
-      .then(() => showAddQuestionModal(e));
+      .then(() => showAddQuestionModal(e))
+      .then(() => addNewQuestions(id));
   }
 
   render() {
@@ -78,8 +78,9 @@ class QuestionModal extends React.Component {
   }
 }
 QuestionModal.propTypes = {
-  showAddQuestionModal: propTypes.func.isRequired,
   id: propTypes.string.isRequired,
+  showAddQuestionModal: propTypes.func.isRequired,
+  addNewQuestions: propTypes.func.isRequired,
 };
 
 export default QuestionModal;

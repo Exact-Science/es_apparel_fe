@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import './qna-list.styles.scss';
 import propTypes from 'prop-types';
@@ -8,6 +9,7 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      resetCount: 2,
       count: 2,
       list: [],
       filteredList: [],
@@ -16,22 +18,21 @@ class List extends React.Component {
 
   componentDidMount() {
     const { questionAnswers } = this.props;
-    console.log('before: ', questionAnswers);
-    const { count, filteredList } = this.state;
+    const { count } = this.state;
     const list = Object.entries(questionAnswers).map((answer) => answer[1]);
-    this.setState({ list, filteredList: list.slice(0, count) }, () => console.log('after: ', list, filteredList));
+    this.setState({ list, filteredList: list.slice(0, count) });
   }
 
   addMoreAnswers = (e) => {
     e.preventDefault();
+    const { resetCount } = this.state;
     this.setState((previousState) => ({
       count: previousState.count + 2,
-      filteredList: previousState.list.slice(0, previousState.count + 2),
+      filteredList: previousState.list.slice(0, previousState.count + resetCount),
     }));
   }
 
   showAddedAnswer = (id) => {
-    console.log('is this getting called?');
     fetch(`http://3.134.102.30/qa/${id}/answers`)
       .then((results) => results.json())
       .then((answersList) => {
@@ -41,7 +42,6 @@ class List extends React.Component {
           answer.photos = answer.photos.map((photo) => photo.url);
           return answer;
         });
-        console.log('new list: ', newList.slice(0, 2));
         this.setState({ list: newList, filteredList: newList.slice(0, 2) });
       });
   }
