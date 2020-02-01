@@ -8,23 +8,35 @@ class QuestionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productName: '',
       body: '',
       name: '',
       email: '',
+      bodyVal: true,
+      nameVal: true,
+      emailVal: true,
     };
   }
-
 
   componentDidMount() {
     const { id } = this.props;
     fetch(`http://3.134.102.30/products/${id}`)
       .then((results) => results.json())
-      .then((data) => this.setState({ name: data.name }));
+      .then((data) => this.setState({ productName: data.name }));
   }
 
   addQuestion = (e) => {
+    e.preventDefault();
     e.persist();
-    const { body, name, email } = this.state;
+    const {
+      body,
+      name,
+      email,
+      bodyVal,
+      nameVal,
+      emailVal,
+    } = this.state;
+
     if (body && name && email) {
       const { id, showAddQuestionModal, addNewQuestions } = this.props;
       const form = document.querySelector('.qna-new-question-form');
@@ -44,6 +56,22 @@ class QuestionModal extends React.Component {
       })
         .then(() => showAddQuestionModal(e))
         .then(() => addNewQuestions(id));
+    } else {
+      if (body && !bodyVal) {
+        this.setState({ bodyVal: true });
+      } else if (!body && bodyVal) {
+        this.setState({ bodyVal: false });
+      }
+      if (name && !nameVal) {
+        this.setState({ nameVal: true });
+      } else if (!name && nameVal) {
+        this.setState({ nameVal: false });
+      }
+      if (email && !emailVal) {
+        this.setState({ emailVal: true });
+      } else if (!email && emailVal) {
+        this.setState({ emailVal: false });
+      }
     }
   }
 
@@ -52,28 +80,43 @@ class QuestionModal extends React.Component {
   }
 
   render() {
-    const { name } = this.state;
+    const { productName, name, body, email, bodyVal, nameVal, emailVal } = this.state;
     const { showAddQuestionModal } = this.props;
     return (
       <div className="qna-question-modal">
         <div className="qna-question-modal-content">
-          <form className="qna-new-question-form" name="questionForm">
-            <div className="qna-question-title">
+          <form className="qna-new-question-form" name="questionForm" onSubmit={() => false}>
+            <h2 className="title">
               Ask your question
-            </div>
-            <div className="productTitle">
-              <span>About the </span>
-              {name}
-              <div>
-                <p>Your question*</p>
-                <textarea required className="qna-question-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
-                <p>Nickname*</p>
-                <input required type="text" className="qna-question-email" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
-                <br />
+            </h2>
+            <h3 className="subTitle">
+              <span>
+                About the
+                {productName}
+              </span>
+            </h3>
+            <div>
+              <div className="formField-container">
+                <span className="valid-field">Your question*</span>
+                {!body && !bodyVal ? <span className="invalid-field"> (Required Field)</span> : null}
+                <div>
+                  <textarea required className="textFormField" name="body" maxLength="1000" onChange={this.handleFormChanges} />
+                </div>
+              </div>
+              <div className="formField-container">
+                <span className="valid-field">Nickname*</span>
+                {!name && !nameVal ? <span className="invalid-field"> (Required Field)</span> : null}
+                <div>
+                  <input required type="text" className="formField" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
+                </div>
                 For privacy reasons, do not use your full name or email address
-                <p>Email*</p>
-                <input required type="email" className="qna-question-email" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
-                <br />
+              </div>
+              <div className="formField-container">
+                <span className="valid-field">Email*</span>
+                {!email && !emailVal ? <span className="invalid-field"> (Required Field)</span> : null}
+                <div>
+                  <input required type="email" className="formField" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
+                </div>
                 For authentication reasons, you will not be emailed
               </div>
             </div>
