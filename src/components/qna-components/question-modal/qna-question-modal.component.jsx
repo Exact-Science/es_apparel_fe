@@ -26,8 +26,6 @@ class QuestionModal extends React.Component {
   }
 
   addQuestion = (e) => {
-    e.preventDefault();
-    e.persist();
     const {
       body,
       name,
@@ -37,7 +35,9 @@ class QuestionModal extends React.Component {
       emailVal,
     } = this.state;
 
-    if (body && name && email) {
+    if (body && name && email && email.includes('@')) {
+      e.preventDefault();
+      e.persist();
       const { id, showAddQuestionModal, addNewQuestions } = this.props;
       const form = document.querySelector('.qna-new-question-form');
       const formData = new FormData(form);
@@ -55,8 +55,10 @@ class QuestionModal extends React.Component {
         body: JSON.stringify(data),
       })
         .then(() => showAddQuestionModal(e))
-        .then(() => addNewQuestions(id));
-    } else {
+        .then(() => addNewQuestions(id))
+        .then(() => true);
+    }
+    else {
       if (body && !bodyVal) {
         this.setState({ bodyVal: true });
       } else if (!body && bodyVal) {
@@ -68,10 +70,13 @@ class QuestionModal extends React.Component {
         this.setState({ nameVal: false });
       }
       if (email && !emailVal) {
-        this.setState({ emailVal: true });
+        if (!email.includes('@')) {
+          this.setState({ emailVal: true });
+        }
       } else if (!email && emailVal) {
         this.setState({ emailVal: false });
       }
+      return false;
     }
   }
 
@@ -85,7 +90,7 @@ class QuestionModal extends React.Component {
     return (
       <div className="qna-question-modal">
         <div className="qna-question-modal-content">
-          <form className="qna-new-question-form" name="questionForm" onSubmit={() => false}>
+          <form className="qna-new-question-form" name="questionForm" onSubmit={() => this.addQuestion}>
             <h2 className="title">
               Ask your question
             </h2>
