@@ -14,7 +14,7 @@ class AnswerUtility extends React.Component {
   }
 
   componentDidMount() {
-    const { answerHelpfulness } = this.props;
+    const { answerHelpfulness, answererName } = this.props;
     this.setState({ answerHelpfulness });
   }
 
@@ -52,8 +52,11 @@ class AnswerUtility extends React.Component {
         <div className="qna-answer-userName">
           by
           <span> </span>
-          {answererName}
-          <span>, </span>
+          <span>
+            {answererName.toLowerCase().includes('seller') ? answererName.substring(0, answererName.length - 6) : answererName}
+            <span className="seller">{answererName.toLowerCase().includes('seller') ? 'Seller' : null}</span>
+            <span>, </span>
+          </span>
           {Moment(answerDate).format('MMM Do YYYY')}
         </div>
         <div className="qna-answer-utility-divider" />

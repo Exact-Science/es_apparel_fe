@@ -28,7 +28,7 @@ class List extends React.Component {
     const { list } = this.state;
     this.setState({
       count: list.length,
-      filteredList: list,
+      filteredList: list, 
     });
   }
 

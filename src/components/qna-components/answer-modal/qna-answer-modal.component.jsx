@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
