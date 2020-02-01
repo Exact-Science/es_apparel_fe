@@ -19,7 +19,16 @@ class List extends React.Component {
   componentDidMount() {
     const { questionAnswers } = this.props;
     const { count } = this.state;
-    const list = Object.entries(questionAnswers).map((answer) => answer[1]);
+    let list = Object.entries(questionAnswers).map((answer) => answer[1]);
+    let sortedList = [];
+    for (let i = 0; i < list.length; i += 1) {
+      if (list[i].answerer_name.toLowerCase().includes('seller')) {
+        sortedList.push(list[i]);
+        list.splice(i, 1);
+        i = i - 1;
+      }
+    }
+    list = sortedList.concat(list);
     this.setState({ list, filteredList: list.slice(0, count) });
   }
 
@@ -28,7 +37,7 @@ class List extends React.Component {
     const { list } = this.state;
     this.setState({
       count: list.length,
-      filteredList: list, 
+      filteredList: list,
     });
   }
 
@@ -39,7 +48,8 @@ class List extends React.Component {
   }
 
   showAddedAnswer = (id) => {
-    fetch(`http://3.134.102.30/qa/${id}/answers`)
+    const sortedList = [];
+    fetch(`http://3.134.102.30/qa/${id}/answers?count=1000`)
       .then((results) => results.json())
       .then((answersList) => {
         let newList = answersList.results;
@@ -48,7 +58,18 @@ class List extends React.Component {
           answer.photos = answer.photos.map((photo) => photo.url);
           return answer;
         });
-        this.setState({ list: newList, filteredList: newList.slice(0, 2) });
+        for (let i = 0; i < newList.length; i += 1) {
+          if (newList[i].answerer_name.toLowerCase().includes('seller')) {
+            sortedList.push(newList[i]);
+            newList.splice(i, 1);
+            i = i - 1;
+          }
+        }
+        newList = sortedList.concat(newList);
+        return newList;
+      })
+      .then((list) => {
+        this.setState({ list, filteredList: list.slice(0, 2) });
       });
   }
 
