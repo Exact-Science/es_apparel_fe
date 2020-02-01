@@ -8,7 +8,9 @@ class AnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      body: '',
       name: '',
+      email: '',
     };
   }
 
@@ -21,32 +23,38 @@ class AnswerModal extends React.Component {
 
   addAnswer = (e) => {
     e.persist();
-    e.preventDefault();
-    const { questionId, showAddedAnswer, showAddAnswerModal } = this.props;
-    const form = document.querySelector('.qna-new-answer-form');
-    const formData = new FormData(form);
-    const data = {};
-    const imageUrls = [];
+    const { body, name, email } = this.state;
+    if (body && name && email) {
+      const { questionId, showAddedAnswer, showAddAnswerModal } = this.props;
+      const form = document.querySelector('.qna-new-answer-form');
+      const formData = new FormData(form);
+      const data = {};
+      const imageUrls = [];
 
-    for (const pair of formData.entries()) {
-      if (pair[0].substr(0, 3) === 'url' && pair[1]) {
-        imageUrls.push(pair[1]);
-      } else if (pair[0].substr(0, 3) !== 'url') {
-        data[pair[0]] = pair[1];
+      for (const pair of formData.entries()) {
+        if (pair[0].substr(0, 3) === 'url' && pair[1]) {
+          imageUrls.push(pair[1]);
+        } else if (pair[0].substr(0, 3) !== 'url') {
+          data[pair[0]] = pair[1];
+        }
       }
+
+      data.photos = imageUrls;
+
+      fetch(`http://3.134.102.30/qa/${questionId}/answers`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(() => showAddedAnswer(questionId))
+        .then(() => showAddAnswerModal(e));
     }
+  }
 
-    data.photos = imageUrls;
-
-    fetch(`http://3.134.102.30/qa/${questionId}/answers`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(() => showAddedAnswer(questionId))
-      .then(() => showAddAnswerModal(e));
+  handleFormChanges = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
