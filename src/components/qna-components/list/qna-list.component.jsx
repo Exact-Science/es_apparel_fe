@@ -25,11 +25,11 @@ class List extends React.Component {
 
   addMoreAnswers = (e) => {
     e.preventDefault();
-    const { resetCount } = this.state;
-    this.setState((previousState) => ({
-      count: previousState.count + 2,
-      filteredList: previousState.list.slice(0, previousState.count + resetCount),
-    }));
+    const { list } = this.state;
+    this.setState({
+      count: list.length,
+      filteredList: list,
+    });
   }
 
   resetAnswers = (e) => {
@@ -79,7 +79,7 @@ class List extends React.Component {
         />
         <div className="qna-answer-container">
           <div className="answer-identifier">A: </div>
-          <div>
+          <div className="qna-question-answers">
             {filteredList.map(
               (answer) => (
                 <Answer

@@ -24,8 +24,16 @@
   padding: 0px 0px 20px
 }
 
+.qna-question-answers {
+  display: flex 0 1 0;
+  max-height: 33vh;
+  width: 100%;
+  overflow: auto;
+}
+
 .answer-identifier {
   display: flex;
   font-weight: bold;
   padding-right: 15px;
 }
+

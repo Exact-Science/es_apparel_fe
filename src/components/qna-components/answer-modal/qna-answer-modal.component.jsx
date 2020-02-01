@@ -23,6 +23,7 @@ class AnswerModal extends React.Component {
 
   addAnswer = (e) => {
     e.persist();
+    e.preventDefault();
     const { body, name, email } = this.state;
     if (body && name && email) {
       const { questionId, showAddedAnswer, showAddAnswerModal } = this.props;
