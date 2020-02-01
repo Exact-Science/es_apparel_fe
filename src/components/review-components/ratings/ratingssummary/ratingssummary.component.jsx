@@ -22,7 +22,11 @@ const RatingsSummary = ({
       </h5>
     </div>
     <div className="ratingschart-container">
-      <RatingsCharts getFilterValue={getFilterValue} ratings={ratings} totalReviews={totalReviews} />
+      <RatingsCharts
+        getFilterValue={getFilterValue}
+        ratings={ratings}
+        totalReviews={totalReviews}
+      />
     </div>
   </div>
 );
@@ -31,6 +35,7 @@ export default RatingsSummary;
 
 RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
+  ratings: propTypes.shape({}).isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
   totalReviews: propTypes.number.isRequired,

@@ -23,8 +23,8 @@ const ReviewList = ({
     <div className="reviewListContainer">
       {reviews.map((review) => {
         if (
-          parseInt(filteredReviewsValue, 0) === 0 ||
-          parseInt(filteredReviewsValue, 0) === review.rating
+          parseInt(filteredReviewsValue, 0) === 0
+          || parseInt(filteredReviewsValue, 0) === review.rating
         ) {
           return (
             <ListItem

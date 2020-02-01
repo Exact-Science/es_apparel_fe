@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';

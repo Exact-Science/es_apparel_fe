@@ -22,6 +22,7 @@ export default Ratings;
 
 Ratings.propTypes = {
   rating: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
+  ratings: propTypes.shape({}).isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
   totalReviews: propTypes.number.isRequired,

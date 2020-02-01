@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import propTypes from 'prop-types';
 import RatingsChartItem from './ratingschartitem/ratingschartitem.component';
@@ -24,5 +25,6 @@ export default RatingsCharts;
 
 RatingsCharts.propTypes = {
   getFilterValue: propTypes.func.isRequired,
+  ratings: propTypes.shape({}).isRequired,
   totalReviews: propTypes.number.isRequired,
 };
