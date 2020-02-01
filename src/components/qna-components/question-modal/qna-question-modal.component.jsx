@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
@@ -57,8 +58,7 @@ class QuestionModal extends React.Component {
         .then(() => showAddQuestionModal(e))
         .then(() => addNewQuestions(id))
         .then(() => true);
-    }
-    else {
+    } else {
       if (body && !bodyVal) {
         this.setState({ bodyVal: true });
       } else if (!body && bodyVal) {
@@ -85,7 +85,15 @@ class QuestionModal extends React.Component {
   }
 
   render() {
-    const { productName, name, body, email, bodyVal, nameVal, emailVal } = this.state;
+    const {
+      productName,
+      name,
+      body,
+      email,
+      bodyVal,
+      nameVal,
+      emailVal,
+    } = this.state;
     const { showAddQuestionModal } = this.props;
     return (
       <div className="qna-question-modal">
