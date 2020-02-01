@@ -21,7 +21,8 @@ const Ratings = ({
 export default Ratings;
 
 Ratings.propTypes = {
-  rating: propTypes.number.isRequired,
+  rating: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
+  totalReviews: propTypes.number.isRequired,
 };

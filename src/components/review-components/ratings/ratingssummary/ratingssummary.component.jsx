@@ -33,5 +33,5 @@ RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
-  ratings: propTypes.arrayOf(propTypes.object).isRequired,
+  totalReviews: propTypes.number.isRequired,
 };

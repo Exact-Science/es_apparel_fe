@@ -1,9 +1,13 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { lighten, withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import './ratingschartitem-styles.scss';
 
-const RatingsChartItem = ({ getFilterValue, value, totalReviews, ratingVal }) => {
+const RatingsChartItem = ({
+  getFilterValue, value, totalReviews, ratingVal,
+}) => {
   const BorderLinearProgress = withStyles({
     root: {
       height: 10,
@@ -26,15 +30,16 @@ const RatingsChartItem = ({ getFilterValue, value, totalReviews, ratingVal }) =>
             value={ratingVal}
           >
             {ratingVal}
-            {" "}
+            {' '}
             stars
           </button>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={9}>
           <BorderLinearProgress
             variant="determinate"
             color="secondary"
-            value={(value / totalReviews) * 200}
+            value={(value / totalReviews) * 100}
+            valueBuffer={100}
           />
         </Grid>
       </Grid>
@@ -44,3 +49,10 @@ const RatingsChartItem = ({ getFilterValue, value, totalReviews, ratingVal }) =>
 
 
 export default RatingsChartItem;
+
+RatingsChartItem.propTypes = {
+  getFilterValue: propTypes.func.isRequired,
+  value: propTypes.number.isRequired,
+  totalReviews: propTypes.number.isRequired,
+  ratingVal: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
+};
