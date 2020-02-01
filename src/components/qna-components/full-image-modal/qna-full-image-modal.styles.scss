@@ -1,7 +1,7 @@
 .qna-full-image-modal-container {
   display: flex;
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -14,6 +14,7 @@
 }
 
 .qna-size-reducer {
+  position: relative;
   display: flex;
   margin: auto;
   pointer-events: none;
@@ -22,11 +23,12 @@
 
 .qna-full-image-modal-content {
   position: relative;
-  background-color: white;
-  margin: auto;
-  border: 1px solid black;
+  overflow: auto;
   width: 85%;
   height: 85vh;
+  margin: auto;
+  background-color: white;
+  border: 1px solid black;
   pointer-events: none;
   animation-name: zoomIn;
   animation-duration: 0.8s;
@@ -46,7 +48,7 @@
 }
 
 .fullImage {
-  // cursor: auto;
+  overflow: auto;
 }
 
 @keyframes zoomIn {

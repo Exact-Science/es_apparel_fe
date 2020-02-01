@@ -32,6 +32,12 @@ class List extends React.Component {
     }));
   }
 
+  resetAnswers = (e) => {
+    e.preventDefault();
+    const { list, resetCount } = this.state;
+    this.setState({ filteredList: list.slice(0, resetCount), count: resetCount });
+  }
+
   showAddedAnswer = (id) => {
     fetch(`http://3.134.102.30/qa/${id}/answers`)
       .then((results) => results.json())
@@ -54,7 +60,12 @@ class List extends React.Component {
       questionId,
       questionHelpfulness,
     } = this.props;
-    const { filteredList, count, list } = this.state;
+    const {
+      filteredList,
+      count,
+      resetCount,
+      list,
+    } = this.state;
 
     return (
       <div className="qna-list-container">
@@ -87,6 +98,7 @@ class List extends React.Component {
         </div>
         <div className="qna-add-more-answers">
           { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
+          { count > resetCount ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
         </div>
       </div>
     );
