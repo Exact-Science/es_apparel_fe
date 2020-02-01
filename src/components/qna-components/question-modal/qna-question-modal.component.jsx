@@ -8,9 +8,12 @@ class QuestionModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      body: '',
       name: '',
+      email: '',
     };
   }
+
 
   componentDidMount() {
     const { id } = this.props;
@@ -21,25 +24,31 @@ class QuestionModal extends React.Component {
 
   addQuestion = (e) => {
     e.persist();
-    e.preventDefault();
-    const { id, showAddQuestionModal, addNewQuestions } = this.props;
-    const form = document.querySelector('.qna-new-question-form');
-    const formData = new FormData(form);
-    const data = {};
+    const { body, name, email } = this.state;
+    if (body && name && email) {
+      const { id, showAddQuestionModal, addNewQuestions } = this.props;
+      const form = document.querySelector('.qna-new-question-form');
+      const formData = new FormData(form);
+      const data = {};
 
-    for (const pair of formData.entries()) {
-      data[pair[0]] = pair[1];
+      for (const pair of formData.entries()) {
+        data[pair[0]] = pair[1];
+      }
+
+      fetch(`http://3.134.102.30/qa/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(() => showAddQuestionModal(e))
+        .then(() => addNewQuestions(id));
     }
+  }
 
-    fetch(`http://3.134.102.30/qa/${id}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(() => showAddQuestionModal(e))
-      .then(() => addNewQuestions(id));
+  handleFormChanges = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -53,7 +62,8 @@ class QuestionModal extends React.Component {
               Ask your question
             </div>
             <div className="productTitle">
-              About the {name}
+              <span>About the </span>
+              {name}
               <div>
                 <p>Your question*</p>
                 <textarea required className="qna-question-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
