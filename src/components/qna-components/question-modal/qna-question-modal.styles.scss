@@ -8,14 +8,15 @@
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.8);
 }
 .qna-question-modal-content {
   background-color: white;
   margin: auto;
-  padding: 20px;
-  border: 1px solid white;
-  width: 80%;
+  padding: 30px;
+  border: 1px solid black;
+  width: 50%;
+  border-radius: 20px;
 }
 
 .qna-question-modal {
@@ -32,29 +33,49 @@
 }
 
 .qna-question-button-container {
-  padding: 15px 0px 0px;
+  padding: 50px 0px 0px;
 }
 
-.qna-question-title {
+.title {
   font-weight: bold;
+  margin: 0px;
 }
 
-.qna-question-modal-cancel-button {
+.subTitle {
+  font-weight: bold;
+  margin: 0px 0px 15px;
+}
+
+.qna-main-button {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.qna-question-modal-submit-button {
+.qna-main-button {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.qna-question-body {
+.textFormField {
   width: 400px;
   height: 100px;
   font-size: 16px;
 }
 
-.qna-question-url {
+.formField-container {
+  margin: 35px 0px 0px;
+}
+
+.formField {
   margin: 5px 0px 0px;
+}
+
+.valid-field {
+  margin: 20px 0px 0px;
+  color: black;
+}
+
+.invalid-field {
+  margin: 20px 0px 0px;
+  color: red;
 }

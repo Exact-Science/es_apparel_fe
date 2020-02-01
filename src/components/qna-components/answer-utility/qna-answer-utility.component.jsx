@@ -9,6 +9,7 @@ class AnswerUtility extends React.Component {
     this.state = {
       answerHelpfulness: 0,
       answerHelpfulClicked: false,
+      reported: false,
     };
   }
 
@@ -18,8 +19,8 @@ class AnswerUtility extends React.Component {
   }
 
   updateHelpful = (e) => {
-    const { answerId } = this.props;
     e.preventDefault();
+    const { answerId } = this.props;
     this.setState((previousState) => ({
       answerHelpfulness: previousState.answerHelpfulness + 1,
     }),
@@ -32,11 +33,19 @@ class AnswerUtility extends React.Component {
     });
   }
 
+  setReported = (e) => {
+    e.preventDefault();
+    const { answerId } = this.props;
+    const { reported } = this.state;
+    if (!reported) {
+      this.setState({ reported: !reported }, () => (
+        fetch(`http://3.134.102.30/qa/answer/${answerId}/report`, { method: 'PUT' })));
+    }
+  }
+
   render() {
-    const { answerHelpfulness } = this.state;
-    const { answerHelpfulClicked } = this.state;
-    const { answererName } = this.props;
-    const { answerDate } = this.props;
+    const { answerHelpfulness, answerHelpfulClicked, reported } = this.state;
+    const { answererName, answerDate } = this.props;
 
     return (
       <div className="qna-answer-utility-container">
@@ -51,7 +60,7 @@ class AnswerUtility extends React.Component {
         <div className="qna-answer-helpfulness">
           <span>Helpful? </span>
           <button
-            className={answerHelpfulClicked ? 'helpfulButtonOff' : 'helpfulButtonOn'}
+            className={answerHelpfulClicked ? 'buttonOff' : 'buttonOn'}
             type="submit"
             onClick={(e) => this.updateHelpful(e)}
           >
@@ -64,7 +73,7 @@ class AnswerUtility extends React.Component {
           </span>
         </div>
         <div className="qna-answer-utility-divider" />
-        <button className="textButton">Report</button>
+        <button className={reported ? 'buttonOff' : 'buttonOn'} type="submit" onClick={(e) => this.setReported(e)}>{ !reported ? 'Report' : 'Reported'}</button>
       </div>
     );
   }

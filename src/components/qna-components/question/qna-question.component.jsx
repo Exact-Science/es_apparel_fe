@@ -17,6 +17,7 @@ class Question extends React.Component {
       questionId,
       questionBody,
       questionHelpfulness,
+      showAddedAnswer,
     } = this.props;
     return (
       <div className="qna-question">
@@ -29,6 +30,7 @@ class Question extends React.Component {
               questionId={questionId}
               questionBody={questionBody}
               questionHelpfulness={questionHelpfulness}
+              showAddedAnswer={showAddedAnswer}
             />
           </div>
         </div>
@@ -43,6 +45,7 @@ Question.propTypes = {
   questionBody: propTypes.string.isRequired,
   questionHelpfulness: propTypes.number.isRequired,
   questionAnswers: propTypes.shape({}).isRequired,
+  showAddedAnswer: propTypes.func.isRequired,
 };
 
 export default Question;

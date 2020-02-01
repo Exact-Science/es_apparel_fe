@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import './qna-list.styles.scss';
 import propTypes from 'prop-types';
@@ -8,6 +9,7 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      resetCount: 2,
       count: 2,
       list: [],
       filteredList: [],
@@ -23,10 +25,31 @@ class List extends React.Component {
 
   addMoreAnswers = (e) => {
     e.preventDefault();
-    this.setState((previousState) => ({
-      count: previousState.count + 2,
-      filteredList: previousState.list.slice(0, previousState.count + 2),
-    }));
+    const { list } = this.state;
+    this.setState({
+      count: list.length,
+      filteredList: list,
+    });
+  }
+
+  resetAnswers = (e) => {
+    e.preventDefault();
+    const { list, resetCount } = this.state;
+    this.setState({ filteredList: list.slice(0, resetCount), count: resetCount });
+  }
+
+  showAddedAnswer = (id) => {
+    fetch(`http://3.134.102.30/qa/${id}/answers`)
+      .then((results) => results.json())
+      .then((answersList) => {
+        let newList = answersList.results;
+        newList = newList.map((answer) => {
+          answer.id = answer.answer_id;
+          answer.photos = answer.photos.map((photo) => photo.url);
+          return answer;
+        });
+        this.setState({ list: newList, filteredList: newList.slice(0, 2) });
+      });
   }
 
   render() {
@@ -37,7 +60,12 @@ class List extends React.Component {
       questionId,
       questionHelpfulness,
     } = this.props;
-    const { filteredList, count, list } = this.state;
+    const {
+      filteredList,
+      count,
+      resetCount,
+      list,
+    } = this.state;
 
     return (
       <div className="qna-list-container">
@@ -47,10 +75,11 @@ class List extends React.Component {
           questionBody={questionBody}
           questionHelpfulness={questionHelpfulness}
           questionAnswers={questionAnswers}
+          showAddedAnswer={this.showAddedAnswer}
         />
         <div className="qna-answer-container">
           <div className="answer-identifier">A: </div>
-          <div>
+          <div className="qna-question-answers">
             {filteredList.map(
               (answer) => (
                 <Answer
@@ -69,6 +98,7 @@ class List extends React.Component {
         </div>
         <div className="qna-add-more-answers">
           { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
+          { count > resetCount ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
         </div>
       </div>
     );
