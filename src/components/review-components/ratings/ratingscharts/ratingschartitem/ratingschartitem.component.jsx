@@ -1,5 +1,4 @@
 import React from 'react';
-import propTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { lighten, withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -26,19 +25,22 @@ const RatingsChartItem = ({ getFilterValue, value, totalReviews, ratingVal }) =>
             onClick={getFilterValue}
             value={ratingVal}
           >
-            {ratingVal} stars
+            {ratingVal}
+            {" "}
+            stars
           </button>
         </Grid>
         <Grid item xs={8}>
           <BorderLinearProgress
             variant="determinate"
             color="secondary"
-            value={value / totalReviews * 200}
+            value={(value / totalReviews) * 200}
           />
         </Grid>
       </Grid>
     </div>
   );
-}
+};
+
 
 export default RatingsChartItem;

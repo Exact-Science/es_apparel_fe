@@ -45,6 +45,7 @@ class Reviews extends React.Component {
     try {
       const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
       const results = await data.json();
+
       this.setState({ ratings: results }, () => {
         this.getPercentage();
         this.getOverallRating();
@@ -95,7 +96,8 @@ class Reviews extends React.Component {
 
   render() {
     const {
-      reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue, totalReviews,
+      reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
+      totalReviews,
     } = this.state;
     const { id } = this.props;
     return (

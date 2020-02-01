@@ -4,7 +4,9 @@ import propTypes from 'prop-types';
 import RatingsSummary from './ratingssummary/ratingssummary.component';
 import './ratings-styles.scss';
 
-const Ratings = ({ rating, recommended, getFilterValue, ratings, totalReviews }) => (
+const Ratings = ({
+  rating, recommended, getFilterValue, ratings, totalReviews,
+}) => (
   <div className="ratingsContainer">
     <RatingsSummary
       rating={parseFloat(rating)}
@@ -19,7 +21,7 @@ const Ratings = ({ rating, recommended, getFilterValue, ratings, totalReviews })
 export default Ratings;
 
 Ratings.propTypes = {
-  rating: propTypes.string.isRequired,
+  rating: propTypes.number.isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
 };

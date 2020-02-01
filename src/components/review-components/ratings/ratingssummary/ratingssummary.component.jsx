@@ -5,7 +5,9 @@ import RatingsCharts from '../ratingscharts/ratingscharts.component';
 import './ratingssummary-styles.scss';
 
 
-const RatingsSummary = ({ rating, ratings, recommended, getFilterValue, totalReviews }) => (
+const RatingsSummary = ({
+  rating, ratings, recommended, getFilterValue, totalReviews,
+}) => (
   <div className="ratingOverview">
     <div>
       <h1>

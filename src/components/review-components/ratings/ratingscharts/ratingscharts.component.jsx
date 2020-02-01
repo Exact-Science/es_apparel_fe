@@ -26,6 +26,5 @@ export default RatingsCharts;
 
 RatingsCharts.propTypes = {
   getFilterValue: propTypes.func.isRequired,
-  ratings: propTypes.arrayOf(propTypes.object).isRequired,
   totalReviews: propTypes.number.isRequired,
 };
