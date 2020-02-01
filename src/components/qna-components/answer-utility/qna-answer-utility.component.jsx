@@ -19,8 +19,8 @@ class AnswerUtility extends React.Component {
   }
 
   updateHelpful = (e) => {
-    const { answerId } = this.props;
     e.preventDefault();
+    const { answerId } = this.props;
     this.setState((previousState) => ({
       answerHelpfulness: previousState.answerHelpfulness + 1,
     }),
@@ -35,9 +35,11 @@ class AnswerUtility extends React.Component {
 
   setReported = (e) => {
     e.preventDefault();
+    const { answerId } = this.props;
     const { reported } = this.state;
     if (!reported) {
-      this.setState({ reported: !reported });
+      this.setState({ reported: !reported }, () => (
+        fetch(`http://3.134.102.30/qa/answer/${answerId}/report`, { method: 'PUT' })));
     }
   }
 
