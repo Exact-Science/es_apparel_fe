@@ -56,9 +56,9 @@ class QuestionModal extends React.Component {
               About the {name}
               <div>
                 <p>Your question*</p>
-                <textarea className="qna-question-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
+                <textarea required className="qna-question-body" name="body" maxLength="1000" onChange={this.handleFormChanges} />
                 <p>Nickname*</p>
-                <input type="text" className="qna-question-email" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
+                <input required type="text" className="qna-question-email" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
                 <br />
                 For privacy reasons, do not use your full name or email address
                 <p>Email*</p>
