@@ -12,11 +12,12 @@ class Reviews extends React.Component {
     this.state = {
       reviews: [],
       filteredReviews: [],
-      filteredReviewsValue: 0,
-      sort: 'newest',
-      count: 2,
-      show: false,
       ratings: {},
+      count: 2,
+      filteredReviewsValue: 0,
+      totalReviews: 0,
+      sort: 'newest',
+      show: false,
       rating: 3.2,
       recommended: 92,
     };
@@ -59,7 +60,7 @@ class Reviews extends React.Component {
     const entries = Object.entries(ratings);
     const totalValue = entries.map((el) => el[0] * el[1]).reduce((a, b) => a + b);
     const overallRating = (totalValue / totalReviews).toFixed(1);
-    this.setState({ rating: overallRating });
+    this.setState({ rating: overallRating, totalReviews });
   }
 
   getPercentage = () => {
@@ -94,7 +95,7 @@ class Reviews extends React.Component {
 
   render() {
     const {
-      reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
+      reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue, totalReviews,
     } = this.state;
     const { id } = this.props;
     return (
@@ -106,6 +107,7 @@ class Reviews extends React.Component {
             rating={rating}
             recommended={recommended}
             getFilterValue={this.getFilterValue}
+            totalReviews={totalReviews}
           />
           <ReviewList
             totalReviews={reviews.length}

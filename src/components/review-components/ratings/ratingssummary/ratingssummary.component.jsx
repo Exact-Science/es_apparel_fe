@@ -2,11 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import RatingsCharts from '../ratingscharts/ratingscharts.component';
-import Characteristics from '../characteristics/characteristics.component';
 import './ratingssummary-styles.scss';
 
 
-const RatingsSummary = ({ rating, recommended, getFilterValue }) => (
+const RatingsSummary = ({ rating, ratings, recommended, getFilterValue, totalReviews }) => (
   <div className="ratingOverview">
     <div>
       <h1>
@@ -21,10 +20,7 @@ const RatingsSummary = ({ rating, recommended, getFilterValue }) => (
       </h5>
     </div>
     <div className="ratingschart-container">
-      <RatingsCharts getFilterValue={getFilterValue} />
-    </div>
-    <div className="characteristics-container">
-      <Characteristics />
+      <RatingsCharts getFilterValue={getFilterValue} ratings={ratings} totalReviews={totalReviews} />
     </div>
   </div>
 );
@@ -35,4 +31,5 @@ RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
+  ratings: propTypes.arrayOf(propTypes.object).isRequired,
 };
