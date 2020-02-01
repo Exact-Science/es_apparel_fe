@@ -1,7 +1,7 @@
 .qna-answer-modal {
   position: fixed;
   z-index: 100;
-  padding-top: 100px;
+  padding: 15px;
   left: 0;
   top: 0;
   width: 100%;
@@ -14,15 +14,12 @@
 .qna-answer-modal-content {
   background-color: white;
   margin: auto;
-  padding: 30px;
+  padding: 20px;
   border: 1px solid white;
   width: 60%;
   border-radius: 20px;
 }
 
-.qna-answer-modal {
-  padding: 40px
-}
 
 .qna-answer-modal-content p {
   margin: 25px 0px 5px;
