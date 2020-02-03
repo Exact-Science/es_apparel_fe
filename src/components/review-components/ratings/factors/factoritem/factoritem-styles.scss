@@ -1,0 +1,33 @@
+.chars-chart {
+  background-color: #a5a5a5;
+  opacity: .5;
+  width: 100%;
+}
+
+#triangle-down {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid black;
+}
+
+.factor-heading {
+  font-size: 11px;
+  margin-top: 9px;
+  margin-bottom: 2px;
+}
+
+.factor-descriptors {
+  justify-content: space-between;
+}
+
+#right {
+  text-align: right;
+}
+
+#middle {
+  text-align: center;
+}

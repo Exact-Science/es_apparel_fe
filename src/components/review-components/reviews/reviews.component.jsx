@@ -14,6 +14,8 @@ class Reviews extends React.Component {
       reviews: [],
       filteredReviews: [],
       ratings: {},
+      formattedRating: {},
+      factors: {},
       count: 2,
       filteredReviewsValue: 0,
       totalReviews: 0,
@@ -46,8 +48,14 @@ class Reviews extends React.Component {
     try {
       const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
       const results = await data.json();
+      const apiRes = results.ratings;
+      let defaultRatings = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
-      this.setState({ ratings: results }, () => {
+      Object.keys(defaultRatings).forEach((el) => {
+        if (apiRes[el]) defaultRatings[el] = apiRes[el];
+      });
+
+      this.setState({ ratings: results, formattedRating: defaultRatings, factors: results.characteristics }, () => {
         this.getPercentage();
         this.getOverallRating();
       });
@@ -98,7 +106,7 @@ class Reviews extends React.Component {
   render() {
     const {
       reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
-      totalReviews,
+      totalReviews, formattedRating, factors,
     } = this.state;
     const { id } = this.props;
     return (
@@ -108,6 +116,8 @@ class Reviews extends React.Component {
           <Ratings
             ratings={ratings}
             rating={rating}
+            factors={factors}
+            formattedRating={formattedRating}
             recommended={recommended}
             getFilterValue={this.getFilterValue}
             totalReviews={totalReviews}

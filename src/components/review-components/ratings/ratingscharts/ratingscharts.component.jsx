@@ -4,16 +4,18 @@ import propTypes from 'prop-types';
 import RatingsChartItem from './ratingschartitem/ratingschartitem.component';
 import './ratingscharts-styles.scss';
 
-const RatingsCharts = ({ getFilterValue, ratings, totalReviews }) => {
+const RatingsCharts = ({
+  getFilterValue, ratings, totalReviews, formattedRating,
+}) => {
   if (ratings.ratings) {
-    return Object.keys(ratings.ratings).map((el, index) => (
+    return Object.keys(formattedRating).map((el, index) => (
       <div key={index}>
         <RatingsChartItem
           getFilterValue={getFilterValue}
-          ratings={ratings.ratings}
+          formattedRating={formattedRating}
           totalReviews={totalReviews}
           ratingVal={el}
-          value={ratings.ratings[el]}
+          value={formattedRating[el]}
         />
       </div>
     ));
@@ -25,6 +27,6 @@ export default RatingsCharts;
 
 RatingsCharts.propTypes = {
   getFilterValue: propTypes.func.isRequired,
-  ratings: propTypes.shape({}).isRequired,
+  formattedRating: propTypes.shape({}).isRequired,
   totalReviews: propTypes.number.isRequired,
 };

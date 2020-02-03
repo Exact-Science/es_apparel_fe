@@ -14,7 +14,7 @@ const RatingsChartItem = ({
       backgroundColor: lighten('#a5a5a5', 0.5),
     },
     bar: {
-      borderRadius: 20,
+      borderRadius: 1,
       backgroundColor: '#a5a5a5',
     },
   })(LinearProgress);
@@ -29,18 +29,26 @@ const RatingsChartItem = ({
             onClick={getFilterValue}
             value={ratingVal}
           >
-            {ratingVal}
-            {' '}
-            stars
+            {ratingVal} stars
           </button>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={8}>
           <BorderLinearProgress
             variant="determinate"
             color="secondary"
             value={(value / totalReviews) * 100}
             valueBuffer={100}
           />
+        </Grid>
+        <Grid item xs={1}>
+          <button
+            className="chart-button"
+            type="button"
+            onClick={getFilterValue}
+            value={ratingVal}
+          >
+            {value}
+          </button>
         </Grid>
       </Grid>
     </div>
