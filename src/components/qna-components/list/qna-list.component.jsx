@@ -42,8 +42,9 @@ class List extends React.Component {
     e.preventDefault();
     const { list } = this.state;
     this.setState({
+      list,
       filteredList: list,
-      count: list.length,
+      count: list.length + 1,
     });
   }
 
@@ -116,7 +117,7 @@ class List extends React.Component {
         <div className="qna-answer-container">
           <div className="answer-identifier">A: </div>
           <div className="qna-question-answers">
-            {filteredList.map(
+            {count > resetCount ? list.map(
               (answer) => (
                 <Answer
                   answerId={answer.id}
@@ -129,7 +130,22 @@ class List extends React.Component {
                   key={`a${answer.id}`}
                 />
               ),
-            )}
+            )
+              : filteredList.map(
+                (answer) => (
+                  <Answer
+                    answerId={answer.id}
+                    answerBody={answer.body}
+                    answerDate={answer.date}
+                    answerHelpfulness={answer.helpfulness}
+                    answererName={answer.answerer_name}
+                    answerImages={answer.photos}
+                    addMoreAnswer={this.addMoreAnswers}
+                    key={`a${answer.id}`}
+                  />
+                ),
+              )
+          }
           </div>
         </div>
         <div className="qna-add-more-answers">
