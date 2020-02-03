@@ -27,6 +27,13 @@ class List extends React.Component {
         list.splice(i, 1);
         i = i - 1;
       }
+      sortedList.sort((a, b) => {
+        return (a.helpfulness < b.helpfulness) ? 1 : -1;
+      });
+      list.sort((a, b) => {
+        return (a.helpfulness < b.helpfulness) ? 1 : -1;
+      });
+
     }
     list = sortedList.concat(list);
     this.setState({ list, filteredList: list.slice(0, count) });
@@ -65,6 +72,15 @@ class List extends React.Component {
             i = i - 1;
           }
         }
+
+        sortedList.sort((a, b) => {
+          return (a.helpfulness < b.helpfulness) ? 1 : -1;
+        });
+
+        newList.sort((a, b) => {
+          return (a.helpfulness < b.helpfulness) ? 1 : -1;
+        });
+
         newList = sortedList.concat(newList);
         return newList;
       })
