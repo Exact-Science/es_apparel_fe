@@ -27,14 +27,13 @@ class List extends React.Component {
         list.splice(i, 1);
         i = i - 1;
       }
-      sortedList.sort((a, b) => {
-        return (a.helpfulness < b.helpfulness) ? 1 : -1;
-      });
-      list.sort((a, b) => {
-        return (a.helpfulness < b.helpfulness) ? 1 : -1;
-      });
-
     }
+    sortedList.sort((a, b) => {
+      return (a.helpfulness < b.helpfulness) ? 1 : -1;
+    });
+    list.sort((a, b) => {
+      return (a.helpfulness < b.helpfulness) ? 1 : -1;
+    });
     list = sortedList.concat(list);
     this.setState({ list, filteredList: list.slice(0, count) });
   }
@@ -43,8 +42,8 @@ class List extends React.Component {
     e.preventDefault();
     const { list } = this.state;
     this.setState({
-      count: list.length,
       filteredList: list,
+      count: list.length,
     });
   }
 
@@ -135,7 +134,7 @@ class List extends React.Component {
         </div>
         <div className="qna-add-more-answers">
           { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
-          { count > resetCount ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
+          { count > resetCount && count === list.length ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
         </div>
       </div>
     );
