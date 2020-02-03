@@ -1,4 +1,5 @@
-.rp-container {
-  margin: 40px auto;
-  max-width: 80vw;
+.rp-carousel-container{
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 0 auto;
 }
