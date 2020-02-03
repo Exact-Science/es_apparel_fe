@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 import React from 'react';
@@ -26,8 +27,6 @@ class AnswerModal extends React.Component {
   }
 
   addAnswer = (e) => {
-    e.persist();
-    e.preventDefault();
     const {
       body,
       name,
@@ -37,7 +36,9 @@ class AnswerModal extends React.Component {
       emailVal,
     } = this.state;
 
-    if (body && name && email) {
+    if (body && name && email && email.includes('@')) {
+      e.preventDefault();
+      e.persist();
       const { questionId, showAddedAnswer, showAddAnswerModal } = this.props;
       const form = document.querySelector('.qna-new-answer-form');
       const formData = new FormData(form);
@@ -62,23 +63,27 @@ class AnswerModal extends React.Component {
         body: JSON.stringify(data),
       })
         .then(() => showAddedAnswer(questionId))
-        .then(() => showAddAnswerModal(e));
+        .then(() => showAddAnswerModal(e))
+        .then(() => true);
     } else {
-        if (body && !bodyVal) {
-          this.setState({ bodyVal: true });
-        } else if (!body && bodyVal) {
-          this.setState({ bodyVal: false });
-        }
-        if (name && !nameVal) {
-          this.setState({ nameVal: true });
-        } else if (!name && nameVal) {
-          this.setState({ nameVal: false });
-        }
-        if (email && !emailVal) {
+      if (body && !bodyVal) {
+        this.setState({ bodyVal: true });
+      } else if (!body && bodyVal) {
+        this.setState({ bodyVal: false });
+      }
+      if (name && !nameVal) {
+        this.setState({ nameVal: true });
+      } else if (!name && nameVal) {
+        this.setState({ nameVal: false });
+      }
+      if (email && !emailVal) {
+        if (!email.includes('@')) {
           this.setState({ emailVal: true });
-        } else if (!email && emailVal) {
-          this.setState({ emailVal: false });
         }
+      } else if (!email && emailVal) {
+        this.setState({ emailVal: false });
+      }
+      return false;
     }
   }
 
@@ -92,7 +97,7 @@ class AnswerModal extends React.Component {
     return (
       <div className="qna-answer-modal">
         <div className="qna-answer-modal-content">
-          <form className="qna-new-answer-form" name="answerForm">
+          <form className="qna-new-answer-form" name="answerForm" onSubmit={() => this.addAnswer}>
             <h2 className="title">
              Submit your Answer
             </h2>

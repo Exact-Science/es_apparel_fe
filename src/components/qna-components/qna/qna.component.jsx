@@ -41,8 +41,8 @@ class QnA extends React.Component {
   addMoreQuestions = (e) => {
     e.preventDefault();
     this.setState((previousState) => ({
-      count: previousState.count + 2,
       filteredList: previousState.list.slice(0, previousState.count + 2),
+      count: previousState.count + 2,
     }));
   }
 

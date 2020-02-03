@@ -5,8 +5,9 @@
 
 .qna-body {
   max-height: 44vw;
+  padding: 0px 4px 0px;
   box-sizing: border-box;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-behavior : smooth;
 }
 

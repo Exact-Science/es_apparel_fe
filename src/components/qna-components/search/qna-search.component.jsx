@@ -1,6 +1,10 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
 import propTypes from 'prop-types';
 import './qna-search.styles.scss';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
 
 class Search extends React.Component {
   constructor(props) {
@@ -15,7 +19,21 @@ class Search extends React.Component {
     return (
       <div className="qna-search">
         <form>
-          <input className="qna-searchBox" type="text" name="searchTerm" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS...  " onChange={(e) => searchQuestions(e)} />
+          <TextField
+            className="qna-searchBox"
+            type="search"
+            name="searchTerm"
+            variant="outlined"
+            label="HAVE A QUESTION? SEARCH FOR ANSWERS... "
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            onChange={(e) => searchQuestions(e)}
+          />
         </form>
       </div>
     );

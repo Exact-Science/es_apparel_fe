@@ -19,7 +19,22 @@ class List extends React.Component {
   componentDidMount() {
     const { questionAnswers } = this.props;
     const { count } = this.state;
-    const list = Object.entries(questionAnswers).map((answer) => answer[1]);
+    let list = Object.entries(questionAnswers).map((answer) => answer[1]);
+    let sortedList = [];
+    for (let i = 0; i < list.length; i += 1) {
+      if (list[i].answerer_name.toLowerCase().includes('seller')) {
+        sortedList.push(list[i]);
+        list.splice(i, 1);
+        i = i - 1;
+      }
+    }
+    sortedList.sort((a, b) => {
+      return (a.helpfulness < b.helpfulness) ? 1 : -1;
+    });
+    list.sort((a, b) => {
+      return (a.helpfulness < b.helpfulness) ? 1 : -1;
+    });
+    list = sortedList.concat(list);
     this.setState({ list, filteredList: list.slice(0, count) });
   }
 
@@ -27,8 +42,9 @@ class List extends React.Component {
     e.preventDefault();
     const { list } = this.state;
     this.setState({
-      count: list.length,
+      list,
       filteredList: list,
+      count: list.length + 1,
     });
   }
 
@@ -39,7 +55,8 @@ class List extends React.Component {
   }
 
   showAddedAnswer = (id) => {
-    fetch(`http://3.134.102.30/qa/${id}/answers`)
+    const sortedList = [];
+    fetch(`http://3.134.102.30/qa/${id}/answers?count=1000`)
       .then((results) => results.json())
       .then((answersList) => {
         let newList = answersList.results;
@@ -48,7 +65,27 @@ class List extends React.Component {
           answer.photos = answer.photos.map((photo) => photo.url);
           return answer;
         });
-        this.setState({ list: newList, filteredList: newList.slice(0, 2) });
+        for (let i = 0; i < newList.length; i += 1) {
+          if (newList[i].answerer_name.toLowerCase().includes('seller')) {
+            sortedList.push(newList[i]);
+            newList.splice(i, 1);
+            i = i - 1;
+          }
+        }
+
+        sortedList.sort((a, b) => {
+          return (a.helpfulness < b.helpfulness) ? 1 : -1;
+        });
+
+        newList.sort((a, b) => {
+          return (a.helpfulness < b.helpfulness) ? 1 : -1;
+        });
+
+        newList = sortedList.concat(newList);
+        return newList;
+      })
+      .then((list) => {
+        this.setState({ list, filteredList: list.slice(0, 2) });
       });
   }
 
@@ -80,7 +117,7 @@ class List extends React.Component {
         <div className="qna-answer-container">
           <div className="answer-identifier">A: </div>
           <div className="qna-question-answers">
-            {filteredList.map(
+            {count > resetCount ? list.map(
               (answer) => (
                 <Answer
                   answerId={answer.id}
@@ -93,12 +130,27 @@ class List extends React.Component {
                   key={`a${answer.id}`}
                 />
               ),
-            )}
+            )
+              : filteredList.map(
+                (answer) => (
+                  <Answer
+                    answerId={answer.id}
+                    answerBody={answer.body}
+                    answerDate={answer.date}
+                    answerHelpfulness={answer.helpfulness}
+                    answererName={answer.answerer_name}
+                    answerImages={answer.photos}
+                    addMoreAnswer={this.addMoreAnswers}
+                    key={`a${answer.id}`}
+                  />
+                ),
+              )
+          }
           </div>
         </div>
         <div className="qna-add-more-answers">
           { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
-          { count > resetCount ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
+          { count > resetCount && count >= list.length ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
         </div>
       </div>
     );
