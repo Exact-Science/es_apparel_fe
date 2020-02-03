@@ -15,6 +15,7 @@ class Reviews extends React.Component {
       filteredReviews: [],
       ratings: {},
       formattedRating: {},
+      factors: {},
       count: 2,
       filteredReviewsValue: 0,
       totalReviews: 0,
@@ -54,7 +55,7 @@ class Reviews extends React.Component {
         if (apiRes[el]) defaultRatings[el] = apiRes[el];
       });
 
-      this.setState({ ratings: results, formattedRating: defaultRatings }, () => {
+      this.setState({ ratings: results, formattedRating: defaultRatings, factors: results.characteristics }, () => {
         this.getPercentage();
         this.getOverallRating();
       });
@@ -105,7 +106,7 @@ class Reviews extends React.Component {
   render() {
     const {
       reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
-      totalReviews, formattedRating,
+      totalReviews, formattedRating, factors,
     } = this.state;
     const { id } = this.props;
     return (
@@ -115,6 +116,7 @@ class Reviews extends React.Component {
           <Ratings
             ratings={ratings}
             rating={rating}
+            factors={factors}
             formattedRating={formattedRating}
             recommended={recommended}
             getFilterValue={this.getFilterValue}

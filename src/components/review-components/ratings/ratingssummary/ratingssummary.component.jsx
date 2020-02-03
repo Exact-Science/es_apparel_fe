@@ -8,7 +8,7 @@ import './ratingssummary-styles.scss';
 const RatingsSummary = ({
   rating, ratings, recommended, getFilterValue, totalReviews, formattedRating,
 }) => (
-  <div className="ratingOverview">
+  <div className="rating-overview">
     <div>
       <h1>
         {rating}

@@ -36,7 +36,7 @@ const RatingsChartItem = ({
           <BorderLinearProgress
             variant="determinate"
             color="secondary"
-            value={(value / totalReviews) * 200}
+            value={(value / totalReviews) * 100}
             valueBuffer={100}
           />
         </Grid>
