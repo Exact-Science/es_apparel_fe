@@ -4,27 +4,27 @@ import Grid from '@material-ui/core/Grid';
 import breakdown from './factorbreakdown';
 import './factoritem-styles.scss';
 
-const FactorItem = () => {
+const FactorItem = ({ name, value }) => {
   return (
     <div className="factor-item">
       <Grid container>
         <Grid item xs={12}>
-          Size
+          {name}
         </Grid>
         <Grid item xs={12}>
           <div className="chars-chart">
-            <span id="triangle-down"></span>
+            <div id="triangle-down"></div>
           </div>
         </Grid>
         <Grid container className="factor-descriptors">
           <Grid item xs={4} id="left">
-            {breakdown.Size[1]}
+            {breakdown[name][1]}
           </Grid>
           <Grid item xs={4} id="middle">
-            {breakdown.Size[3]}
+            {breakdown[name][3]}
           </Grid>
           <Grid item xs={4} id="right">
-            {breakdown.Size[5]}
+            {breakdown[name][5]}
           </Grid>
         </Grid>
       </Grid>

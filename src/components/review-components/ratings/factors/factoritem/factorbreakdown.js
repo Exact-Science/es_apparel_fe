@@ -1,8 +1,8 @@
 const breakdown = {
-  Size: {
+  Fit: {
     1: 'Too small',
     3: 'Perfect',
-    5: 'Too big',
+    5: 'Too large',
   },
   Width: {
     1: 'Too narrow',

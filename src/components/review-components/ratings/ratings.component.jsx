@@ -21,7 +21,7 @@ const Ratings = ({
           totalReviews={totalReviews}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} className="factors-container">
         <Factors factors={factors} />
       </Grid>
     </Grid>
