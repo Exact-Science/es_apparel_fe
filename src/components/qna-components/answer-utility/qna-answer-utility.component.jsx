@@ -14,7 +14,7 @@ class AnswerUtility extends React.Component {
   }
 
   componentDidMount() {
-    const { answerHelpfulness, answererName } = this.props;
+    const { answerHelpfulness } = this.props;
     this.setState({ answerHelpfulness });
   }
 
