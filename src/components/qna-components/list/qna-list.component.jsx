@@ -150,7 +150,7 @@ class List extends React.Component {
         </div>
         <div className="qna-add-more-answers">
           { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
-          { count > resetCount && count === list.length ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
+          { count > resetCount && count >= list.length ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
         </div>
       </div>
     );
