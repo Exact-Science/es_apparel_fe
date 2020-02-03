@@ -4,6 +4,11 @@ const breakdown = {
     3: 'Perfect',
     5: 'Too large',
   },
+  Size: {
+    1: 'Too small',
+    3: 'Perfect',
+    5: 'Too large',
+  },
   Width: {
     1: 'Too narrow',
     3: 'Perfect',

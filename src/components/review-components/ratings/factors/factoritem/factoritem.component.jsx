@@ -1,5 +1,5 @@
 import React from 'react';
-// import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import breakdown from './factorbreakdown';
 import './factoritem-styles.scss';
@@ -9,11 +9,11 @@ const FactorItem = ({ name, value }) => {
     <div className="factor-item">
       <Grid container>
         <Grid item xs={12}>
-          {name}
+          <p className="factor-heading">{name}</p>
         </Grid>
         <Grid item xs={12}>
           <div className="chars-chart">
-            <div id="triangle-down"></div>
+            <div><span id="triangle-down" style={{ left: `${(value / 5) * 100}%` }} /></div>
           </div>
         </Grid>
         <Grid container className="factor-descriptors">
@@ -33,3 +33,8 @@ const FactorItem = ({ name, value }) => {
 };
 
 export default FactorItem;
+
+FactorItem.propTypes = {
+  name: propTypes.string.isRequired,
+  value: propTypes.string.isRequired,
+};
