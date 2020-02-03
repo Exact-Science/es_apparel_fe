@@ -6,7 +6,7 @@ import './ratingssummary-styles.scss';
 
 
 const RatingsSummary = ({
-  rating, ratings, recommended, getFilterValue, totalReviews,
+  rating, ratings, recommended, getFilterValue, totalReviews, formattedRating,
 }) => (
   <div className="ratingOverview">
     <div>
@@ -25,6 +25,7 @@ const RatingsSummary = ({
       <RatingsCharts
         getFilterValue={getFilterValue}
         ratings={ratings}
+        formattedRating={formattedRating}
         totalReviews={totalReviews}
       />
     </div>
@@ -36,6 +37,7 @@ export default RatingsSummary;
 RatingsSummary.propTypes = {
   rating: propTypes.number.isRequired,
   ratings: propTypes.shape({}).isRequired,
+  formattedRating: propTypes.shape({}).isRequired,
   recommended: propTypes.number.isRequired,
   getFilterValue: propTypes.func.isRequired,
   totalReviews: propTypes.number.isRequired,
