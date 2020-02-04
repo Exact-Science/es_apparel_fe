@@ -15,14 +15,14 @@ class Card extends React.Component {
     return (
       <div className="rp-card-container">
         Card
-        {relatedProduct}
+        {relatedProduct.category}
       </div>
     );
   }
 }
 
 Card.propTypes = {
-  relatedProduct: propTypes.number.isRequired,
+  relatedProduct: propTypes.shape({}).isRequired,
 };
 
 export default Card;
