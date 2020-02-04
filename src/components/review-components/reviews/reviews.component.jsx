@@ -20,7 +20,8 @@ class Reviews extends React.Component {
       filteredReviewsValue: 0,
       totalReviews: 0,
       sort: 'newest',
-      show: true,
+      show: false,
+      showFull: false,
       rating: 3.2,
       recommended: 92,
     };
@@ -54,8 +55,9 @@ class Reviews extends React.Component {
       Object.keys(defaultRatings).forEach((el) => {
         if (apiRes[el]) defaultRatings[el] = apiRes[el];
       });
-
-      this.setState({ ratings: results, formattedRating: defaultRatings, factors: results.characteristics }, () => {
+      this.setState({
+        ratings: results, formattedRating: defaultRatings, factors: results.characteristics,
+      }, () => {
         this.getPercentage();
         this.getOverallRating();
       });
@@ -98,6 +100,11 @@ class Reviews extends React.Component {
     this.setState({ count: count + 2, filteredReviewsValue: 0 });
   }
 
+  enlargeImage = () => {
+    const { showFull } = this.state;
+    this.setState({ showFull: !showFull });
+  }
+
   toggleModal = () => {
     const { show } = this.state;
     this.setState({ show: !show });
@@ -106,7 +113,7 @@ class Reviews extends React.Component {
   render() {
     const {
       reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
-      totalReviews, formattedRating, factors,
+      totalReviews, formattedRating, factors, showFull,
     } = this.state;
     const { id } = this.props;
     return (
@@ -130,6 +137,8 @@ class Reviews extends React.Component {
             handleChange={this.handleChange}
             loadMoreReviews={this.loadMoreReviews}
             toggleModal={this.toggleModal}
+            enlargeImage={this.enlargeImage}
+            showFull={showFull}
           />
         </div>
         <div>

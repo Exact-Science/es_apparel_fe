@@ -46,13 +46,13 @@ class ReviewModal extends React.Component {
   handleInputChange = (e) => {
     const { target } = e;
     const { value, name } = target;
-    this.setState({ form: { [name]: value } });
+    const { form } = this.state;
+    this.setState({ form: { [name]: value } }, () => console.log(form));
   };
 
   render() {
-    const {
-      form: { overall, summary, body, nickname, email }, productName,
-    } = this.state;
+    const { overall, summary, body, nickname, email } = this.state.form;
+    const { productName } = this.state;
     const { show, toggleModal } = this.props;
     if (show) {
       return (
@@ -149,15 +149,6 @@ class ReviewModal extends React.Component {
                       onChange={this.handleInputChange}
                     />
                     For authentication reasons, you will not be emailed.
-                  </label>
-                </div>
-                <div className="form-input">
-                  <label htmlFor="size">
-                    <input
-                      type="radio"
-                      name="size"
-                      value={1}
-                    />
                   </label>
                 </div>
               </form>
