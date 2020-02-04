@@ -17,3 +17,21 @@
   left:50%;
   transform: translate(-50%,-50%);
 }
+
+.form-container {
+  padding: 10px;
+  height: 500px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+.form-input {
+  padding: 8px;
+  box-sizing: border-box;
+}

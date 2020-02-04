@@ -20,7 +20,7 @@ class Reviews extends React.Component {
       filteredReviewsValue: 0,
       totalReviews: 0,
       sort: 'newest',
-      show: false,
+      show: true,
       rating: 3.2,
       recommended: 92,
     };
