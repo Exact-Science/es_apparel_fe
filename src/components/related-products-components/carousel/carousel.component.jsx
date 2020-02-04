@@ -10,13 +10,14 @@ class Carousel extends React.Component {
       filterCount: 4,
       products: [],
       filteredProducts: [],
+      productStyles: [],
     };
   }
 
   componentDidMount() {
     const { id } = this.props;
     const { filterCount } = this.state;
-    const promiseArray = [];
+    let promiseArray = [];
     fetch(`http://3.134.102.30/products/${id}/related`)
       .then((results) => results.json())
       .then((ids) => [...new Set(ids)])
@@ -28,16 +29,27 @@ class Carousel extends React.Component {
       .then((resolvedProducts) => this.setState({
         products: resolvedProducts,
         filteredProducts: resolvedProducts.slice(0, filterCount),
-      }));
+      }))
+      .then(() => {
+        promiseArray = [];
+        this.state.products.map((product) => {
+          promiseArray.push(
+            fetch(`http://3.134.102.30/products/${id}/styles`)
+              .then((results) => results.json()),
+          );
+        });
+      })
+      .then(() => Promise.all(promiseArray))
+      .then((productStyles) => this.setState({ productStyles }));
   }
 
   render() {
-    const { filteredProducts } = this.state;
+    const { filteredProducts, productStyles } = this.state;
     return (
       <div className="rp-carousel-container">
         {filteredProducts.map((
           relatedProduct,
-        ) => <Card relatedProduct={relatedProduct} key={relatedProduct} />)}
+        ) => <Card relatedProduct={relatedProduct} productStyles={productStyles} key={`${relatedProduct}`} />)}
       </div>
     );
   }

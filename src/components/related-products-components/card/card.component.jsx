@@ -14,8 +14,9 @@ class Card extends React.Component {
     const { relatedProduct } = this.props;
     return (
       <div className="rp-card-container">
-        Card
-        {relatedProduct.category}
+        <div>{relatedProduct.category}</div>
+        <div>{relatedProduct.name}</div>
+        <div>${relatedProduct.default_price}</div>
       </div>
     );
   }
@@ -23,6 +24,7 @@ class Card extends React.Component {
 
 Card.propTypes = {
   relatedProduct: propTypes.shape({}).isRequired,
+  productStyles: propTypes.shape({}).isRequired,
 };
 
 export default Card;
