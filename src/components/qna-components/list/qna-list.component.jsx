@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable operator-assignment */
 /* eslint-disable no-param-reassign */
 import React from 'react';
 import './qna-list.styles.scss';
@@ -20,7 +22,7 @@ class List extends React.Component {
     const { questionAnswers } = this.props;
     const { count } = this.state;
     let list = Object.entries(questionAnswers).map((answer) => answer[1]);
-    let sortedList = [];
+    const sortedList = [];
     for (let i = 0; i < list.length; i += 1) {
       if (list[i].answerer_name.toLowerCase().includes('seller')) {
         sortedList.push(list[i]);
@@ -114,24 +116,11 @@ class List extends React.Component {
           questionAnswers={questionAnswers}
           showAddedAnswer={this.showAddedAnswer}
         />
-        <div className="qna-answer-container">
-          <div className="answer-identifier">A: </div>
-          <div className="qna-question-answers">
-            {count > resetCount ? list.map(
-              (answer) => (
-                <Answer
-                  answerId={answer.id}
-                  answerBody={answer.body}
-                  answerDate={answer.date}
-                  answerHelpfulness={answer.helpfulness}
-                  answererName={answer.answerer_name}
-                  answerImages={answer.photos}
-                  addMoreAnswer={this.addMoreAnswers}
-                  key={`a${answer.id}`}
-                />
-              ),
-            )
-              : filteredList.map(
+        {list.length > 0 ? (
+          <div className="qna-answer-container">
+            <div className="answer-identifier">A: </div>
+            <div className="qna-question-answers">
+              {count > resetCount ? list.map(
                 (answer) => (
                   <Answer
                     answerId={answer.id}
@@ -145,9 +134,23 @@ class List extends React.Component {
                   />
                 ),
               )
-          }
+                : filteredList.map(
+                  (answer) => (
+                    <Answer
+                      answerId={answer.id}
+                      answerBody={answer.body}
+                      answerDate={answer.date}
+                      answerHelpfulness={answer.helpfulness}
+                      answererName={answer.answerer_name}
+                      answerImages={answer.photos}
+                      addMoreAnswer={this.addMoreAnswers}
+                      key={`a${answer.id}`}
+                    />
+                  ),
+                )}
+            </div>
           </div>
-        </div>
+        ) : null}
         <div className="qna-add-more-answers">
           { count < list.length ? <button className="textButton" type="submit" onClick={this.addMoreAnswers}>Load More Answers</button> : null }
           { count > resetCount && count >= list.length ? <button className="textButton" type="submit" onClick={this.resetAnswers}>Collapse Answers</button> : null }
