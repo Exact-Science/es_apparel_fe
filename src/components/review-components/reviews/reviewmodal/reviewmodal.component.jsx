@@ -7,13 +7,22 @@ class ReviewModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productName: "",
-      overall: 0,
-      recommended: "",
-      summary: "",
-      body: "",
-      nickname: "",
-      email: ""
+      productName: '',
+      form: {
+        overall: 0,
+        recommended: '',
+        summary: '',
+        body: '',
+        nickname: '',
+        email: '',
+        characteristics: {
+          1: '',
+          2: '',
+          3: '',
+          4: '',
+          5: '',
+        },
+      },
     };
   }
 
@@ -29,18 +38,20 @@ class ReviewModal extends React.Component {
   };
 
   handleSubmit = (e) => {
+    const { form } = this.state;
     e.preventDefault();
+    console.log(form);
   };
 
   handleInputChange = (e) => {
     const { target } = e;
     const { value, name } = target;
-    this.setState({ [name]: value });
+    this.setState({ form: { [name]: value } });
   };
 
   render() {
     const {
-      productName, overall, summary, body, nickname, email,
+      form: { overall, summary, body, nickname, email }, productName,
     } = this.state;
     const { show, toggleModal } = this.props;
     if (show) {
@@ -140,8 +151,16 @@ class ReviewModal extends React.Component {
                     For authentication reasons, you will not be emailed.
                   </label>
                 </div>
+                <div className="form-input">
+                  <label htmlFor="size">
+                    <input
+                      type="radio"
+                      name="size"
+                      value={1}
+                    />
+                  </label>
+                </div>
               </form>
-              ;
             </div>
             <button type="submit" onClick={toggleModal}>
               Close

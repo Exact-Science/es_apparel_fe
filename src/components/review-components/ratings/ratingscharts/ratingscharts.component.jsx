@@ -11,6 +11,7 @@ const RatingsCharts = ({
     return Object.keys(formattedRating).map((el, index) => (
       <div key={index}>
         <RatingsChartItem
+          id={el.id}
           getFilterValue={getFilterValue}
           formattedRating={formattedRating}
           totalReviews={totalReviews}
