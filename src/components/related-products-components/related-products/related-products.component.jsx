@@ -16,7 +16,6 @@ class RelatedProducts extends React.Component {
 
   render() {
     const { id } = this.props;
-    const { relatedProductIds } = this.state;
     return (
       <div className="rp-container">
         <p>
