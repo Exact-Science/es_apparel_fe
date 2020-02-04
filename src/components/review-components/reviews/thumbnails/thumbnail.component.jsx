@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 const Thumbnail = ({ image, alt, enlargeImage, showFull }) => (
     <img
-      className={showFull ? "thumbs-modal-main" : "review-thumbs"}
+      className={showFull ? "thumbs-modal, thumbs-modal-main" : "review-thumbs"}
       src={image}
       alt={alt}
       onClick={enlargeImage}
