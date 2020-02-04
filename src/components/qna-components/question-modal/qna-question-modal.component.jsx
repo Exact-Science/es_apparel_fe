@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
@@ -105,7 +106,7 @@ class QuestionModal extends React.Component {
             <h3 className="subTitle">
               <span>
                 About the
-                {productName}
+                <span> {productName}</span>
               </span>
             </h3>
             <div>

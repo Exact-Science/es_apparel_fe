@@ -22,7 +22,7 @@ class Question extends React.Component {
     return (
       <div className="qna-question">
         <div className="question-utility-container">
-          <div className="question-identifier">Q</div>
+          <div className="question-identifier"><span>Q: </span></div>
           <div className="question-utility">
             <div className="question-body">{questionBody}</div>
             <Utility

@@ -11,18 +11,22 @@ class Card extends React.Component {
   }
 
   render() {
-    const { relatedProduct } = this.props;
+    const { relatedProduct, productStyle } = this.props;
     return (
       <div className="rp-card-container">
-        Card
-        {relatedProduct}
+        {/* {console.log(productStyles.results)} */}
+        <div className="image"><img src={productStyle ? productStyle[0].results[0].photos[0].url : null} /></div>
+        <div>{relatedProduct.category}</div>
+        <div>{relatedProduct.name}</div>
+        <div>${relatedProduct.default_price}</div>
       </div>
     );
   }
 }
 
 Card.propTypes = {
-  relatedProduct: propTypes.number.isRequired,
+  relatedProduct: propTypes.shape({}).isRequired,
+  productStyle: propTypes.arrayOf(propTypes.shape({})).isRequired,
 };
 
 export default Card;
