@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -12,20 +13,31 @@ class Card extends React.Component {
     super(props);
     this.state = {
       rating: 0,
+      starRating: 0,
     };
   }
 
   componentDidMount() {
-    const { id } = this.props;
-    fetch(`http://3.134.102.30/reviews/${id}/list?count=1000`)
+    const { relatedProduct } = this.props;
+    fetch(`http://3.134.102.30/reviews/${relatedProduct.id}/list?count=1000`)
       .then((results) => results.json())
-      .then((reviews) => console.log(reviews))
-      // .then((reviews) => reviews.results.forEach((review) =>
-      // console.log(review.rating)));
+      .then((reviews) => this.setState({ reviews }))
+      .then(() => this.state.reviews.results.reduce(
+        (accumulator, review) => accumulator + review.rating, 0,
+      ))
+      .then((rating) => {
+        const roundedRating = ((
+          Math.round((rating / this.state.reviews.results.length) * 10) / 10).toFixed(2));
+        const starRating = ((
+          Math.round((rating / this.state.reviews.results.length) * 4) / 4).toFixed(2));
+
+        this.setState({ rating: roundedRating, starRating })
+      });
   }
 
   render() {
     const { relatedProduct, productStyle } = this.props;
+    const { starRating } = this.state;
     return (
       <div className="rp-card-container">
         <div className="image"><img
@@ -58,7 +70,7 @@ class Card extends React.Component {
             <Rating
               className="rating"
               name="read-only"
-              value={2.5} // updated the value...value={value}
+              value={starRating} // updated the value...value={value}
               precision={0.25}
               size="small"
             />
