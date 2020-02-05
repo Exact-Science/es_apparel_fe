@@ -55,7 +55,7 @@ class Form extends React.Component {
     const {
       overall, summary, body, nickname, email, productName,
     } = this.state;
-    const { show, toggleModal } = this.props;
+    const { show, toggleModal, factors } = this.props;
     if (show) {
       return (
         <div className="form-modal">
@@ -165,7 +165,7 @@ class Form extends React.Component {
                     For authentication reasons, you will not be emailed.
                   </label>
                 </div>
-                <FormSliders handleInputChange={this.handleInputChange} />
+                <FormSliders factors={factors} handleInputChange={this.handleInputChange} />
               </form>
             </div>
             <button type="submit" onClick={toggleModal}>

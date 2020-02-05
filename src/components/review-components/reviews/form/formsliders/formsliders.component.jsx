@@ -3,14 +3,15 @@ import propTypes from 'prop-types';
 import FormSlider from './formslider/formslider.component';
 import sliderData from './formslider/formsliderbreakdown';
 
-const FormSliders = ({ handleInputChange }) => {
-  return Object.keys(sliderData).map((el, index) => {
+const FormSliders = ({ handleInputChange, factors }) => {
+  return Object.keys(factors).map((el, index) => {
+    console.log(el)
     return (
       <FormSlider
         characteristics={sliderData[el]}
         title={el}
-        key={index + 10}
-        id={index}
+        key={index}
+        id={el.id}
         handleInputChange={handleInputChange}
       />
     );

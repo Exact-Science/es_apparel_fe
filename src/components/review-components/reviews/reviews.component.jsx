@@ -146,6 +146,7 @@ class Reviews extends React.Component {
             id={id}
             show={show}
             toggleModal={this.toggleModal}
+            factors={factors}
           />
         </div>
       </div>
