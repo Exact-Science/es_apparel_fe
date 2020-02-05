@@ -8,25 +8,24 @@ class ReviewModal extends React.Component {
     super(props);
     this.state = {
       productName: '',
-      form: {
-        overall: 0,
-        recommended: '',
-        summary: '',
-        body: '',
-        nickname: '',
-        email: '',
-        characteristics: {
-          1: '',
-          2: '',
-          3: '',
-          4: '',
-          5: '',
-        },
-      },
+      overall: 0,
+      recommended: '',
+      summary: '',
+      body: '',
+      nickname: '',
+      email: '',
+      characteristics: {
+        1: '',
+        2: '',
+        3: '',
+        4: '',
+        5: '',
+        6: '',
+      }
     };
   }
 
-  componentDidMount() {
+componentDidMount() {
     this.getProductInfo();
   }
 
@@ -46,13 +45,11 @@ class ReviewModal extends React.Component {
   handleInputChange = (e) => {
     const { target } = e;
     const { value, name } = target;
-    const { form } = this.state;
-    this.setState({ form: { [name]: value } }, () => console.log(form));
+    this.setState({ [name]: value }, () => console.log(this.state));
   };
 
   render() {
-    const { overall, summary, body, nickname, email } = this.state.form;
-    const { productName } = this.state;
+    const { overall, summary, body, nickname, email, productName } = this.state;
     const { show, toggleModal } = this.props;
     if (show) {
       return (
