@@ -1,10 +1,27 @@
 .rp-card-container{
-  // margin: 0px 20px 0px 0px;
+  margin: 0px 20px 0px 0px;
   border: 1px solid black;
   width: 220px;
   height: 300px;
 }
 
+.rp-card-details{
+  margin: 5px;
+  font-size: 14px;
+}
+
 .image{
   height: 70%;
+}
+
+.rp-pricing-default-strikethrough{
+  text-decoration: line-through;
+}
+
+.rp-pricing-sale{
+  color: red;
+}
+
+.product-name{
+  font-weight: bold;
 }

@@ -47,6 +47,7 @@ class Carousel extends React.Component {
 
   render() {
     const { filteredProducts, productStyles } = this.state;
+    const { id } = this.props;
     let currentStyle;
     return (
       <div className="rp-carousel-container">
@@ -57,6 +58,7 @@ class Carousel extends React.Component {
             )
             : null,
             <Card
+              id={id}
               relatedProduct={relatedProduct}
               productStyle={currentStyle}
               key={`${relatedProduct.id}-${currentStyle}`}
