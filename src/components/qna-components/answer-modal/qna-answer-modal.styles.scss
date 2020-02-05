@@ -1,7 +1,7 @@
 .qna-answer-modal {
   position: fixed;
-  z-index: 100;
-  padding: 15px;
+  padding-top: 5%;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -12,22 +12,22 @@
 }
 
 .qna-answer-modal-content {
-  display: flex;
+  width: 100%;
   background-color: white;
   margin: auto;
   padding: 30px 35px 30px 30px;
   border: 1px solid white;
-  max-width: 30%;
+  max-width: 40%;
   border-radius: 20px;
 }
 
-
 .qna-answer-modal-content p {
+  width: 100%;
   margin: 25px 0px 5px;
 }
 
 .qna-answer-modal-content input {
-  display: flex;
+  width: 100%;
   font-size: 16px;
 }
 
@@ -35,9 +35,6 @@
   padding: 15px 0px 0px;
 }
 
-.fieldContainer{
-  display: flex;
-}
 
 .textFormField {
   width: 100%;
@@ -46,7 +43,12 @@
 }
 
 .formField-container {
+  width: 100%;
   margin: 35px 0px 0px;
+}
+  
+.fieldContainer{
+  width: 100%;
 }
 
 .formField {
