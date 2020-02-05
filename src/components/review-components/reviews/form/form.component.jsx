@@ -5,8 +5,8 @@ import FormSliders from './formsliders/formsliders.component';
 import './form-styles.scss';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, { id }) {
+    super(props, { id });
     this.state = {
       productName: '',
       overall: 0,
@@ -16,14 +16,6 @@ class Form extends React.Component {
       nickname: '',
       email: '',
       photos: [],
-      characteristics: {
-        0: '',
-        1: '',
-        2: '',
-        3: '',
-        4: '',
-        5: '',
-      },
     };
   }
 
@@ -39,16 +31,12 @@ class Form extends React.Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
     console.log(this.state);
   };
 
   handleInputChange = (e) => {
     const { value, name } = e.target;
-
-    this.setState({ [name]: value, characteristics: { [name]: value } }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [name]: value });
   };
 
   render() {
@@ -62,6 +50,9 @@ class Form extends React.Component {
           <div className="form-modal-main">
             <h2>Write your review here</h2>
             <h4>{`About the ${productName}:`}</h4>
+            <button type="button" onClick={toggleModal}>
+              Cancel
+            </button>
             <div className="form-container">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-input" id="overallRating">
@@ -70,7 +61,6 @@ class Form extends React.Component {
                       Overall Rating*
                     </h4>
                     <Rating
-                      required
                       name="overall"
                       value={parseInt(overall, 0)}
                       onChange={this.handleInputChange}
@@ -106,17 +96,17 @@ class Form extends React.Component {
                       Summarize your experience with this product*
                     </h4>
                     <input
-                      required
                       type="text"
                       name="summary"
                       value={summary}
-                      maxLength="60"
                       placeholder="Best purchase ever!"
                       onChange={this.handleInputChange}
+                      maxLength="60"
+                      required
                     />
                   </label>
                 </div>
-                <div className="form-input" id="reviewbody">
+                {/* <div className="form-input" id="reviewbody">
                   <label htmlFor="body">
                     <h4>
                       Why did you like the product or not?*
@@ -125,13 +115,13 @@ class Form extends React.Component {
                       required
                       name="body"
                       value={body}
-                      minLength="50"
-                      maxLength="1000"
+                      minlength="50"
+                      maxlength="1000"
                       onChange={this.handleInputChange}
                     />
                   </label>
-                </div>
-                <div className="form-input">
+                </div> */}
+                {/* <div className="form-input">
                   <label htmlFor="nickname">
                     <h4>
                       Nickname:
@@ -164,16 +154,24 @@ class Form extends React.Component {
                     />
                     For authentication reasons, you will not be emailed.
                   </label>
-                </div>
+                </div> */}
                 <FormSliders factors={factors} handleInputChange={this.handleInputChange} />
+                <div className="form-input">
+                  <label htmlFor="photos">
+                    <h4>Upload your review photos here</h4>
+                    <input type="url" name="photos" pattern="https://.*" />
+                    <input type="url" name="photos" pattern="https://.*" />
+                    <input type="url" name="photos" pattern="https://.*" />
+                  </label>
+                </div>
+                <button type="button" onClick={toggleModal}>
+                  Cancel
+                </button>
+                <button type="submit" onClick={this.handleSubmit}>
+                  Submit Review
+                </button>
               </form>
             </div>
-            <button type="submit" onClick={toggleModal}>
-              Close
-            </button>
-            <button type="submit" onClick={this.handleSubmit}>
-              Submit Review
-            </button>
           </div>
         </div>
       );
@@ -188,4 +186,5 @@ Form.propTypes = {
   id: propTypes.string.isRequired,
   toggleModal: propTypes.func.isRequired,
   show: propTypes.bool.isRequired,
+  factors: propTypes.shape({}).isRequired,
 };

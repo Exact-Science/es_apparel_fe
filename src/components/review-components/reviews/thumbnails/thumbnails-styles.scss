@@ -10,6 +10,7 @@
 }
 
 .thumbs-modal {
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,6 +20,7 @@
 }
 
 .thumbs-modal-main {
+  z-index: 2;
   position:fixed;
   background: white;
   width: 80%;

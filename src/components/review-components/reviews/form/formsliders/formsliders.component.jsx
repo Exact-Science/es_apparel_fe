@@ -5,13 +5,12 @@ import sliderData from './formslider/formsliderbreakdown';
 
 const FormSliders = ({ handleInputChange, factors }) => {
   return Object.keys(factors).map((el, index) => {
-    console.log(el)
     return (
       <FormSlider
         characteristics={sliderData[el]}
         title={el}
         key={index}
-        id={el.id}
+        id={factors[el].id}
         handleInputChange={handleInputChange}
       />
     );
