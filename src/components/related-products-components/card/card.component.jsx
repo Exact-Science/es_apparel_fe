@@ -33,7 +33,7 @@ class Card extends React.Component {
         const starRating = ((
           Math.round((rating / this.state.reviews.results.length) * 4) / 4).toFixed(2));
 
-        this.setState({ rating: roundedRating, starRating })
+        this.setState({ rating: roundedRating, starRating });
       });
   }
 
@@ -42,8 +42,8 @@ class Card extends React.Component {
     const { starRating } = this.state;
     const rpId = (productStyle ? productStyle[0].product_id : null);
     return (
-      <div className="rp-card-container" role="navigation" onClick={() => {window.location.href = rpId}}>
-        <div className="image"><img
+      <div className="rp-card">
+        <div className="image" role="navigation" onClick={() => {window.location.href = rpId}}><img
           src={productStyle && productStyle[0].results[0].photos[0].url
             ? productStyle[0].results[0].photos[0].url
             : 'https://static.thenounproject.com/png/2932881-200.png'}

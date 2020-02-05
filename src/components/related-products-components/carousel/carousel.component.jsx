@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import Card from '../card/card.component';
 import styleData from '../../../exampleData/overview.styles';
 import './carousel.styles.scss';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowBackIos';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -51,19 +52,22 @@ class Carousel extends React.Component {
     let currentStyle;
     return (
       <div className="rp-carousel-container">
-        {filteredProducts.map((relatedProduct) => (
-          Array.isArray(productStyles)
-            ? currentStyle = productStyles.filter(
-              (style) => relatedProduct.id.toString() === style.product_id
-            )
-            : null,
-            <Card
-              id={id}
-              relatedProduct={relatedProduct}
-              productStyle={currentStyle}
-              key={`${relatedProduct.id}-${currentStyle}`}
-            />
-        ))}
+        {/* <ArrowForwardIosIcon className="re-related-arrow-forward" /> */}
+        <div className="rp-card-container">
+          {filteredProducts.map((relatedProduct) => (
+            Array.isArray(productStyles)
+              ? currentStyle = productStyles.filter(
+                (style) => relatedProduct.id.toString() === style.product_id
+              )
+              : null,
+              <Card
+                id={id}
+                relatedProduct={relatedProduct}
+                productStyle={currentStyle}
+                key={`${relatedProduct.id}-${currentStyle}`}
+              />
+          ))}
+        </div>
       </div>
     );
   }

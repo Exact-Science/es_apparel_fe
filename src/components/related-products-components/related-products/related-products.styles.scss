@@ -1,4 +1,11 @@
 .rp-container {
-  margin: 40px auto;
-  max-width: 80vw;
+  margin: 40px auto 40px;
+  max-width: 60vw;
+  overflow: hidden;
+  // -webkit-filter: blur(2px);
+  // -moz-filter: blur(20px);
+  // -o-filter: blur(20px);
+  // -ms-filter: blur(20px);
+  // filter: blur(2px);
+
 }
