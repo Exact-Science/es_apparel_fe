@@ -69,10 +69,10 @@ class Card extends React.Component {
           <div>
             <Rating
               className="rating"
-              name="read-only"
-              value={starRating} // updated the value...value={value}
-              precision={0.25}
+              name={`read-only-${relatedProduct.id}`}
+              value={parseInt(starRating)}
               size="small"
+              precision={0.25}
             />
           </div>
         </div>
