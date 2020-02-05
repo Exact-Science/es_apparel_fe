@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
@@ -38,8 +40,9 @@ class Card extends React.Component {
   render() {
     const { relatedProduct, productStyle } = this.props;
     const { starRating } = this.state;
+    const rpId = (productStyle ? productStyle[0].product_id : null);
     return (
-      <div className="rp-card-container">
+      <div className="rp-card-container" role="navigation" onClick={() => {window.location.href = rpId}}>
         <div className="image"><img
           src={productStyle && productStyle[0].results[0].photos[0].url
             ? productStyle[0].results[0].photos[0].url
