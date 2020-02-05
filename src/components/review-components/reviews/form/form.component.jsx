@@ -15,13 +15,14 @@ class Form extends React.Component {
       body: '',
       nickname: '',
       email: '',
+      photos: [],
       characteristics: {
+        0: '',
         1: '',
         2: '',
         3: '',
         4: '',
         5: '',
-        6: '',
       },
     };
   }
@@ -43,10 +44,10 @@ class Form extends React.Component {
   };
 
   handleInputChange = (e) => {
-    const { target } = e;
-    const { value, name } = target;
+    const { value, name } = e.target;
+
     this.setState({ [name]: value, characteristics: { [name]: value } }, () => {
-      console.log(this.state)
+      console.log(this.state);
     });
   };
 
@@ -65,7 +66,9 @@ class Form extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <div className="form-input" id="overallRating">
                   <label>
-                    Overall Rating*
+                    <h4>
+                      Overall Rating*
+                    </h4>
                     <Rating
                       required
                       name="overall"
@@ -76,7 +79,9 @@ class Form extends React.Component {
                 </div>
                 <div className="form-input" id="recommendedRadios">
                   <label htmlFor="recommended">
-                    Do you recommend this product?*
+                    <h4>
+                      Do you recommend this product?*
+                    </h4>
                     <input
                       required
                       type="radio"
@@ -97,7 +102,9 @@ class Form extends React.Component {
                 </div>
                 <div className="form-input" id="summary">
                   <label htmlFor="summary">
-                    Summarize your experience with this product*
+                    <h4>
+                      Summarize your experience with this product*
+                    </h4>
                     <input
                       required
                       type="text"
@@ -111,7 +118,9 @@ class Form extends React.Component {
                 </div>
                 <div className="form-input" id="reviewbody">
                   <label htmlFor="body">
-                    Why did you like the product or not?
+                    <h4>
+                      Why did you like the product or not?*
+                    </h4>
                     <textarea
                       required
                       name="body"
@@ -124,7 +133,9 @@ class Form extends React.Component {
                 </div>
                 <div className="form-input">
                   <label htmlFor="nickname">
-                    Nickname:
+                    <h4>
+                      Nickname:
+                    </h4>
                     <input
                       required
                       name="nickname"
@@ -139,7 +150,9 @@ class Form extends React.Component {
                 </div>
                 <div className="form-input">
                   <label htmlFor="email">
-                    Email:
+                    <h4>
+                      Email:
+                    </h4>
                     <input
                       required
                       name="email"
@@ -152,9 +165,7 @@ class Form extends React.Component {
                     For authentication reasons, you will not be emailed.
                   </label>
                 </div>
-                <div className="form-input">
-                  <FormSliders />
-                </div>
+                <FormSliders handleInputChange={this.handleInputChange} />
               </form>
             </div>
             <button type="submit" onClick={toggleModal}>
