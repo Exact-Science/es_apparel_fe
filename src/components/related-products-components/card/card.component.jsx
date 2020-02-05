@@ -11,8 +11,17 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      rating: 0,
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(`http://3.134.102.30/reviews/${id}/list?count=1000`)
+      .then((results) => results.json())
+      .then((reviews) => console.log(reviews))
+      // .then((reviews) => reviews.results.forEach((review) =>
+      // console.log(review.rating)));
   }
 
   render() {
@@ -47,9 +56,11 @@ class Card extends React.Component {
             : null}
           <div>
             <Rating
-              name="simple-controlled"
+              className="rating"
+              name="read-only"
               value={2.5} // updated the value...value={value}
               precision={0.25}
+              size="small"
             />
           </div>
         </div>
@@ -59,6 +70,7 @@ class Card extends React.Component {
 }
 
 Card.propTypes = {
+  id: propTypes.string.isRequired,
   relatedProduct: propTypes.shape({
     category: propTypes.string.isRequired,
     name: propTypes.string.isRequired,
