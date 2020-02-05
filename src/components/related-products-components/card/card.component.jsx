@@ -4,6 +4,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './card.styles.scss';
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 class Card extends React.Component {
   constructor(props) {
@@ -24,10 +27,10 @@ class Card extends React.Component {
           {productStyle && productStyle[0].results[0].sale_price && parseInt(productStyle[0].results[0].sale_price) > 0
             ? (
               <div className="rp-pricing-container">
-                <span className="rp-pricing-default-strikethrough">
-                  ${relatedProduct.default_price}
+                <span className="rp-pricing-sale">
+                  ${productStyle[0].results[0].sale_price}
                 </span>
-                <span className="rp-pricing-sale"> ${productStyle[0].results[0].sale_price}</span>
+                <span className="rp-pricing-default-strikethrough"> ${relatedProduct.default_price}</span>
               </div>
             )
             : null}
@@ -38,6 +41,22 @@ class Card extends React.Component {
               </div>
             )
             : null}
+          <div>
+            <Box component="fieldset" mb={3} borderColor="transparent">
+              <Rating
+                name="simple-controlled"
+                value={5} // updated the value...value={value}
+              />
+            </Box>
+          </div>
+
+
+
+
+
+
+
+
         </div>
       </div>
     );
