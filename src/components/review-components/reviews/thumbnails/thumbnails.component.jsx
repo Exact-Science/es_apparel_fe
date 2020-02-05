@@ -4,8 +4,8 @@ import Thumbnail from './thumbnail.component';
 import './thumbnails-styles.scss';
 
 const Thumbnails = ({ images, enlargeImage, showFull }) => (
-  <div className={showFull ? 'thumbs-modal' : null}>
-    <div className={showFull ? 'thumbs-modal-main' : 'thumbnails'}>
+  <div className={showFull ? 'thumbs-modal' : '' }>
+    <div>
       {images.map((img) => (
         <Thumbnail
           image={img.url}
