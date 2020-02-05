@@ -4,7 +4,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ReviewList from './list/list.component';
 import Ratings from '../ratings/ratings.component';
-import ReviewModal from './reviewmodal/reviewmodal.component';
+import Form from './form/form.component';
 import './reviews-styles.scss';
 
 class Reviews extends React.Component {
@@ -20,7 +20,7 @@ class Reviews extends React.Component {
       filteredReviewsValue: 0,
       totalReviews: 0,
       sort: 'newest',
-      show: false,
+      show: true,
       showFull: false,
       rating: 3.2,
       recommended: 92,
@@ -142,7 +142,7 @@ class Reviews extends React.Component {
           />
         </div>
         <div>
-          <ReviewModal
+          <Form
             id={id}
             show={show}
             toggleModal={this.toggleModal}

@@ -1,9 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import './reviewmodal-styles.scss';
+import FormSliders from './formsliders/formsliders.component';
+import './form-styles.scss';
 
-class ReviewModal extends React.Component {
+class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,11 +22,11 @@ class ReviewModal extends React.Component {
         4: '',
         5: '',
         6: '',
-      }
+      },
     };
   }
 
-componentDidMount() {
+  componentDidMount() {
     this.getProductInfo();
   }
 
@@ -37,28 +38,31 @@ componentDidMount() {
   };
 
   handleSubmit = (e) => {
-    const { form } = this.state;
     e.preventDefault();
-    console.log(form);
+    console.log(this.state);
   };
 
   handleInputChange = (e) => {
     const { target } = e;
     const { value, name } = target;
-    this.setState({ [name]: value }, () => console.log(this.state));
+    this.setState({ [name]: value, characteristics: { [name]: value } }, () => {
+      console.log(this.state)
+    });
   };
 
   render() {
-    const { overall, summary, body, nickname, email, productName } = this.state;
+    const {
+      overall, summary, body, nickname, email, productName,
+    } = this.state;
     const { show, toggleModal } = this.props;
     if (show) {
       return (
-        <div className="reviewmodal">
-          <div className="reviewmodal-main">
+        <div className="form-modal">
+          <div className="form-modal-main">
             <h2>Write your review here</h2>
             <h4>{`About the ${productName}:`}</h4>
-            <div className="form-main">
-              <form className="form-container" onSubmit={this.handleSubmit}>
+            <div className="form-container">
+              <form onSubmit={this.handleSubmit}>
                 <div className="form-input" id="overallRating">
                   <label>
                     Overall Rating*
@@ -100,7 +104,7 @@ componentDidMount() {
                       name="summary"
                       value={summary}
                       maxLength="60"
-                      placeholder="Example: Best purchase ever!"
+                      placeholder="Best purchase ever!"
                       onChange={this.handleInputChange}
                     />
                   </label>
@@ -148,6 +152,9 @@ componentDidMount() {
                     For authentication reasons, you will not be emailed.
                   </label>
                 </div>
+                <div className="form-input">
+                  <FormSliders />
+                </div>
               </form>
             </div>
             <button type="submit" onClick={toggleModal}>
@@ -164,9 +171,9 @@ componentDidMount() {
   }
 }
 
-export default ReviewModal;
+export default Form;
 
-ReviewModal.propTypes = {
+Form.propTypes = {
   id: propTypes.string.isRequired,
   toggleModal: propTypes.func.isRequired,
   show: propTypes.bool.isRequired,

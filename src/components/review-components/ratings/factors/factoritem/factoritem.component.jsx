@@ -4,33 +4,35 @@ import Grid from '@material-ui/core/Grid';
 import breakdown from './factorbreakdown';
 import './factoritem-styles.scss';
 
-const FactorItem = ({ name, value }) => {
-  return (
-    <div className="factor-item">
-      <Grid container>
-        <Grid item xs={12}>
-          <p className="factor-heading">{name}</p>
+const FactorItem = ({ name, value }) => (
+  <div className="factor-item">
+    <Grid container>
+      <Grid item xs={12}>
+        <p className="factor-heading">{name}</p>
+      </Grid>
+      <Grid item xs={12}>
+        <div className="chars-chart">
+          <div
+            id="triangle-down"
+            style={{ left: `${(value / 5) * 100}%` }}
+          />
+        </div>
+      </Grid>
+      <Grid container className="factor-descriptors">
+        <Grid item xs={4} id="left">
+          {breakdown[name][1]}
         </Grid>
-        <Grid item xs={12}>
-          <div className="chars-chart">
-            <div><span id="triangle-down" style={{ left: `${(value / 5) * 100}%` }} /></div>
-          </div>
+        <Grid item xs={4} id="middle">
+          {breakdown[name][3]}
         </Grid>
-        <Grid container className="factor-descriptors">
-          <Grid item xs={4} id="left">
-            {breakdown[name][1]}
-          </Grid>
-          <Grid item xs={4} id="middle">
-            {breakdown[name][3]}
-          </Grid>
-          <Grid item xs={4} id="right">
-            {breakdown[name][5]}
-          </Grid>
+        <Grid item xs={4} id="right">
+          {breakdown[name][5]}
         </Grid>
       </Grid>
-    </div>
-  );
-};
+    </Grid>
+  </div>
+);
+
 
 export default FactorItem;
 
