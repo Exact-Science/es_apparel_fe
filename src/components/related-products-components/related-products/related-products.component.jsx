@@ -5,6 +5,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Carousel from '../carousel/carousel.component';
 import './related-products.styles.scss';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 class RelatedProducts extends React.Component {
   constructor(props) {
@@ -21,7 +23,15 @@ class RelatedProducts extends React.Component {
         <p>
           <span>RELATED PRODUCTS</span>
         </p>
-        <Carousel id={id} />
+        <div className="rp-carousel-container">
+          <div id="arrow-back">
+            <ArrowBackIosIcon className="arrow" />
+          </div>
+          <div id="arrow-forward">
+            <ArrowForwardIosIcon className="arrow" />
+          </div>
+          <Carousel id={id} />
+        </div>
       </div>
     );
   }

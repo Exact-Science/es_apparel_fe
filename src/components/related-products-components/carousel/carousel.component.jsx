@@ -5,12 +5,15 @@ import propTypes from 'prop-types';
 import Card from '../card/card.component';
 import styleData from '../../../exampleData/overview.styles';
 import './carousel.styles.scss';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowBackIos';
+// import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      cardStartNum: 0,
+      cardEndNum: 4,
       filterCount: 4,
       products: [],
       filteredProducts: [],
@@ -47,14 +50,17 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { filteredProducts, productStyles } = this.state;
+    const { filteredProducts, productStyles, products } = this.state;
     const { id } = this.props;
     let currentStyle;
     return (
-      <div className="rp-carousel-container">
-        {/* <ArrowForwardIosIcon className="re-related-arrow-forward" /> */}
+      <div className="rp-carousel">
+        {/* <div className="navigation-arrows">
+          <div id="arrow-back"><ArrowBackIosIcon className="arrow" /></div>
+          <div id="arrow-forward"><ArrowForwardIosIcon className="arrow" /></div>
+        </div> */}
         <div className="rp-card-container">
-          {filteredProducts.map((relatedProduct) => (
+          {products.map((relatedProduct) => (
             Array.isArray(productStyles)
               ? currentStyle = productStyles.filter(
                 (style) => relatedProduct.id.toString() === style.product_id

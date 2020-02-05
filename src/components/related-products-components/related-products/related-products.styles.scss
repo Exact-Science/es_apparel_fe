@@ -1,5 +1,34 @@
 .rp-container {
   margin: 40px auto 40px;
   max-width: 60vw;
-  overflow: hidden;
+}
+
+.rp-carousel-container{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  overflow: auto;
+}
+
+.arrow:hover{
+  width: 30px;
+  height: 30px;
+}
+
+#arrow-back{
+  position: absolute;
+  display: inline-block;
+  margin-top: 7%;
+  color: greenyellow;
+  left: 10px;
+  // align-self: left;
+}
+
+#arrow-forward{
+  position: absolute;
+  display: inline-block;
+  margin-top: 7%;
+  color: greenyellow;
+  right: 10px;
 }

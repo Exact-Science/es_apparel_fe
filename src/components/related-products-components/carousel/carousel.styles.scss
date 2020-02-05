@@ -1,19 +1,28 @@
-.rp-carousel-container{
-  display: flex;
-  justify-content: space-between;
-  flex-flow: row;
-}
-
 .rp-card-container{
   display: flex;
-  
 }
 
-.re-related-arrow-forward{
-  position: relative;
-  margin: 0px;
-  padding: 0px;
-  left: -15px;
-  top: 50px;
-}
+// .navigation-arrows{
+//   position: absolute;
+//   margin-top: 7%;
+//   z-index: 2;
+//   width: 100%;
+//   color: greenyellow;
+//   justify-content: space-between;
+// }
+
+// .arrow:hover{
+//   width: 30px;
+//   height: 30px;
+// }
+
+// #arrow-back{
+//   display: inline-block;
+//   align-self: left;
+// }
+
+// #arrow-forward{
+//   display: inline-block;
+//   align-self: right;
+// }
 
