@@ -1,6 +1,6 @@
 .qna-answer-modal {
   position: fixed;
-  padding-top: 5%;
+  padding-top: 2%;
   z-index: 10;
   left: 0;
   top: 0;
@@ -19,6 +19,7 @@
   border: 1px solid white;
   max-width: 40%;
   border-radius: 20px;
+  max-height: 80vw;
 }
 
 .qna-answer-modal-content p {
@@ -46,7 +47,7 @@
   width: 100%;
   margin: 35px 0px 0px;
 }
-  
+
 .fieldContainer{
   width: 100%;
 }
