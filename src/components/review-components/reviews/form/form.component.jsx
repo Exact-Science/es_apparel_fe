@@ -5,6 +5,8 @@ import {
   makeStyles, withStyles, FormControl, FormHelperText, Switch, TextField, Input, InputLabel, Button,
   Grid,
 } from '@material-ui/core';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import CancelIcon from '@material-ui/icons/Cancel';
 import FormSliders from './formsliders/formsliders.component';
 import Photos from './photos/photos.component';
 import './form-styles.scss';
@@ -66,7 +68,7 @@ class Form extends React.Component {
     console.log(value)
   }
 
-  addPhotos = () => {
+  togglePhotos = () => {
     const { allowPhotos } = this.state;
     this.setState({ allowPhotos: !allowPhotos });
   }
@@ -82,14 +84,19 @@ class Form extends React.Component {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <header className="form-header">
-                  <h1>{"What do you think about this product?"}</h1>
-                  <button type="button" onClick={toggleModal}>
+                  <h1>{`What do you think about the ${productName}?`}</h1>
+                  {/* <Button
+                    type="button"
+                    variant="outlined"
+                    color="primary"
+                    onClick={toggleModal}
+                  >
                     Cancel
-                  </button>
+                  </Button> */}
                 </header>
               </Grid>
               <div className="form-container">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} name="addReview">
                   <div className="form-input" id="overallRating">
                     <StyledRating
                       size="large"
@@ -122,7 +129,10 @@ class Form extends React.Component {
                     onChange={this.handleInputChange}
                     fullWidth
                     multiline
-                    error={false}
+                    error={summary.length > 60 ? true : false}
+                    helperText={
+                      "Please keep your review title less than 60 characters"
+                    }
                     rows={2}
                     margin="normal"
                     InputLabelProps={{
@@ -139,7 +149,8 @@ class Form extends React.Component {
                     placeholder="What makes a great review? The more detail, explanation of use, and the condition you used this product in help everyone"
                     style={{ margin: 8 }}
                     onChange={this.handleInputChange}
-                    error={false}
+                    error={body.length >= 1000 ? true : false}
+                    helperText="Please keep your review between 50 and 1000 characters"
                     fullWidth
                     multiline
                     rows={5}
@@ -186,22 +197,43 @@ class Form extends React.Component {
                     factors={factors}
                     updateCharacteristics={this.updateCharacteristics}
                   /> */}
-                  <Button
-                    type="button"
-                    variant="outlined"
-                    color="primary"
-                    onClick={this.addPhotos}
-                  >
-                    Add photos
-                  </Button>
-                  <Photos allowPhotos={allowPhotos} addPhotos={this.addPhotos} />
                   <div>
-                    <button type="button" onClick={toggleModal}>
-                      Cancel
-                    </button>
-                    <button type="submit" onClick={this.handleSubmit}>
+                    <Button
+                      type="submit"
+                      variant="outlined"
+                      style={{ margin: 8 }}
+                      color="primary"
+                      onClick={this.handleSubmit}
+                    >
                       Submit Review
-                    </button>
+                    </Button>
+                    {!allowPhotos ? (
+                      <Button
+                        type="button"
+                        variant="outlined"
+                        color="primary"
+                        style={{ margin: 8 }}
+                        onClick={this.togglePhotos}
+                      >
+                        <PhotoCameraIcon size="small" />
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        variant="outlined"
+                        style={{ margin: 8 }}
+                        color="primary"
+                        onClick={this.togglePhotos}
+                      >
+                        <CancelIcon />
+                      </Button>
+                    )}
+
+                    <Photos
+                      allowPhotos={allowPhotos}
+                      togglePhotos={this.togglePhotos}
+                      handleInputChange={this.handleInputChange}
+                    />
                   </div>
                 </form>
               </div>

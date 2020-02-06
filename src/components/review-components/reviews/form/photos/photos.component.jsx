@@ -2,9 +2,10 @@ import React from 'react';
 import propTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 
-const Photos = ({ allowPhotos, addPhotos }) => {
+const Photos = ({ allowPhotos, togglePhotos }) => {
   if (allowPhotos) {
     return (
       <Grid container spacing={1}>
@@ -52,6 +53,15 @@ const Photos = ({ allowPhotos, addPhotos }) => {
             variant="outlined"
           />
         </Grid>
+        <Button
+          type="submit"
+          variant="outlined"
+          style={{ margin: 8 }}
+          color="primary"
+          onClick={togglePhotos}
+        >
+          Add Photos
+        </Button>
       </Grid>
     );
   }
@@ -59,3 +69,8 @@ const Photos = ({ allowPhotos, addPhotos }) => {
 };
 
 export default Photos;
+
+Photos.propTypes = {
+  allowPhotos: propTypes.bool.isRequired,
+  togglePhotos: propTypes.func.isRequired,
+};
