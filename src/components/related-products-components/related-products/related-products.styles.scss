@@ -1,39 +1,44 @@
 .rp-container {
   margin: 40px auto 40px;
-  max-width: 70vw;
+  max-width: 70vw
+
 }
 
 .rp-carousel-container{
   position: relative;
   display: flex;
   justify-content: space-between;
-  flex-flow: row;
+  flex-flow: row wrap;
   overflow: hidden;
 }
 
-
-.arrow{
-  transform: scale(1.5);
-  transition: transform 0.5s ease-out, fill 0.5s;
-}
-.arrow:hover{
-  transform: scale(2.25);
-  transition: transform 0.5s ease-in-out, fill 0.5s;
-  color: black;
+.titleContainer{
+  display: flex;
+  justify-content: space-between;
 }
 
-#arrow-back{
-  position: absolute;
+.rp-title{
   display: inline-block;
-  margin-top: 100px;
-  color: white;
-  left: 30px;
+  width: 100%;
 }
 
-#arrow-forward{
-  position: absolute;
-  display: inline-block;
-  margin-top: 100px;
-  color: white;
-  right: 65px;
+.arrow-container{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-self: center;
+}
+
+.rp-arrowOff{
+  color: rgba(104,104,104,0.3);
+}
+
+.rp-arrowOff:hover{
+  // transform: scale(0);
+  cursor: auto;
+}
+
+.rp-arrowOn:hover{
+  transform: scale(1.2);
+  color: green;
 }
