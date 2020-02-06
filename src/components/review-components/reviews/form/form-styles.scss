@@ -15,9 +15,16 @@
   width: 80%;
   height: auto;
   padding: 10px;
+  align-items: center;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  border-radius: 5px;
+}
+
+.form-header {
+  text-align: center;
+
 }
 
 .form-container {
@@ -30,8 +37,6 @@
   box-sizing: border-box;
   border: 1px solid black;
 }
-
-
 
 button, input, select {
   font-family: inherit;

@@ -54,11 +54,12 @@ class Form extends React.Component {
       return (
         <div className="form-modal">
           <div className="form-modal-main">
-            <h2>Write your review here</h2>
-            <h4>{`About the ${productName}:`}</h4>
-            <button type="button" onClick={toggleModal}>
-              Cancel
-            </button>
+            <header className="form-header">
+              <h1>
+                {`What do you think about the ${productName}?`}
+              </h1>
+              <button type="button" onClick={toggleModal}>Cancel</button>
+            </header>
             <div className="form-container">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-input" id="overallRating">
@@ -72,6 +73,7 @@ class Form extends React.Component {
                   <h4>Do You recommend this product?</h4>
                   <span>No</span>
                   <Switch
+                    required
                     checked={recommended}
                     onChange={this.handleChange('recommended')}
                     value={recommended}
@@ -80,28 +82,6 @@ class Form extends React.Component {
                   />
                   <span>Yes</span>
                 </div>
-
-                {/* <div className="form-input" id="recommendedRadios">
-                  <label htmlFor="recommended">
-                    <h4>Do you recommend this product?*</h4>
-                    <input
-                      required
-                      type="radio"
-                      name="recommended"
-                      value={true}
-                      onChange={this.handleInputChange}
-                    />
-                    Yes
-                    <input
-                      required
-                      type="radio"
-                      name="recommended"
-                      value={false}
-                      onChange={this.handleInputChange}
-                    />
-                    No
-                  </label>
-                </div> */}
                 <TextField
                   required
                   id="summary-input"
@@ -116,7 +96,7 @@ class Form extends React.Component {
                   rows={2}
                   margin="normal"
                   InputLabelProps={{
-                    shrink: true
+                    shrink: true,
                   }}
                   variant="outlined"
                 />
@@ -135,7 +115,7 @@ class Form extends React.Component {
                   rows={5}
                   margin="normal"
                   InputLabelProps={{
-                    shrink: true
+                    shrink: true,
                   }}
                   variant="outlined"
                 />
@@ -148,7 +128,7 @@ class Form extends React.Component {
                   placeholder="johndoe@email.com"
                   style={{ margin: 8 }}
                   InputLabelProps={{
-                    shrink: true
+                    shrink: true,
                   }}
                   variant="outlined"
                   size="small"
@@ -162,7 +142,7 @@ class Form extends React.Component {
                   helperText="For privacy reasons, please don't use your email address"
                   style={{ margin: 8 }}
                   InputLabelProps={{
-                    shrink: true
+                    shrink: true,
                   }}
                   variant="outlined"
                   size="small"

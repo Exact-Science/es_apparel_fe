@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+
 const FormSlider = ({
   characteristics, title, id, handleInputChange,
 }) => {
@@ -14,7 +15,7 @@ const FormSlider = ({
           <input
             type="radio"
             name={id}
-            onChange={(e) => handleInputChange(e, true)}
+            onChange={handleInputChange}
             value={index + 1}
           />
         </label>
