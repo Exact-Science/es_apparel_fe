@@ -113,14 +113,14 @@ class QuestionModal extends React.Component {
               <div className="formField-container">
                 <span className="valid-field">Your question*</span>
                 {!body && !bodyVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div>
+                <div className="fieldContainer">
                   <textarea required className="textFormField" name="body" maxLength="1000" onChange={this.handleFormChanges} />
                 </div>
               </div>
               <div className="formField-container">
                 <span className="valid-field">Nickname*</span>
                 {!name && !nameVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div>
+                <div className="formField">
                   <input required type="text" className="formField" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
                 </div>
                 For privacy reasons, do not use your full name or email address
@@ -128,7 +128,7 @@ class QuestionModal extends React.Component {
               <div className="formField-container">
                 <span className="valid-field">Email*</span>
                 {!email && !emailVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div>
+                <div className="formField">
                   <input required type="email" className="formField" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
                 </div>
                 For authentication reasons, you will not be emailed

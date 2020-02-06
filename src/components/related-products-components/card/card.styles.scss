@@ -1,4 +1,4 @@
-.rp-card-container{
+.rp-card{
   margin: 0px 20px 0px 0px;
   border: 1px solid black;
   width: 220px;
@@ -12,6 +12,10 @@
 
 .image{
   height: 70%;
+}
+
+.image{
+  cursor: pointer;
 }
 
 .rp-pricing-default-strikethrough{

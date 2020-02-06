@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/require-default-props */
@@ -12,7 +14,6 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
       starRating: 0,
     };
   }
@@ -31,16 +32,17 @@ class Card extends React.Component {
         const starRating = ((
           Math.round((rating / this.state.reviews.results.length) * 4) / 4).toFixed(2));
 
-        this.setState({ rating: roundedRating, starRating })
+        this.setState({ rating: roundedRating, starRating });
       });
   }
 
   render() {
     const { relatedProduct, productStyle } = this.props;
     const { starRating } = this.state;
+    const rpId = (productStyle ? productStyle[0].product_id : null);
     return (
-      <div className="rp-card-container">
-        <div className="image"><img
+      <div className="rp-card">
+        <div className="image" role="navigation" onClick={() => { window.location.href = rpId; }}><img
           src={productStyle && productStyle[0].results[0].photos[0].url
             ? productStyle[0].results[0].photos[0].url
             : 'https://static.thenounproject.com/png/2932881-200.png'}

@@ -1,4 +1,39 @@
 .rp-container {
-  margin: 40px auto;
-  max-width: 80vw;
+  margin: 40px auto 40px;
+  max-width: 70vw;
+}
+
+.rp-carousel-container{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row;
+  overflow: hidden;
+}
+
+
+.arrow{
+  transform: scale(1.5);
+  transition: transform 0.5s ease-out, fill 0.5s;
+}
+.arrow:hover{
+  transform: scale(2.25);
+  transition: transform 0.5s ease-in-out, fill 0.5s;
+  color: black;
+}
+
+#arrow-back{
+  position: absolute;
+  display: inline-block;
+  margin-top: 100px;
+  color: white;
+  left: 30px;
+}
+
+#arrow-forward{
+  position: absolute;
+  display: inline-block;
+  margin-top: 100px;
+  color: white;
+  right: 65px;
 }
