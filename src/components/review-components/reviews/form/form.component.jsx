@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
+import { makeStyles, FormControl, FormHelperText, TextField, Input, InputLabel, Button } from '@material-ui/core';
 import FormSliders from './formsliders/formsliders.component';
 import './form-styles.scss';
 
@@ -36,14 +37,15 @@ class Form extends React.Component {
 
   handleInputChange = (e) => {
     const { value, name } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      console.log(this.state);
+    });
   };
 
   render() {
-    const {
-      overall, summary, body, nickname, email, productName,
-    } = this.state;
+    const { overall, summary, body, nickname, email, productName } = this.state;
     const { show, toggleModal, factors } = this.props;
+
     if (show) {
       return (
         <div className="form-modal">
@@ -56,22 +58,15 @@ class Form extends React.Component {
             <div className="form-container">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-input" id="overallRating">
-                  <label>
-                    <h4>
-                      Overall Rating*
-                    </h4>
-                    <Rating
-                      name="overall"
-                      value={parseInt(overall, 0)}
-                      onChange={this.handleInputChange}
-                    />
-                  </label>
+                  <Rating
+                    name="overall"
+                    value={parseInt(overall, 0)}
+                    onChange={this.handleInputChange}
+                  />
                 </div>
                 <div className="form-input" id="recommendedRadios">
                   <label htmlFor="recommended">
-                    <h4>
-                      Do you recommend this product?*
-                    </h4>
+                    <h4>Do you recommend this product?*</h4>
                     <input
                       required
                       type="radio"
@@ -90,37 +85,71 @@ class Form extends React.Component {
                     No
                   </label>
                 </div>
-                <div className="form-input" id="summary">
-                  <label htmlFor="summary">
-                    <h4>
-                      Summarize your experience with this product*
-                    </h4>
-                    <input
-                      type="text"
-                      name="summary"
-                      value={summary}
-                      placeholder="Best purchase ever!"
-                      onChange={this.handleInputChange}
-                      maxLength="60"
-                      required
-                    />
-                  </label>
-                </div>
-                {/* <div className="form-input" id="reviewbody">
-                  <label htmlFor="body">
-                    <h4>
-                      Why did you like the product or not?*
-                    </h4>
-                    <textarea
-                      required
-                      name="body"
-                      value={body}
-                      minlength="50"
-                      maxlength="1000"
-                      onChange={this.handleInputChange}
-                    />
-                  </label>
-                </div> */}
+                <TextField
+                  required
+                  id="summary-input"
+                  value={summary}
+                  name="summary"
+                  label="Title"
+                  placeholder="What is the title of your review?"
+                  style={{ margin: 8 }}
+                  onChange={this.handleInputChange}
+                  fullWidth
+                  multiline
+                  rows={2}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  variant="outlined"
+                />
+                <TextField
+                  required
+                  id="body-input"
+                  value={body}
+                  name="body"
+                  label="Review"
+                  placeholder="The more detail, explanation of use, and the condition you used this
+                    product in help everyone"
+                  style={{ margin: 8 }}
+                  onChange={this.handleInputChange}
+                  fullWidth
+                  multiline
+                  rows={5}
+                  margin="normal"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  variant="outlined"
+                />
+                <TextField
+                  required
+                  id="email-required"
+                  label="Email"
+                  type="email"
+                  value={email}
+                  placeholder="johndoe@email.com"
+                  style={{ margin: 8 }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="outlined"
+                  size="small"
+                />
+                <TextField
+                  required
+                  id="nickname-required"
+                  label="Nickname"
+                  value={nickname}
+                  placeholder="jackieBoi!"
+                  helperText="For privacy reasons, please don't use your email address"
+                  style={{ margin: 8 }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  variant="outlined"
+                  size="small"
+                />
                 {/* <div className="form-input">
                   <label htmlFor="nickname">
                     <h4>
@@ -155,7 +184,10 @@ class Form extends React.Component {
                     For authentication reasons, you will not be emailed.
                   </label>
                 </div> */}
-                <FormSliders factors={factors} handleInputChange={this.handleInputChange} />
+                <FormSliders
+                  factors={factors}
+                  handleInputChange={this.handleInputChange}
+                />
                 <div className="form-input">
                   <label htmlFor="photos">
                     <h4>Upload your review photos here</h4>
