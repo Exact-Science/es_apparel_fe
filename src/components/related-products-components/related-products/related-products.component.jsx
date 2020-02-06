@@ -4,8 +4,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './related-products.styles.scss';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import styleData from '../../../exampleData/overview.styles';
 import Carousel from '../carousel/carousel.component';
 
@@ -72,8 +72,9 @@ class RelatedProducts extends React.Component {
 
     const arrowOn = {
       className: 'rp-arrowOn',
-      fontsizesmall: 'true',
+      fontsizelarge: 'true',
       cursor: 'pointer',
+      fontSize: '34',
       // '&:hover': {
       //   transform: 'scale(1.2)',
       // },
@@ -81,8 +82,9 @@ class RelatedProducts extends React.Component {
 
     const arrowOff = {
       className: 'rp-arrowOff',
-      fontsizesmall: 'true',
+      fontsizelarge: 'true',
       color: 'rgba(104,104,104,0.3)',
+      fontSize: '34',
     };
 
     const filteredProducts = products.slice(cardStartNum, cardEndNum);
@@ -97,13 +99,13 @@ class RelatedProducts extends React.Component {
           <div className="arrow-container">
             <div className="rp-arrow-header">
               {cardStartNum <= 0
-                ? <ArrowBackIosIcon style={arrowOff} />
-                : <ArrowBackIosIcon style={arrowOn} onClick={this.reverseCards}/>}
+                ? <ChevronLeftIcon style={arrowOff} />
+                : <ChevronLeftIcon style={arrowOn} onClick={this.reverseCards}/>}
             </div>
             <div className="rp-arrow-header">
               {cardEndNum < products.length + 1
-                ? <ArrowForwardIosIcon style={arrowOn} onClick={this.advanceCards} />
-                : <ArrowForwardIosIcon style={arrowOff} />}
+                ? <ChevronRightIcon style={arrowOn} onClick={this.advanceCards} />
+                : <ChevronRightIcon style={arrowOff} />}
             </div>
           </div>
         </div>
