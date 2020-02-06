@@ -1,9 +1,19 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import { makeStyles, FormControl, FormHelperText, Switch, TextField, Input, InputLabel, Button } from '@material-ui/core';
+import { makeStyles, withStyles, FormControl, FormHelperText, Switch, TextField, Input, InputLabel, Button } from '@material-ui/core';
 import FormSliders from './formsliders/formsliders.component';
 import './form-styles.scss';
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#222',
+  },
+  iconHover: {
+    color: '#222',
+    opacity: '.5',
+  },
+})(Rating);
 
 class Form extends React.Component {
   constructor(props, { id }) {
@@ -52,18 +62,18 @@ class Form extends React.Component {
 
     if (show) {
       return (
-        <div className="form-modal">
+        <div className="form-modal" onClick={toggleModal}>
           <div className="form-modal-main">
             <header className="form-header">
               <h1>
-                {`What do you think about the ${productName}?`}
+                {`What do you think about the product?`}
               </h1>
               <button type="button" onClick={toggleModal}>Cancel</button>
             </header>
             <div className="form-container">
               <form onSubmit={this.handleSubmit}>
                 <div className="form-input" id="overallRating">
-                  <Rating
+                  <StyledRating
                     name="overall"
                     value={parseInt(overall, 0)}
                     onChange={this.handleInputChange}

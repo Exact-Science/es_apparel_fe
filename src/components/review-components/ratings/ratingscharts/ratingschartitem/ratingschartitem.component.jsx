@@ -5,20 +5,20 @@ import { lighten, withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import './ratingschartitem-styles.scss';
 
+const BorderLinearProgress = withStyles({
+  root: {
+    height: 9,
+    backgroundColor: lighten('#222', 0.5),
+  },
+  bar: {
+    borderRadius: 1,
+    backgroundColor: '#222',
+  },
+})(LinearProgress);
+
 const RatingsChartItem = ({
   getFilterValue, value, totalReviews, ratingVal,
 }) => {
-  const BorderLinearProgress = withStyles({
-    root: {
-      height: 10,
-      backgroundColor: lighten('#a5a5a5', 0.5),
-    },
-    bar: {
-      borderRadius: 1,
-      backgroundColor: '#a5a5a5',
-    },
-  })(LinearProgress);
-
   return (
     <div className="ratingschart-container">
       <Grid container>
@@ -29,7 +29,8 @@ const RatingsChartItem = ({
             onClick={getFilterValue}
             value={ratingVal}
           >
-            {ratingVal} stars
+            {ratingVal}
+            stars
           </button>
         </Grid>
         <Grid item xs={8}>
