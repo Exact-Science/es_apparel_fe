@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import { makeStyles, FormControl, FormHelperText, TextField, Input, InputLabel, Button } from '@material-ui/core';
+import { makeStyles, FormControl, FormHelperText, Switch, TextField, Input, InputLabel, Button } from '@material-ui/core';
 import FormSliders from './formsliders/formsliders.component';
 import './form-styles.scss';
 
@@ -11,7 +11,7 @@ class Form extends React.Component {
     this.state = {
       productName: '',
       overall: 0,
-      recommended: '',
+      recommended: false,
       summary: '',
       body: '',
       nickname: '',
@@ -35,6 +35,10 @@ class Form extends React.Component {
     console.log(this.state);
   };
 
+  handleChange = (name) => (event) => {
+    this.setState({ [name]: event.target.checked });
+  };
+
   handleInputChange = (e) => {
     const { value, name } = e.target;
     this.setState({ [name]: value }, () => {
@@ -43,7 +47,7 @@ class Form extends React.Component {
   };
 
   render() {
-    const { overall, summary, body, nickname, email, productName } = this.state;
+    const { overall, summary, body, nickname, email, productName, recommended } = this.state;
     const { show, toggleModal, factors } = this.props;
 
     if (show) {
@@ -64,7 +68,20 @@ class Form extends React.Component {
                     onChange={this.handleInputChange}
                   />
                 </div>
-                <div className="form-input" id="recommendedRadios">
+                <div className="form-input">
+                  <h4>Do You recommend this product?</h4>
+                  <span>No</span>
+                  <Switch
+                    checked={recommended}
+                    onChange={this.handleChange('recommended')}
+                    value={recommended}
+                    color="primary"
+                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                  />
+                  <span>Yes</span>
+                </div>
+
+                {/* <div className="form-input" id="recommendedRadios">
                   <label htmlFor="recommended">
                     <h4>Do you recommend this product?*</h4>
                     <input
@@ -84,7 +101,7 @@ class Form extends React.Component {
                     />
                     No
                   </label>
-                </div>
+                </div> */}
                 <TextField
                   required
                   id="summary-input"
@@ -124,78 +141,36 @@ class Form extends React.Component {
                 />
                 <TextField
                   required
-                  id="email-required"
+                  onChange={this.handleInputChange}
                   label="Email"
                   type="email"
                   value={email}
                   placeholder="johndoe@email.com"
                   style={{ margin: 8 }}
                   InputLabelProps={{
-                    shrink: true,
+                    shrink: true
                   }}
                   variant="outlined"
                   size="small"
                 />
                 <TextField
                   required
-                  id="nickname-required"
+                  onChange={this.handleInputChange}
                   label="Nickname"
                   value={nickname}
                   placeholder="jackieBoi!"
                   helperText="For privacy reasons, please don't use your email address"
                   style={{ margin: 8 }}
                   InputLabelProps={{
-                    shrink: true,
+                    shrink: true
                   }}
                   variant="outlined"
                   size="small"
                 />
-                {/* <div className="form-input">
-                  <label htmlFor="nickname">
-                    <h4>
-                      Nickname:
-                    </h4>
-                    <input
-                      required
-                      name="nickname"
-                      value={nickname}
-                      maxLength="60"
-                      placeholder="Example: jackson11!"
-                      onChange={this.handleInputChange}
-                    />
-                    For privacy reasons, do not use your full name email
-                    address.
-                  </label>
-                </div>
-                <div className="form-input">
-                  <label htmlFor="email">
-                    <h4>
-                      Email:
-                    </h4>
-                    <input
-                      required
-                      name="email"
-                      type="email"
-                      value={email}
-                      maxLength="60"
-                      placeholder="Example: jackson11@email.com"
-                      onChange={this.handleInputChange}
-                    />
-                    For authentication reasons, you will not be emailed.
-                  </label>
-                </div> */}
                 <FormSliders
                   factors={factors}
                   handleInputChange={this.handleInputChange}
                 />
-                <div className="form-input">
-                  <label htmlFor="photos">
-                    <h4>Upload your review photos here</h4>
-                    <input type="url" name="photos" pattern="https://.*" />
-                    <input type="url" name="photos" pattern="https://.*" />
-                    <input type="url" name="photos" pattern="https://.*" />
-                  </label>
-                </div>
                 <button type="button" onClick={toggleModal}>
                   Cancel
                 </button>
