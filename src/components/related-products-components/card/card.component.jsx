@@ -14,7 +14,6 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
       starRating: 0,
     };
   }
@@ -43,7 +42,7 @@ class Card extends React.Component {
     const rpId = (productStyle ? productStyle[0].product_id : null);
     return (
       <div className="rp-card">
-        <div className="image" role="navigation" onClick={() => {window.location.href = rpId}}><img
+        <div className="image" role="navigation" onClick={() => { window.location.href = rpId; }}><img
           src={productStyle && productStyle[0].results[0].photos[0].url
             ? productStyle[0].results[0].photos[0].url
             : 'https://static.thenounproject.com/png/2932881-200.png'}
