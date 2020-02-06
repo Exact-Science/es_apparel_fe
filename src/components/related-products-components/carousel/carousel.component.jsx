@@ -18,23 +18,20 @@ class Carousel extends React.Component {
     const { id, productStyles, products } = this.props;
     let currentStyle;
     return (
-      <div className="rp-carousel">
-        {console.log(productStyles)}
-        <div className="rp-card-container">
-          {products.map((relatedProduct) => (
-            Array.isArray(productStyles)
-              ? currentStyle = productStyles.filter(
-                (style) => relatedProduct.id.toString() === style.product_id
-              )
-              : null,
-              <Card
-                id={id}
-                relatedProduct={relatedProduct}
-                productStyle={currentStyle}
-                key={`${relatedProduct.id}-${currentStyle}`}
-              />
-          ))}
-        </div>
+      <div className="rp-card-container">
+        {products.map((relatedProduct) => (
+          Array.isArray(productStyles)
+            ? currentStyle = productStyles.filter(
+              (style) => relatedProduct.id.toString() === style.product_id
+            )
+            : null,
+            <Card
+              id={id}
+              relatedProduct={relatedProduct}
+              productStyle={currentStyle}
+              key={`${relatedProduct.id}-${currentStyle}`}
+            />
+        ))}
       </div>
     );
   }

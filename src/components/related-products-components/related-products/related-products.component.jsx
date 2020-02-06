@@ -69,31 +69,45 @@ class RelatedProducts extends React.Component {
       products,
       productStyles,
     } = this.state;
+
+    const arrowOn = {
+      className: 'rp-arrowOn',
+      fontsizesmall: 'true',
+      cursor: 'pointer',
+      // '&:hover': {
+      //   transform: 'scale(1.2)',
+      // },
+    };
+
+    const arrowOff = {
+      className: 'rp-arrowOff',
+      fontsizesmall: 'true',
+      color: 'rgba(104,104,104,0.3)',
+    };
+
     const filteredProducts = products.slice(cardStartNum, cardEndNum);
     return (
       <div className="rp-container">
-        <p>
-          <span>RELATED PRODUCTS</span>
-        </p>
+        <div className="titleContainer">
+          <div className="rp-title">
+            <p>
+              <span>RELATED PRODUCTS</span>
+            </p>
+          </div>
+          <div className="arrow-container">
+            <div className="rp-arrow-header">
+              {cardStartNum <= 0
+                ? <ArrowBackIosIcon style={arrowOff} />
+                : <ArrowBackIosIcon style={arrowOn} onClick={this.reverseCards}/>}
+            </div>
+            <div className="rp-arrow-header">
+              {cardEndNum < products.length + 1
+                ? <ArrowForwardIosIcon style={arrowOn} onClick={this.advanceCards} />
+                : <ArrowForwardIosIcon style={arrowOff} />}
+            </div>
+          </div>
+        </div>
         <div className="rp-carousel-container">
-          {cardStartNum <= 0
-            ? null
-            : (
-              <div id="arrow-back">
-                <ArrowBackIosIcon className="arrow" fontsizelarge="true" onClick={this.reverseCards} />
-              </div>
-            )}
-          {cardEndNum < products.length + 1
-            ? (
-              <div id="arrow-forward">
-                <ArrowForwardIosIcon
-                  className="arrow"
-                  fontsizelarge="true"
-                  onClick={this.advanceCards}
-                />
-              </div>
-            )
-            : null}
           <Carousel
             id={id}
             products={filteredProducts}

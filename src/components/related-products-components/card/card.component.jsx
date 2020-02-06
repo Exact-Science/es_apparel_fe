@@ -74,7 +74,8 @@ class Card extends React.Component {
               name={`read-only-${relatedProduct.id}`}
               value={parseInt(starRating)}
               size="small"
-              precision={0.25}
+              // precision={0.50}
+              readOnly
             />
           </div>
         </div>
