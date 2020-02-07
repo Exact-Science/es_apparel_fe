@@ -3,8 +3,14 @@
 }
 
 .question-identifier {
-  font-weight: bold;
-  padding-right: 15px;
+  padding-right: 11px;
+}
+
+.question-identifier-text {
+  font-family: sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-top: .9em;
 }
 
 .question-utility {
@@ -15,5 +21,8 @@
 
 .question-body {
   display: inline-flex;
-  font-weight: bold;
+  font-family: interstate-condensed, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  padding-top: .1em;
 }

@@ -1,0 +1,53 @@
+.rp-card-container {
+  display: flex;
+}
+
+.rp-card {
+  border: 1px solid black;
+  width: 220px;
+  height: 300px;
+}
+
+.image {
+  height: 70%;
+}
+
+.rp-card-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+  margin: 0px 5px 0px;
+  font-size: 14px;
+}
+
+.rp-product-details {
+  display: inline-block;
+  margin: 5px 0px 5px;
+}
+
+.image {
+  cursor: pointer;
+}
+
+.rp-product-category {
+  font-family: Interstate Condensed, sans-serif;
+}
+
+.rp-product-name {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.rp-pricing-default-strikethrough {
+  text-decoration: line-through;
+  font-family: Interstate Condensed, sans-serif;
+}
+
+.rp-pricing-sale {
+  color: red;
+}
+
+.rp-rating {
+  margin-bottom: 5px;
+}

@@ -110,14 +110,14 @@ class AnswerModal extends React.Component {
               <div className="formField-container">
                 <span className="valid-field">Your answer*</span>
                 {!body && !bodyVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div>
+                <div className="fieldContainer">
                   <textarea required className="textFormField" name="body" maxLength="1000" onChange={this.handleFormChanges} />
                 </div>
               </div>
               <div className="formField-container">
                 <span className="valid-field">Nickname*</span>
                 {!name && !nameVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div>
+                <div className="fieldContainer">
                   <input required type="text" className="formField" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
                 </div>
                 For privacy reasons, do not use your full name or email address
@@ -125,13 +125,13 @@ class AnswerModal extends React.Component {
               <div className="formField-container">
                 <span className="valid-field">Email*</span>
                 {!email && !emailVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div>
+                <div className="fieldContainer">
                   <input required type="email" className="formField" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
                 </div>
                 For authentication reasons, you will not be emailed
               </div>
               <div className="qna-answer-image-urls">
-                <p>Add urls for your supporting images</p>
+                Add urls for your supporting images
                 <input className="qna-answer-url" name="url1" type="url" />
                 <br />
                 <input className="qna-answer-url" name="url2" type="url" />
