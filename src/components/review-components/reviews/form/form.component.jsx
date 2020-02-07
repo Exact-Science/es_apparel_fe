@@ -1,10 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import {
-  makeStyles, withStyles, FormControl, FormHelperText, Switch, TextField, Input, InputLabel, Button,
-  Grid,
-} from '@material-ui/core';
+import { withStyles, Switch, TextField, Button, Grid } from '@material-ui/core';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import CancelIcon from '@material-ui/icons/Cancel';
 import FormSliders from './formsliders/formsliders.component';
@@ -26,13 +23,14 @@ class Form extends React.Component {
     super(props, { id });
     this.state = {
       productName: '',
-      overall: 0,
-      recommended: false,
+      recommend: false,
+      rating: 0,
       summary: '',
       body: '',
-      nickname: '',
+      name: '',
       email: '',
-      photos: [],
+      characteristics: {},
+      photos: ['https://source.unsplash.com/random/800x600', 'https://source.unsplash.com/random/800x600'],
       allowPhotos: false,
     };
   }
@@ -48,8 +46,39 @@ class Form extends React.Component {
     this.setState({ productName: results.name });
   };
 
-  handleSubmit = (e) => {
-    console.log(this.state);
+  handleSubmit = async (e) => {
+    const { id, toggleModal, getReviews } = this.props;
+    const { recommend, rating, summary, body, name, email, characteristics, photos } = this.state;
+    const postData = {
+      recommend,
+      rating,
+      summary,
+      body,
+      name,
+      email,
+      characteristics,
+      photos,
+    };
+    if (rating && summary && body && name && email.includes('@')) {
+      try {
+        e.preventDefault();
+        e.persist();
+        const response = await fetch(`http://3.134.102.30/reviews/${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(postData),
+        });
+        if (response) {
+          await getReviews();
+          toggleModal();
+          return response;
+        }
+      } catch (err) {
+        return err;
+      }
+    }
   };
 
   handleChange = (name) => (event) => {
@@ -58,15 +87,8 @@ class Form extends React.Component {
 
   handleInputChange = (e) => {
     const { value, name } = e.target;
-    this.setState({ [name]: value }, () => {
-      console.log(this.state);
-    });
+    this.setState({ [name]: value });
   };
-
-  updateCharacteristics = (e) => {
-    const { value } = e.target;
-    console.log(value)
-  }
 
   togglePhotos = () => {
     const { allowPhotos } = this.state;
@@ -74,7 +96,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { overall, summary, body, nickname, email, productName, recommended, allowPhotos } = this.state;
+    const { rating, summary, body, name, email, productName, recommend, allowPhotos } = this.state;
     const { show, toggleModal, factors } = this.props;
 
     if (show) {
@@ -84,15 +106,15 @@ class Form extends React.Component {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <header className="form-header">
-                  <h1>{`What do you think about the ${productName}?`}</h1>
-                  {/* <Button
+                  <Button
+                    className="cancel-btn"
                     type="button"
-                    variant="outlined"
                     color="primary"
                     onClick={toggleModal}
                   >
-                    Cancel
-                  </Button> */}
+                    <CancelIcon />
+                  </Button>
+                  <h1>{`What do you think about the ${productName}?`}</h1>
                 </header>
               </Grid>
               <div className="form-container">
@@ -100,8 +122,8 @@ class Form extends React.Component {
                   <div className="form-input" id="overallRating">
                     <StyledRating
                       size="large"
-                      name="overall"
-                      value={parseInt(overall, 0)}
+                      name="rating"
+                      value={parseInt(rating, 0)}
                       onChange={this.handleInputChange}
                     />
                   </div>
@@ -109,12 +131,11 @@ class Form extends React.Component {
                     <h4>Do You recommend this product?</h4>
                     <span>No</span>
                     <Switch
-                      required
-                      checked={recommended}
-                      onChange={this.handleChange("recommended")}
-                      value={recommended}
+                      checked={recommend}
+                      onChange={this.handleChange('recommend')}
+                      value={recommend}
                       color="primary"
-                      inputProps={{ "aria-label": "primary checkbox" }}
+                      inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                     <span>Yes</span>
                   </div>
@@ -125,14 +146,12 @@ class Form extends React.Component {
                     name="summary"
                     label="Title"
                     placeholder="What is the title of your review?"
-                    style={{ margin: 8 }}
+                    style={{ margin: 10 }}
                     onChange={this.handleInputChange}
                     fullWidth
                     multiline
-                    error={summary.length > 60 ? true : false}
-                    helperText={
-                      "Please keep your review title less than 60 characters"
-                    }
+                    error={summary.length > 60}
+                    helperText="Please keep your review summary to less than 60 characters"
                     rows={2}
                     margin="normal"
                     InputLabelProps={{
@@ -147,9 +166,9 @@ class Form extends React.Component {
                     name="body"
                     label="Review"
                     placeholder="What makes a great review? The more detail, explanation of use, and the condition you used this product in help everyone"
-                    style={{ margin: 8 }}
+                    style={{ margin: 10 }}
                     onChange={this.handleInputChange}
-                    error={body.length >= 1000 ? true : false}
+                    error={body.length > 1000}
                     helperText="Please keep your review between 50 and 1000 characters"
                     fullWidth
                     multiline
@@ -166,11 +185,10 @@ class Form extends React.Component {
                     onChange={this.handleInputChange}
                     label="Email"
                     type="email"
-                    value={email}
                     error={false}
                     placeholder="johndoe@email.com"
                     helperText="For authentication reasons, you won't be emailed"
-                    style={{ margin: 8 }}
+                    style={{ margin: 10 }}
                     InputLabelProps={{
                       shrink: true
                     }}
@@ -179,13 +197,12 @@ class Form extends React.Component {
                   />
                   <TextField
                     required
-                    name="nickname"
+                    name="name"
                     onChange={this.handleInputChange}
-                    label="Nickname"
-                    value={nickname}
+                    label="name"
                     placeholder="jackieBoi!"
                     helperText="For privacy reasons, please don't use your email address"
-                    style={{ margin: 8 }}
+                    style={{ margin: 10 }}
                     error={false}
                     InputLabelProps={{
                       shrink: true
@@ -228,7 +245,6 @@ class Form extends React.Component {
                         <CancelIcon />
                       </Button>
                     )}
-
                     <Photos
                       allowPhotos={allowPhotos}
                       togglePhotos={this.togglePhotos}
@@ -250,6 +266,7 @@ export default Form;
 
 Form.propTypes = {
   id: propTypes.string.isRequired,
+  getReviews: propTypes.func.isRequired,
   toggleModal: propTypes.func.isRequired,
   show: propTypes.bool.isRequired,
   factors: propTypes.shape({}).isRequired,

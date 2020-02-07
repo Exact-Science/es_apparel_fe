@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 
-const Photos = ({ allowPhotos, togglePhotos }) => {
+const Photos = ({ allowPhotos, togglePhotos, handleInputChange }) => {
   if (allowPhotos) {
     return (
       <Grid container spacing={1}>
@@ -14,7 +14,8 @@ const Photos = ({ allowPhotos, togglePhotos }) => {
             fullWidth
             size="small"
             type="url"
-            name="photo1"
+            name="photos"
+            onChange={handleInputChange}
             label="Photo"
             style={{ margin: 8 }}
             margin="normal"
@@ -30,7 +31,8 @@ const Photos = ({ allowPhotos, togglePhotos }) => {
             fullWidth
             type="url"
             size="small"
-            name="photo2"
+            name="photos"
+            onChange={handleInputChange}
             style={{ margin: 8 }}
             margin="normal"
             InputLabelProps={{
@@ -44,7 +46,8 @@ const Photos = ({ allowPhotos, togglePhotos }) => {
             fullWidth
             type="url"
             size="small"
-            name="photo3"
+            name="photos"
+            onChange={handleInputChange}
             style={{ margin: 8 }}
             margin="normal"
             InputLabelProps={{
@@ -74,3 +77,7 @@ Photos.propTypes = {
   allowPhotos: propTypes.bool.isRequired,
   togglePhotos: propTypes.func.isRequired,
 };
+
+
+
+

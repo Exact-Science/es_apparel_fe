@@ -20,7 +20,7 @@ class Reviews extends React.Component {
       filteredReviewsValue: 0,
       totalReviews: 0,
       sort: 'newest',
-      show: true,
+      show: false,
       showFull: false,
       rating: 3.2,
       recommended: 92,
@@ -50,7 +50,7 @@ class Reviews extends React.Component {
       const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
       const results = await data.json();
       const apiRes = results.ratings;
-      const defaultRatings = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+      const defaultRatings = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
 
       Object.keys(defaultRatings).forEach((el) => {
         if (apiRes[el]) defaultRatings[el] = apiRes[el];
@@ -146,6 +146,7 @@ class Reviews extends React.Component {
             id={id}
             show={show}
             toggleModal={this.toggleModal}
+            getReviews={this.getReviews}
             factors={factors}
           />
         </div>
