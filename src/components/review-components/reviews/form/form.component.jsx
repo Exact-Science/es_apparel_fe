@@ -1,10 +1,11 @@
+/* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles, Switch, TextField, Button, Grid } from '@material-ui/core';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import CancelIcon from '@material-ui/icons/Cancel';
-import FormSliders from './formsliders/formsliders.component';
+// import FormSliders from './formsliders/formsliders.component';
 import Photos from './photos/photos.component';
 import './form-styles.scss';
 
@@ -48,7 +49,9 @@ class Form extends React.Component {
 
   handleSubmit = async (e) => {
     const { id, toggleModal, getReviews } = this.props;
-    const { recommend, rating, summary, body, name, email, characteristics, photos } = this.state;
+    const {
+      recommend, rating, summary, body, name, email, characteristics, photos,
+    } = this.state;
     const postData = {
       recommend,
       rating,
@@ -96,8 +99,10 @@ class Form extends React.Component {
   }
 
   render() {
-    const { rating, summary, body, name, email, productName, recommend, allowPhotos } = this.state;
-    const { show, toggleModal, factors } = this.props;
+    const {
+      rating, summary, body, productName, recommend, allowPhotos,
+    } = this.state;
+    const { show, toggleModal } = this.props;
 
     if (show) {
       return (
@@ -155,7 +160,7 @@ class Form extends React.Component {
                     rows={2}
                     margin="normal"
                     InputLabelProps={{
-                      shrink: true
+                      shrink: true,
                     }}
                     variant="outlined"
                   />
@@ -175,7 +180,7 @@ class Form extends React.Component {
                     rows={5}
                     margin="normal"
                     InputLabelProps={{
-                      shrink: true
+                      shrink: true,
                     }}
                     variant="outlined"
                   />
@@ -190,7 +195,7 @@ class Form extends React.Component {
                     helperText="For authentication reasons, you won't be emailed"
                     style={{ margin: 10 }}
                     InputLabelProps={{
-                      shrink: true
+                      shrink: true,
                     }}
                     variant="outlined"
                     size="small"
@@ -205,7 +210,7 @@ class Form extends React.Component {
                     style={{ margin: 10 }}
                     error={false}
                     InputLabelProps={{
-                      shrink: true
+                      shrink: true,
                     }}
                     variant="outlined"
                     size="small"

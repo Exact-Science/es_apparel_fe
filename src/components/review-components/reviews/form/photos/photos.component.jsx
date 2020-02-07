@@ -76,8 +76,5 @@ export default Photos;
 Photos.propTypes = {
   allowPhotos: propTypes.bool.isRequired,
   togglePhotos: propTypes.func.isRequired,
+  handleInputChange: propTypes.func.isRequired,
 };
-
-
-
-

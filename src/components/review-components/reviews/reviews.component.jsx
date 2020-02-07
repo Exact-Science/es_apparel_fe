@@ -50,7 +50,9 @@ class Reviews extends React.Component {
       const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
       const results = await data.json();
       const apiRes = results.ratings;
-      const defaultRatings = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+      const defaultRatings = {
+        5: 0, 4: 0, 3: 0, 2: 0, 1: 0,
+      };
 
       Object.keys(defaultRatings).forEach((el) => {
         if (apiRes[el]) defaultRatings[el] = apiRes[el];
