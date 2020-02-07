@@ -22,7 +22,8 @@ class QuestionModal extends React.Component {
 
   componentDidMount() {
     const { id } = this.props;
-    fetch(`http://3.134.102.30/products/${id}`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/products/${id}`)
       .then((results) => results.json())
       .then((data) => this.setState({ productName: data.name }));
   }
@@ -36,6 +37,7 @@ class QuestionModal extends React.Component {
       nameVal,
       emailVal,
     } = this.state;
+    const url = process.env.REACT_APP_API_ROUTE;
 
     if (body && name && email && email.includes('@')) {
       e.preventDefault();
@@ -49,7 +51,7 @@ class QuestionModal extends React.Component {
         data[pair[0]] = pair[1];
       }
 
-      fetch(`http://3.134.102.30/qa/${id}`, {
+      fetch(`${url}/qa/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +61,8 @@ class QuestionModal extends React.Component {
         .then(() => showAddQuestionModal(e))
         .then(() => addNewQuestions(id))
         .then(() => true);
-    } else {
+    }
+    else {
       if (body && !bodyVal) {
         this.setState({ bodyVal: true });
       } else if (!body && bodyVal) {

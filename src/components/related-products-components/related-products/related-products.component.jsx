@@ -24,11 +24,12 @@ class RelatedProducts extends React.Component {
   componentDidMount() {
     const { id } = this.props;
     let promiseArray = [];
-    fetch(`http://3.134.102.30/products/${id}/related`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/products/${id}/related`)
       .then((results) => results.json())
       .then((ids) => [...new Set(ids)])
       .then((relatedProductIds) => relatedProductIds.map((productId) => promiseArray.push(
-        fetch(`http://3.134.102.30/products/${productId}`)
+        fetch(`${url}/products/${productId}`)
           .then((results) => results.json()),
       )))
       .then(() => Promise.all(promiseArray))
@@ -39,7 +40,7 @@ class RelatedProducts extends React.Component {
         promiseArray = [];
         const { products } = this.state;
         products.map((product) => promiseArray.push(
-          fetch(`http://3.134.102.30/products/${product.id}/styles`)
+          fetch(`${url}/products/${product.id}/styles`)
             .then((results) => results.json()),
         ));
       })
@@ -89,9 +90,7 @@ class RelatedProducts extends React.Component {
       <div className="rp-container">
         <div className="titleContainer">
           <div className="rp-title">
-            <p>
-              <span>RELATED PRODUCTS</span>
-            </p>
+            <p>RELATED PRODUCTS</p>
           </div>
           <div className="arrow-container">
             <div className="rp-arrow-header">

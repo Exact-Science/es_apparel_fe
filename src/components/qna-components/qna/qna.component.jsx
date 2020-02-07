@@ -22,7 +22,8 @@ class QnA extends React.Component {
   componentDidMount() {
     const { id } = this.props;
     const { count } = this.state;
-    fetch(`http://3.134.102.30/qa/${id}?count=1000`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/qa/${id}?count=1000`)
       .then((results) => results.json())
       .then((questionsList) => {
         this.setState({ list: questionsList.results },
@@ -68,7 +69,8 @@ class QnA extends React.Component {
 
   addNewQuestions = (id) => {
     const { resetCount } = this.state;
-    fetch(`http://3.134.102.30/qa/${id}?count=1000`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/qa/${id}?count=1000`)
       .then((results) => results.json())
       .then((questionsList) => this.setState({
         list: questionsList.results,
