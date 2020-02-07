@@ -58,7 +58,8 @@ class List extends React.Component {
 
   showAddedAnswer = (id) => {
     const sortedList = [];
-    fetch(`http://3.134.102.30/qa/${id}/answers?count=1000`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/qa/${id}/answers?count=1000`)
       .then((results) => results.json())
       .then((answersList) => {
         let newList = answersList.results;

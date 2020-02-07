@@ -21,7 +21,8 @@ class AnswerModal extends React.Component {
 
   componentDidMount() {
     const { id } = this.props;
-    fetch(`http://3.134.102.30/products/${id}`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/products/${id}`)
       .then((results) => results.json())
       .then((data) => this.setState({ productName: data.name }));
   }
@@ -44,6 +45,7 @@ class AnswerModal extends React.Component {
       const formData = new FormData(form);
       const data = {};
       const imageUrls = [];
+      const url = process.env.REACT_APP_API_ROUTE;
 
       for (const pair of formData.entries()) {
         if (pair[0].substr(0, 3) === 'url' && pair[1]) {
@@ -55,7 +57,7 @@ class AnswerModal extends React.Component {
 
       data.photos = imageUrls;
 
-      fetch(`http://3.134.102.30/qa/${questionId}/answers`, {
+      fetch(`${url}/qa/${questionId}/answers`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -96,59 +98,61 @@ class AnswerModal extends React.Component {
     const { showAddAnswerModal } = this.props;
     return (
       <div className="qna-answer-modal">
-        <div className="qna-answer-modal-content">
-          <form className="qna-new-answer-form" name="answerForm" onSubmit={() => this.addAnswer}>
-            <h2 className="title">
-             Submit your Answer
-            </h2>
-            <h3 className="subTitle">
-              <span>
-                {productName}
-              </span>
-            </h3>
-            <div>
-              <div className="formField-container">
-                <span className="valid-field">Your answer*</span>
-                {!body && !bodyVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div className="fieldContainer">
-                  <textarea required className="textFormField" name="body" maxLength="1000" onChange={this.handleFormChanges} />
+        <div className="qna-border">
+          <div className="qna-answer-modal-content">
+            <form className="qna-new-answer-form" name="answerForm" onSubmit={() => this.addAnswer}>
+              <h2 className="title">
+              Submit your Answer
+              </h2>
+              <h3 className="subTitle">
+                <span>
+                  {productName}
+                </span>
+              </h3>
+              <div>
+                <div className="formField-container">
+                  <span className="valid-field">Your answer*</span>
+                  {!body && !bodyVal ? <span className="invalid-field"> (Required Field)</span> : null}
+                  <div className="fieldContainer">
+                    <textarea required className="textFormField" name="body" maxLength="1000" onChange={this.handleFormChanges} />
+                  </div>
+                </div>
+                <div className="formField-container">
+                  <span className="valid-field">Nickname*</span>
+                  {!name && !nameVal ? <span className="invalid-field"> (Required Field)</span> : null}
+                  <div className="fieldContainer">
+                    <input required type="text" className="formField" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
+                  </div>
+                  For privacy reasons, do not use your full name or email address
+                </div>
+                <div className="formField-container">
+                  <span className="valid-field">Email*</span>
+                  {!email && !emailVal ? <span className="invalid-field"> (Required Field)</span> : null}
+                  <div className="fieldContainer">
+                    <input required type="email" className="formField" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
+                  </div>
+                  For authentication reasons, you will not be emailed
+                </div>
+                <div className="qna-answer-image-urls">
+                  Add urls for your supporting images
+                  <input className="qna-answer-url" name="url1" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url2" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url3" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url4" type="url" />
+                  <br />
+                  <input className="qna-answer-url" name="url5" type="url" />
+                  <br />
                 </div>
               </div>
-              <div className="formField-container">
-                <span className="valid-field">Nickname*</span>
-                {!name && !nameVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div className="fieldContainer">
-                  <input required type="text" className="formField" name="name" maxLength="60" placeholder="Example: jack543!" onChange={this.handleFormChanges} />
-                </div>
-                For privacy reasons, do not use your full name or email address
+              <div className="qna-answer-button-container">
+                <button className="main-button" type="submit" onClick={(e) => showAddAnswerModal(e)}>Cancel</button>
+                <button className="main-button" type="submit" onClick={(e) => this.addAnswer(e)}>Submit</button>
               </div>
-              <div className="formField-container">
-                <span className="valid-field">Email*</span>
-                {!email && !emailVal ? <span className="invalid-field"> (Required Field)</span> : null}
-                <div className="fieldContainer">
-                  <input required type="email" className="formField" name="email" maxLength="60" placeholder="Example: jack@email.com" onChange={this.handleFormChanges} />
-                </div>
-                For authentication reasons, you will not be emailed
-              </div>
-              <div className="qna-answer-image-urls">
-                Add urls for your supporting images
-                <input className="qna-answer-url" name="url1" type="url" />
-                <br />
-                <input className="qna-answer-url" name="url2" type="url" />
-                <br />
-                <input className="qna-answer-url" name="url3" type="url" />
-                <br />
-                <input className="qna-answer-url" name="url4" type="url" />
-                <br />
-                <input className="qna-answer-url" name="url5" type="url" />
-                <br />
-              </div>
-            </div>
-            <div className="qna-answer-button-container">
-              <button className="main-button" type="submit" onClick={(e) => showAddAnswerModal(e)}>Cancel</button>
-              <button className="main-button" type="submit" onClick={(e) => this.addAnswer(e)}>Submit</button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     );
