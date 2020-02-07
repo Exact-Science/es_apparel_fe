@@ -50,25 +50,27 @@ class Card extends React.Component {
         />
         </div>
         <div className="rp-card-details">
-          <div>{relatedProduct.category}</div>
-          <div className="product-name">{relatedProduct.name}</div>
-          {productStyle && productStyle[0].results[0].sale_price
-          && parseInt(productStyle[0].results[0].sale_price) > 0
-            ? (
-              <div className="rp-pricing-container">
-                <span className="rp-pricing-sale">${productStyle[0].results[0].sale_price} </span>
-                <span className="rp-pricing-default-strikethrough">${relatedProduct.default_price}</span>
-              </div>
-            )
-            : null}
-          {productStyle && !(parseInt(productStyle[0].results[0].sale_price) > 0)
-            ? (
-              <div className="rp-pricing-container">
-                <span className="rp-pricing-default">${relatedProduct.default_price}</span>
-              </div>
-            )
-            : null}
-          <div>
+          <div className="rp-product-details">
+            <div className="rp-product-category">{relatedProduct.category}</div>
+            <div className="rp-product-name">{relatedProduct.name}</div>
+            {productStyle && productStyle[0].results[0].sale_price
+            && parseInt(productStyle[0].results[0].sale_price) > 0
+              ? (
+                <div className="rp-pricing-container">
+                  <span className="rp-pricing-sale">${productStyle[0].results[0].sale_price} </span>
+                  <span className="rp-pricing-default-strikethrough">${relatedProduct.default_price}</span>
+                </div>
+              )
+              : null}
+            {productStyle && !(parseInt(productStyle[0].results[0].sale_price) > 0)
+              ? (
+                <div className="rp-pricing-container">
+                  <span className="rp-pricing-default">${relatedProduct.default_price}</span>
+                </div>
+              )
+              : null}
+          </div>
+          <div className="rp-rating">
             <Rating
               className="rating"
               name={`read-only-${relatedProduct.id}`}
@@ -79,6 +81,10 @@ class Card extends React.Component {
             />
           </div>
         </div>
+        {/* <div className="c1">
+          <div className="c2" />
+          <div className="c3" />
+        </div> */}
       </div>
     );
   }

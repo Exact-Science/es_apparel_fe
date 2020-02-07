@@ -75,9 +75,6 @@ class RelatedProducts extends React.Component {
       fontsizelarge: 'true',
       cursor: 'pointer',
       fontSize: '34',
-      // '&:hover': {
-      //   transform: 'scale(1.2)',
-      // },
     };
 
     const arrowOff = {
