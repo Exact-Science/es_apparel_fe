@@ -131,7 +131,7 @@ class AnswerModal extends React.Component {
                 For authentication reasons, you will not be emailed
               </div>
               <div className="qna-answer-image-urls">
-                <p>Add urls for your supporting images</p>
+                Add urls for your supporting images
                 <input className="qna-answer-url" name="url1" type="url" />
                 <br />
                 <input className="qna-answer-url" name="url2" type="url" />
