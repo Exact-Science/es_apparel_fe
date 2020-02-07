@@ -42,7 +42,7 @@ class Form extends React.Component {
 
   getProductInfo = async () => {
     const { id } = this.props;
-    const data = await fetch(`http://3.134.102.30/products/${id}`);
+    const data = await fetch(`${process.env.REACT_APP_API_ROUTE}/products/${id}`);
     const results = await data.json();
     this.setState({ productName: results.name });
   };
