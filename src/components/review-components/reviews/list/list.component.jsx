@@ -11,6 +11,8 @@ const ReviewList = ({
   toggleModal,
   totalReviews,
   filteredReviewsValue,
+  enlargeImage,
+  showFull,
 }) => (
   <div className="reviewListHeader">
     <header>
@@ -39,6 +41,8 @@ const ReviewList = ({
               response={review.response}
               helpfulness={review.helpfulness}
               images={review.photos}
+              enlargeImage={enlargeImage}
+              showFull={showFull}
             />
           );
         }
@@ -70,4 +74,5 @@ ReviewList.propTypes = {
   loadMoreReviews: propTypes.func.isRequired,
   toggleModal: propTypes.func.isRequired,
   totalReviews: propTypes.number.isRequired,
+  enlargeImage: propTypes.func.isRequired,
 };

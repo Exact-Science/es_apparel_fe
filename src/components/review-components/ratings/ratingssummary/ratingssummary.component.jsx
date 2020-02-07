@@ -2,8 +2,18 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import RatingsCharts from '../ratingscharts/ratingscharts.component';
+import { withStyles } from '@material-ui/core/styles';
 import './ratingssummary-styles.scss';
 
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#222',
+  },
+  iconHover: {
+    color: '#222',
+    opacity: '.5',
+  },
+})(Rating);
 
 const RatingsSummary = ({
   rating, ratings, recommended, getFilterValue, totalReviews, formattedRating,
@@ -12,7 +22,7 @@ const RatingsSummary = ({
     <div>
       <h1>
         {rating}
-        <Rating className="stars" name="rating-overview" value={rating} size="medium" precision={0.25} />
+        <StyledRating className="stars" name="rating-overview" value={rating} size="medium" precision={0.25} />
       </h1>
     </div>
     <div>

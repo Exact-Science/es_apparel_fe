@@ -4,7 +4,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ReviewList from './list/list.component';
 import Ratings from '../ratings/ratings.component';
-import ReviewModal from './reviewmodal/reviewmodal.component';
+import Form from './form/form.component';
 import './reviews-styles.scss';
 
 class Reviews extends React.Component {
@@ -21,6 +21,7 @@ class Reviews extends React.Component {
       totalReviews: 0,
       sort: 'newest',
       show: false,
+      showFull: false,
       rating: 3.2,
       recommended: 92,
     };
@@ -49,13 +50,16 @@ class Reviews extends React.Component {
       const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
       const results = await data.json();
       const apiRes = results.ratings;
-      let defaultRatings = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+      const defaultRatings = {
+        5: 0, 4: 0, 3: 0, 2: 0, 1: 0,
+      };
 
       Object.keys(defaultRatings).forEach((el) => {
         if (apiRes[el]) defaultRatings[el] = apiRes[el];
       });
-
-      this.setState({ ratings: results, formattedRating: defaultRatings, factors: results.characteristics }, () => {
+      this.setState({
+        ratings: results, formattedRating: defaultRatings, factors: results.characteristics,
+      }, () => {
         this.getPercentage();
         this.getOverallRating();
       });
@@ -98,6 +102,11 @@ class Reviews extends React.Component {
     this.setState({ count: count + 2, filteredReviewsValue: 0 });
   }
 
+  enlargeImage = () => {
+    const { showFull } = this.state;
+    this.setState({ showFull: !showFull });
+  }
+
   toggleModal = () => {
     const { show } = this.state;
     this.setState({ show: !show });
@@ -106,7 +115,7 @@ class Reviews extends React.Component {
   render() {
     const {
       reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
-      totalReviews, formattedRating, factors,
+      totalReviews, formattedRating, factors, showFull,
     } = this.state;
     const { id } = this.props;
     return (
@@ -130,13 +139,17 @@ class Reviews extends React.Component {
             handleChange={this.handleChange}
             loadMoreReviews={this.loadMoreReviews}
             toggleModal={this.toggleModal}
+            enlargeImage={this.enlargeImage}
+            showFull={showFull}
           />
         </div>
         <div>
-          <ReviewModal
+          <Form
             id={id}
             show={show}
             toggleModal={this.toggleModal}
+            getReviews={this.getReviews}
+            factors={factors}
           />
         </div>
       </div>

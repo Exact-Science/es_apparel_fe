@@ -1,8 +1,8 @@
 const breakdown = {
   Fit: {
-    1: 'Too small',
+    1: 'Too tight',
     3: 'Perfect',
-    5: 'Too large',
+    5: 'Too baggy',
   },
   Size: {
     1: 'Too small',
@@ -20,14 +20,14 @@ const breakdown = {
     5: 'Too long',
   },
   Comfort: {
-    1: 'Poor',
+    1: 'Uncomfortable',
     3: 'Ok',
-    5: 'Great',
+    5: 'Perfect',
   },
   Quality: {
     1: 'Poor',
-    3: 'Ok',
-    5: 'Great',
+    3: 'Average',
+    5: 'Exceptional',
   },
 };
 

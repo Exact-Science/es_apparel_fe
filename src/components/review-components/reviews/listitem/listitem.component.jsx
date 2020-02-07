@@ -8,14 +8,14 @@ import Thumbnails from '../thumbnails/thumbnails.component';
 import './listitem-styles.scss';
 
 const ListItem = ({
-  rating, user, date, summary, body, helpfulness, id, response, images,
+  rating, user, date, summary, body, helpfulness, id, response, images, enlargeImage, showFull,
 }) => (
   <div className="listItem">
     <>
       <ListItemHeader rating={rating} user={user} date={date} />
       <ListItemBody summary={summary} body={body} />
       <Response response={response} />
-      <Thumbnails images={images} />
+      <Thumbnails images={images} enlargeImage={enlargeImage} showFull={showFull} />
       <ListItemFooter helpfulness={helpfulness} id={id} />
     </>
   </div>
@@ -37,4 +37,5 @@ ListItem.propTypes = {
   id: propTypes.number.isRequired,
   response: propTypes.string,
   images: propTypes.arrayOf(propTypes.object).isRequired,
+  enlargeImage: propTypes.func.isRequired,
 };
