@@ -20,7 +20,8 @@ class Card extends React.Component {
 
   componentDidMount() {
     const { relatedProduct } = this.props;
-    fetch(`http://3.134.102.30/reviews/${relatedProduct.id}/list?count=1000`)
+    const url = process.env.REACT_APP_API_ROUTE;
+    fetch(`${url}/reviews/${relatedProduct.id}/list?count=1000`)
       .then((results) => results.json())
       .then((reviews) => this.setState({ reviews }))
       .then(() => this.state.reviews.results.reduce(

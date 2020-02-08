@@ -1,7 +1,16 @@
 .rp-container {
   margin: 40px auto 40px;
   max-width: 70vw
+}
 
+.rp-container p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.rp-container h3 {
+  color: #595959;
+  font-family: interstate black italic;
 }
 
 .rp-carousel-container{
@@ -38,7 +47,6 @@
 }
 
 .rp-arrowOff:hover{
-  // transform: scale(0);
   cursor: auto;
 }
 

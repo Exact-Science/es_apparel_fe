@@ -20,6 +20,7 @@ class Utility extends React.Component {
 
   updateHelpful = (e) => {
     const { questionId } = this.props;
+    const url = process.env.REACT_APP_API_ROUTE;
     e.preventDefault();
     this.setState((previousState) => ({
       questionHelpfulness: previousState.questionHelpfulness + 1,
@@ -27,7 +28,7 @@ class Utility extends React.Component {
     () => {
       const { questionHelpfulClicked } = this.state;
       this.setState({ questionHelpfulClicked: !questionHelpfulClicked }, () => {
-        fetch(`http://3.134.102.30/qa/question/${questionId}/helpful`,
+        fetch(`${url}/qa/question/${questionId}/helpful`,
           { method: 'PUT' });
       });
     });

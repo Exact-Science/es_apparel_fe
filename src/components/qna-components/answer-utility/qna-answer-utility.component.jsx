@@ -20,6 +20,7 @@ class AnswerUtility extends React.Component {
 
   updateHelpful = (e) => {
     e.preventDefault();
+    const url = process.env.REACT_APP_API_ROUTE;
     const { answerId } = this.props;
     this.setState((previousState) => ({
       answerHelpfulness: previousState.answerHelpfulness + 1,
@@ -27,7 +28,7 @@ class AnswerUtility extends React.Component {
     () => {
       const { answerHelpfulClicked } = this.state;
       this.setState({ answerHelpfulClicked: !answerHelpfulClicked }, () => {
-        fetch(`http://3.134.102.30/qa/answer/${answerId}/helpful`,
+        fetch(`${url}/qa/answer/${answerId}/helpful`,
           { method: 'PUT' });
       });
     });
@@ -35,11 +36,12 @@ class AnswerUtility extends React.Component {
 
   setReported = (e) => {
     e.preventDefault();
+    const url = process.env.REACT_APP_API_ROUTE;
     const { answerId } = this.props;
     const { reported } = this.state;
     if (!reported) {
       this.setState({ reported: !reported }, () => (
-        fetch(`http://3.134.102.30/qa/answer/${answerId}/report`, { method: 'PUT' })));
+        fetch(`${url}/qa/answer/${answerId}/report`, { method: 'PUT' })));
     }
   }
 
