@@ -4,6 +4,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import List from '../../components/qna-components/list/qna-list.component';
 import Search from '../../components/qna-components/search/qna-search.component';
 import QuestionModal from '../../components/qna-components/question-modal/qna-question-modal.component';
+import FullImageModal from '../../components/qna-components/full-image-modal/qna-full-image-modal.component';
+import Utility from '../../components/qna-components/utility/qna-utility.component';
 import qData from '../../exampleData/exampleQuestionData';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -27,9 +29,32 @@ describe('Question & Answers', () => {
     expect(wrapper);
   });
 
-  it('renders without crashing', () => {
+  it('renders a full image modal', () => {
+    const wrapper = shallow(
+      <FullImageModal
+        imageUrl={qData.results[0].answers[124882].photos[0]}
+      />,
+    );
+    expect(wrapper);
+  });
+
+  it('renders a question utility', () => {
     const q = qData.results[0];
-    console.log("these are the results: ", q.answers);
+    const wrapper = shallow(
+      <Utility
+        id={qData.product_id}
+        questionId={q.question_id}
+        questionBody={q.question_body}
+        questionHelpfulness={q.question_helpfulness}
+        showAddedAnswer={q.showAddedAnswer}
+      />,
+    );
+    expect(wrapper);
+  });
+
+
+  it('renders a question list without crashing', () => {
+    const q = qData.results[0];
     const wrapper = shallow(
       <List
         id={qData.product_id}

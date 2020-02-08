@@ -15,7 +15,8 @@ module.exports = {
           date: '2019-12-18T00:00:00.000Z',
           answerer_name: 'eve',
           helpfulness: 5,
-          photos: [],
+          photos: ['https://images.unsplash.com/photo-1444953918062-bc485c5332bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2067&q=80',
+          'https://images.unsplash.com/photo-1579634667534-a9bc936754bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'],
         },
         124883: {
           id: 124883,
@@ -59,3 +60,4 @@ module.exports.searchQuestions = () => {
 };
 module.exports.showAddQuestionModal = () => {};
 module.exports.addNewQuestions = () => {};
+module.exports.showAddedAnswer = () => {};
