@@ -22,7 +22,13 @@ const RatingsSummary = ({
     <div>
       <h1 className="rating-large">
         {rating}
-        <StyledRating className="stars" name="rating-overview" value={parseFloat(rating)} size="medium" precision={0.25} />
+        <StyledRating
+          className="stars"
+          name="rating-overview"
+          value={parseFloat(rating)}
+          size="medium"
+          precision={0.25}
+        />
       </h1>
     </div>
     <div>

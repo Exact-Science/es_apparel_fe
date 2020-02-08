@@ -17,46 +17,45 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress);
 
 const RatingsChartItem = ({
-  getFilterValue, value, totalReviews, ratingVal,
-}) => {
-  return (
-    <div className="ratingschart-container">
-      <Grid container>
-        <Grid item xs={3}>
-          <button
-            className="chart-button"
-            type="button"
-            onClick={getFilterValue}
-            value={ratingVal}
-          >
-            {ratingVal}
-            {' '}
-            stars
-          </button>
-        </Grid>
-        <Grid item xs={8}>
-          <BorderLinearProgress
-            variant="determinate"
-            color="secondary"
-            value={(value / totalReviews) * 100}
-            valueBuffer={100}
-          />
-        </Grid>
-        <Grid item xs={1}>
-          <button
-            className="chart-button"
-            type="button"
-            onClick={getFilterValue}
-            value={ratingVal}
-          >
-            {value}
-          </button>
-        </Grid>
+  getFilterValue,
+  value,
+  totalReviews,
+  ratingVal,
+}) => (
+  <div className="ratingschart-container">
+    <Grid container>
+      <Grid item xs={3}>
+        <button
+          className="chart-button"
+          type="button"
+          onClick={getFilterValue}
+          value={ratingVal}
+        >
+          {ratingVal}
+          {ratingVal === 1 || ratingVal === '1' ? ' star' : ' stars'}
+        </button>
       </Grid>
-    </div>
-  );
-};
-
+      <Grid item xs={8}>
+        <BorderLinearProgress
+          variant="determinate"
+          color="secondary"
+          value={(value / totalReviews) * 100}
+          valueBuffer={100}
+        />
+      </Grid>
+      <Grid item xs={1}>
+        <button
+          className="chart-button"
+          type="button"
+          onClick={getFilterValue}
+          value={ratingVal}
+        >
+          {value}
+        </button>
+      </Grid>
+    </Grid>
+  </div>
+);
 
 export default RatingsChartItem;
 
