@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import RatingsCharts from '../ratingscharts/ratingscharts.component';
-import { withStyles } from '@material-ui/core/styles';
 import './ratingssummary-styles.scss';
 
 const StyledRating = withStyles({
@@ -20,9 +20,9 @@ const RatingsSummary = ({
 }) => (
   <div className="rating-overview">
     <div>
-      <h1>
+      <h1 className="rating-large">
         {rating}
-        <StyledRating className="stars" name="rating-overview" value={rating} size="medium" precision={0.25} />
+        <StyledRating className="stars" name="rating-overview" value={parseFloat(rating)} size="medium" precision={0.25} />
       </h1>
     </div>
     <div>

@@ -1,10 +1,19 @@
 .rating-overview {
-  font-size: 72;
   box-sizing: border-box;
   padding: 5px;
 }
 
+.rating-large {
+  font-size: 64px;
+  font-weight: 400;
+  margin: auto;
+  position: relative;
+}
+
 .stars {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
   padding: 10px;
   margin-left: 20px;
 }

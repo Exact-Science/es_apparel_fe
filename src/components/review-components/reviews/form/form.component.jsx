@@ -31,7 +31,7 @@ class Form extends React.Component {
       name: '',
       email: '',
       characteristics: {},
-      photos: ['https://source.unsplash.com/random/600x400', 'https://source.unsplash.com/random/600x400'],
+      photos: ['https://source.unsplash.com/random/600x800', 'https://source.unsplash.com/random/600x800'],
       allowPhotos: false,
     };
   }
@@ -97,11 +97,11 @@ class Form extends React.Component {
   togglePhotos = () => {
     const { allowPhotos } = this.state;
     this.setState({ allowPhotos: !allowPhotos });
-  }
+  };
 
   render() {
     const {
-      rating, summary, body, productName, recommend, allowPhotos,
+      rating, summary, body, productName, recommend, allowPhotos, photos,
     } = this.state;
     const { show, toggleModal } = this.props;
 
@@ -252,8 +252,8 @@ class Form extends React.Component {
                     )}
                     <Photos
                       allowPhotos={allowPhotos}
+                      photos={photos}
                       togglePhotos={this.togglePhotos}
-                      handleInputChange={this.handleInputChange}
                     />
                   </div>
                 </form>
