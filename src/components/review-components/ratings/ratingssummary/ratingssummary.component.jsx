@@ -32,10 +32,10 @@ const RatingsSummary = ({
       </h1>
     </div>
     <div>
-      <h5>
+      <h4 id="recommendations-summary">
         {recommended}
         % of reviewers recommend this product
-      </h5>
+      </h4>
     </div>
     <div className="ratingschart-container">
       <RatingsCharts
