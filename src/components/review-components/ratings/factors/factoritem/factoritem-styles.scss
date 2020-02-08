@@ -1,21 +1,33 @@
-.chars-chart {
-  background-color: #a5a5a5;
-  opacity: .5;
+.inner-factor-chart {
+  background-color: #909090;
   width: 100%;
+  position: absolute;
+  z-index: 1;
+  height: 55%;
+  margin-top: 1px;
 }
 
 #triangle-down {
+  z-index: 1;
   display: inline-block;
   position: relative;
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 8px solid black;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid #222;
+}
+
+.outer-factor-chart {
+  position: relative;
 }
 
 .factor-item {
   width: 94%;
+}
+
+.factor-descriptors {
+  padding-top: 2px;
 }
 
 .factor-heading {
