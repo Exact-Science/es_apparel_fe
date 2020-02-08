@@ -22,14 +22,20 @@ const RatingsSummary = ({
     <div>
       <h1 className="rating-large">
         {rating}
-        <StyledRating className="stars" name="rating-overview" value={parseFloat(rating)} size="medium" precision={0.25} />
+        <StyledRating
+          className="stars"
+          name="rating-overview"
+          value={parseFloat(rating)}
+          size="medium"
+          precision={0.25}
+        />
       </h1>
     </div>
     <div>
-      <h5>
+      <h4 id="recommendations-summary">
         {recommended}
         % of reviewers recommend this product
-      </h5>
+      </h4>
     </div>
     <div className="ratingschart-container">
       <RatingsCharts

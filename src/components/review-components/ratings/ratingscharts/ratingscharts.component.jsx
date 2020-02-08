@@ -8,8 +8,8 @@ const RatingsCharts = ({
   getFilterValue, ratings, totalReviews, formattedRating,
 }) => {
   if (ratings.ratings) {
-    return Object.keys(formattedRating).map((el, index) => (
-      <div key={index}>
+    return Object.keys(formattedRating).reverse().map((el, index) => (
+      <div className="ratingchart-item" key={index}>
         <RatingsChartItem
           id={el.id}
           getFilterValue={getFilterValue}
