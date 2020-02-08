@@ -11,11 +11,9 @@ const FactorItem = ({ name, value }) => (
         <p className="factor-heading">{name}</p>
       </Grid>
       <Grid item xs={12}>
-        <div className="chars-chart">
-          <div
-            id="triangle-down"
-            style={{ left: `${(value / 5) * 100}%` }}
-          />
+        <div className="outer-factor-chart">
+          <div className="inner-factor-chart"><span>{" "}</span></div>
+          <div id="triangle-down" style={{ left: `${(value / 5) * 100}%` }} />
         </div>
       </Grid>
       <Grid container className="factor-descriptors">
