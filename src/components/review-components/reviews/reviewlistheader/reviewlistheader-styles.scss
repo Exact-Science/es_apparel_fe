@@ -1,1 +1,12 @@
+.sort-selector {
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bold;
+}
 
+.sort-selector:active {
+  border: none;
+}

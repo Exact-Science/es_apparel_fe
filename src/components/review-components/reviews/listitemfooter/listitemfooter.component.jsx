@@ -20,7 +20,7 @@ class ListItemFooter extends React.Component {
     this.setState({ helpfulness: helpfulness + 1 });
 
     try {
-      await fetch(`http://3.134.102.30/reviews/helpful/${id}`, {
+      await fetch(`${process.env.REACT_APP_API_ROUTE}/reviews/helpful/${id}`, {
         method: 'PUT',
       });
       this.setState({ clicked: !clicked });

@@ -2,6 +2,8 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+
 import ReviewList from './list/list.component';
 import Ratings from '../ratings/ratings.component';
 import Form from './form/form.component';
@@ -36,7 +38,7 @@ class Reviews extends React.Component {
     const { id } = this.props;
     const { sort } = this.state;
     try {
-      const data = await fetch(`http://3.134.102.30/reviews/${id}/list?count=1000&sort=${sort}`);
+      const data = await fetch(`${process.env.REACT_APP_API_ROUTE}/reviews/${id}/list?count=1000&sort=${sort}`);
       const res = await data.json();
       this.setState({ reviews: res.results, filteredReviews: res.results });
     } catch (err) {
@@ -47,7 +49,7 @@ class Reviews extends React.Component {
   getRatings = async () => {
     const { id } = this.props;
     try {
-      const data = await fetch(`http://3.134.102.30/reviews/${id}/meta`);
+      const data = await fetch(`${process.env.REACT_APP_API_ROUTE}/reviews/${id}/meta`);
       const results = await data.json();
       const apiRes = results.ratings;
       const defaultRatings = {
@@ -121,6 +123,7 @@ class Reviews extends React.Component {
     return (
       <div className="parent-container">
         <div className="reviewsContainer">
+
           <p>Ratings and Reviews</p>
           <Ratings
             ratings={ratings}

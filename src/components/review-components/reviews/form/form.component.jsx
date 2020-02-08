@@ -31,7 +31,7 @@ class Form extends React.Component {
       name: '',
       email: '',
       characteristics: {},
-      photos: ['https://source.unsplash.com/random/800x600', 'https://source.unsplash.com/random/800x600'],
+      photos: ['https://source.unsplash.com/random/600x400', 'https://source.unsplash.com/random/600x400'],
       allowPhotos: false,
     };
   }
@@ -42,7 +42,7 @@ class Form extends React.Component {
 
   getProductInfo = async () => {
     const { id } = this.props;
-    const data = await fetch(`http://3.134.102.30/products/${id}`);
+    const data = await fetch(`${process.env.REACT_APP_API_ROUTE}/products/${id}`);
     const results = await data.json();
     this.setState({ productName: results.name });
   };
@@ -114,7 +114,6 @@ class Form extends React.Component {
                   <Button
                     className="cancel-btn"
                     type="button"
-                    color="primary"
                     onClick={toggleModal}
                   >
                     <CancelIcon />
@@ -222,9 +221,9 @@ class Form extends React.Component {
                   <div>
                     <Button
                       type="submit"
+                      size="small"
                       variant="outlined"
                       style={{ margin: 8 }}
-                      color="primary"
                       onClick={this.handleSubmit}
                     >
                       Submit Review
@@ -232,8 +231,8 @@ class Form extends React.Component {
                     {!allowPhotos ? (
                       <Button
                         type="button"
+                        size="small"
                         variant="outlined"
-                        color="primary"
                         style={{ margin: 8 }}
                         onClick={this.togglePhotos}
                       >
@@ -242,9 +241,9 @@ class Form extends React.Component {
                     ) : (
                       <Button
                         type="button"
+                        size="small"
                         variant="outlined"
                         style={{ margin: 8 }}
-                        color="primary"
                         onClick={this.togglePhotos}
                       >
                         <CancelIcon />
