@@ -27,6 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "enzyme": "jest --verbose",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js --ext .jsx . --fix"
   },

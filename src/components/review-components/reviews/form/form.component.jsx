@@ -275,4 +275,5 @@ Form.propTypes = {
   toggleModal: propTypes.func.isRequired,
   show: propTypes.bool.isRequired,
   factors: propTypes.shape({}).isRequired,
+  getRatings: propTypes.func.isRequired,
 };
