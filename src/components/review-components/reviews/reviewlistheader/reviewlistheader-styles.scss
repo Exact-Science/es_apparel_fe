@@ -7,6 +7,12 @@
   font-weight: bold;
 }
 
-.sort-selector:active {
+.sort-selector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border: none;
+}
+
+.sort-selector:focus {
+  outline: none;
 }

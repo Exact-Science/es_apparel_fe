@@ -2,8 +2,6 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-
 import ReviewList from './list/list.component';
 import Ratings from '../ratings/ratings.component';
 import Form from './form/form.component';
@@ -116,14 +114,14 @@ class Reviews extends React.Component {
 
   render() {
     const {
-      reviews, show, count, ratings, rating, recommended, filteredReviews, filteredReviewsValue,
+      reviews, show, count, ratings, rating, recommended,
+      filteredReviews, filteredReviewsValue,
       totalReviews, formattedRating, factors, showFull,
     } = this.state;
     const { id } = this.props;
     return (
       <div className="parent-container">
         <div className="reviewsContainer">
-
           <p>Ratings and Reviews</p>
           <Ratings
             ratings={ratings}
@@ -152,7 +150,7 @@ class Reviews extends React.Component {
             show={show}
             toggleModal={this.toggleModal}
             getReviews={this.getReviews}
-            factors={factors}
+            getRatings={this.getRatings}
           />
         </div>
       </div>

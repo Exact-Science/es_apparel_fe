@@ -1,14 +1,18 @@
-.reviewListContainer {
+.reviewlist-container {
   width: 70%;
-  height: 375px;
+  height: 400px;
   box-sizing: border-box;
   overflow-y: scroll;
   padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px #fff;
 }
 
-.reviewListFooter {
+.reviewlist-footer {
   width: 70%;
   float: right;
   padding: 10px;
   box-sizing: border-box;
+  box-shadow: 0px 0px 20px #fff;
+  background-color: #fff;
 }

@@ -30,6 +30,7 @@ const RatingsChartItem = ({
             value={ratingVal}
           >
             {ratingVal}
+            {' '}
             stars
           </button>
         </Grid>
