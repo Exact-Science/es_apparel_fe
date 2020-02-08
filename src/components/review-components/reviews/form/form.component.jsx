@@ -48,7 +48,7 @@ class Form extends React.Component {
   };
 
   handleSubmit = async (e) => {
-    const { id, toggleModal, getReviews } = this.props;
+    const { id, toggleModal, getReviews, getRatings } = this.props;
     const {
       recommend, rating, summary, body, name, email, characteristics, photos,
     } = this.state;
@@ -75,6 +75,7 @@ class Form extends React.Component {
         });
         if (response) {
           await getReviews();
+          await getRatings();
           toggleModal();
           return response;
         }

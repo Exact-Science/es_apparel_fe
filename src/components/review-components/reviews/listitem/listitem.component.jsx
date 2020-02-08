@@ -10,7 +10,7 @@ import './listitem-styles.scss';
 const ListItem = ({
   rating, user, date, summary, body, helpfulness, id, response, images, enlargeImage, showFull,
 }) => (
-  <div className="listItem">
+  <div className="list-item">
     <>
       <ListItemHeader rating={rating} user={user} date={date} />
       <ListItemBody summary={summary} body={body} />

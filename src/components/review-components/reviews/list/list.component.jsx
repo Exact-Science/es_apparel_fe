@@ -16,7 +16,7 @@ const ReviewList = ({
   enlargeImage,
   showFull,
 }) => (
-  <div className="reviewListHeader">
+  <div className="reviewlist-header">
     <header>
       <ReviewListHeader
         reviews={reviews}
@@ -24,7 +24,7 @@ const ReviewList = ({
         handleChange={handleChange}
       />
     </header>
-    <div className="reviewListContainer">
+    <div className="reviewlist-container">
       {reviews.map((review) => {
         if (
           parseInt(filteredReviewsValue, 0) === 0
@@ -51,7 +51,7 @@ const ReviewList = ({
         return null;
       })}
     </div>
-    <div className="reviewListFooter">
+    <div className="reviewlist-footer">
       <Button type="submit" variant="outlined" style={{ margin: 8 }} onClick={loadMoreReviews}>
         More Reviews
       </Button>
@@ -76,5 +76,6 @@ ReviewList.propTypes = {
   loadMoreReviews: propTypes.func.isRequired,
   toggleModal: propTypes.func.isRequired,
   totalReviews: propTypes.number.isRequired,
+  showFull: propTypes.bool.isRequired,
   enlargeImage: propTypes.func.isRequired,
 };
