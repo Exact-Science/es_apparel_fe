@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 
-const Photos = ({ allowPhotos, togglePhotos, handleInputChange }) => {
+const Photos = ({ allowPhotos, togglePhotos }) => {
   if (allowPhotos) {
     return (
       <Grid container spacing={1}>
@@ -15,7 +15,6 @@ const Photos = ({ allowPhotos, togglePhotos, handleInputChange }) => {
             size="small"
             type="url"
             name="photos"
-            onChange={handleInputChange}
             label="Photo"
             style={{ margin: 8 }}
             margin="normal"
@@ -32,7 +31,6 @@ const Photos = ({ allowPhotos, togglePhotos, handleInputChange }) => {
             type="url"
             size="small"
             name="photos"
-            onChange={handleInputChange}
             style={{ margin: 8 }}
             margin="normal"
             InputLabelProps={{
@@ -47,7 +45,6 @@ const Photos = ({ allowPhotos, togglePhotos, handleInputChange }) => {
             type="url"
             size="small"
             name="photos"
-            onChange={handleInputChange}
             style={{ margin: 8 }}
             margin="normal"
             InputLabelProps={{

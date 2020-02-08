@@ -13,7 +13,7 @@ const Ratings = ({
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <RatingsSummary
-          rating={parseFloat(rating)}
+          rating={rating}
           ratings={ratings}
           formattedRating={formattedRating}
           recommended={recommended}
