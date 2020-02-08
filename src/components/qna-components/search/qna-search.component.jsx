@@ -25,7 +25,7 @@ class Search extends React.Component {
             name="searchTerm"
             variant="outlined"
             multiline
-            label="HAVE A QUESTION? SEARCH FOR ANSWERS... "
+            label="HAVE A QUESTION? SEARCH FOR ANSWERS..."
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
