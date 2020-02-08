@@ -58,9 +58,9 @@ const Photos = ({ allowPhotos, togglePhotos, handleInputChange }) => {
         </Grid>
         <Button
           type="submit"
+          size="small"
           variant="outlined"
           style={{ margin: 8 }}
-          color="primary"
           onClick={togglePhotos}
         >
           Add Photos

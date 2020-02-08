@@ -5,7 +5,7 @@ import './reviewlistheader-styles.scss';
 const ReviewListHeader = ({ handleChange, totalReviews }) => (
   <h3>
     <span>{`There are ${totalReviews} reviews, sorted by `}</span>
-    <select className="sortSelector" onChange={handleChange}>
+    <select className="sort-selector" onChange={handleChange}>
       <option default value="newest">Newest</option>
       <option value="relevance">Relevance</option>
       <option value="helpful">Helpful</option>

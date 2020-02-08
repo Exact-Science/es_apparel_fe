@@ -2,6 +2,8 @@
 /* eslint-disable consistent-return */
 import React from 'react';
 import propTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+
 import ReviewList from './list/list.component';
 import Ratings from '../ratings/ratings.component';
 import Form from './form/form.component';
@@ -121,6 +123,7 @@ class Reviews extends React.Component {
     return (
       <div className="parent-container">
         <div className="reviewsContainer">
+
           <p>Ratings and Reviews</p>
           <Ratings
             ratings={ratings}

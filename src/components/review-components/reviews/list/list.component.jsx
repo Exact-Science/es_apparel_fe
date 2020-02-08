@@ -1,5 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';
@@ -50,12 +52,12 @@ const ReviewList = ({
       })}
     </div>
     <div className="reviewListFooter">
-      <button className="questions" type="submit" onClick={loadMoreReviews}>
+      <Button type="submit" variant="outlined" style={{ margin: 8 }} onClick={loadMoreReviews}>
         More Reviews
-      </button>
-      <button className="questions" type="submit" onClick={toggleModal}>
-        Add a review +
-      </button>
+      </Button>
+      <Button type="submit" variant="outlined" style={{ margin: 8 }} onClick={toggleModal}>
+        Add a Review
+      </Button>
     </div>
   </div>
 );
