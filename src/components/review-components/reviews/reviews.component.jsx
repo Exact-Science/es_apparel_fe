@@ -122,7 +122,7 @@ class Reviews extends React.Component {
     return (
       <div className="parent-container">
         <div className="reviewsContainer">
-          <p>Ratings and Reviews</p>
+          <p id="title-header">Ratings and Reviews</p>
           <Ratings
             ratings={ratings}
             rating={rating}
