@@ -59,10 +59,12 @@ class List extends React.Component {
   showAddedAnswer = (id) => {
     const sortedList = [];
     const url = process.env.REACT_APP_API_ROUTE;
+    console.log(`${url}/qa/${id}/answers?count=1000`)
     fetch(`${url}/qa/${id}/answers?count=1000`)
       .then((results) => results.json())
       .then((answersList) => {
         let newList = answersList.results;
+        console.log("newly added answer: ", newList)
         newList = newList.map((answer) => {
           answer.id = answer.answer_id;
           answer.photos = answer.photos.map((photo) => photo.url);

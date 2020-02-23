@@ -56,7 +56,7 @@ class AnswerModal extends React.Component {
       }
 
       data.photos = imageUrls;
-
+      console.log(`The answer modal details: ${url}/qa/${questionId}/answers`);
       fetch(`${url}/qa/${questionId}/answers`, {
         method: 'POST',
         headers: {
