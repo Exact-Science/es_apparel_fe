@@ -21,9 +21,9 @@ class QuestionModal extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props;
-    const url = process.env.REACT_APP_API_ROUTE;
     // requires a fetch to the product endpoint (separate service)
+    // const { id } = this.props;
+    // const url = process.env.REACT_APP_API_ROUTE;
     // fetch(`${url}/products/${id}`)
     //   .then((results) => results.json())
     //   .then((data) => this.setState({ productName: data.name }));
@@ -91,7 +91,8 @@ class QuestionModal extends React.Component {
 
   render() {
     const {
-      productName,
+      /* requires use of the product endpoint (separate service) */
+      // productName,
       name,
       body,
       email,

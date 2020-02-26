@@ -80,7 +80,6 @@ class QnA extends React.Component {
 
 
   render() {
-    {console.log(this.state.filteredList)}
     const { id } = this.props;
     const {
       openQuestionModal,
