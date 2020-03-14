@@ -2,7 +2,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import { withStyles, Switch, TextField, Button, Grid } from '@material-ui/core';
+import {
+  withStyles, Switch, TextField, Button, Grid,
+} from '@material-ui/core';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import CancelIcon from '@material-ui/icons/Cancel';
 // import FormSliders from './formsliders/formsliders.component';
@@ -48,7 +50,9 @@ class Form extends React.Component {
   };
 
   handleSubmit = async (e) => {
-    const { id, toggleModal, getReviews, getRatings } = this.props;
+    const {
+      id, toggleModal, getReviews, getRatings,
+    } = this.props;
     const {
       recommend, rating, summary, body, name, email, characteristics, photos,
     } = this.state;
@@ -274,5 +278,5 @@ Form.propTypes = {
   getReviews: propTypes.func.isRequired,
   toggleModal: propTypes.func.isRequired,
   show: propTypes.bool.isRequired,
-  factors: propTypes.shape({}).isRequired,
+  getRatings: propTypes.func.isRequired,
 };
