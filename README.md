@@ -1,7 +1,12 @@
 # Exact Science Apparel
 ---
-Screenshots here
-> Screenshot caption/description here
+
+![Project ScreenShots](./assets/Overview.png)
+![Project ScreenShots](./assets/Related.png)
+![Project ScreenShots](./assets/QnA.png)
+![Project ScreenShots](./assets/RR.png)
+
+> General product overview page, consisting of a related products section, a dedicated module to user-provided questions and answers, and a ratings and reviews module.
 ## Table of Contents
 - [Description](#description)
 - [Instructions](#instructions)
