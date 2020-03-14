@@ -33,7 +33,7 @@ class Form extends React.Component {
       name: '',
       email: '',
       characteristics: {},
-      photos: ['https://source.unsplash.com/random/600x800', 'https://source.unsplash.com/random/600x800'],
+      photos: [],
       allowPhotos: false,
     };
   }
