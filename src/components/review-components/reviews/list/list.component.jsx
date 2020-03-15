@@ -1,7 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import AddBoxIcon from '@material-ui/icons/AddBox';
 import ReviewListHeader from '../reviewlistheader/reviewlistheader.component';
 import ListItem from '../listitem/listitem.component';
 import './list-styles.scss';

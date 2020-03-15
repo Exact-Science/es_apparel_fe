@@ -51,7 +51,7 @@ const RatingsSummary = ({
 export default RatingsSummary;
 
 RatingsSummary.propTypes = {
-  rating: propTypes.number.isRequired,
+  rating: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
   ratings: propTypes.shape({}).isRequired,
   formattedRating: propTypes.shape({}).isRequired,
   recommended: propTypes.number.isRequired,

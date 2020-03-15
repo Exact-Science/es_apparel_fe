@@ -38,4 +38,5 @@ ListItem.propTypes = {
   response: propTypes.string,
   images: propTypes.arrayOf(propTypes.object).isRequired,
   enlargeImage: propTypes.func.isRequired,
+  showFull: propTypes.bool.isRequired,
 };
