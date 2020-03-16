@@ -1,19 +1,18 @@
 # Exact Science Apparel
 
 <div>
-  <p align="left">
-    <img height="130" src="./assets/Overview.png">
-    <img height="130" src="./assets/Related.png">
-    <img height="130" src="./assets/QnA.png">
-    <img height="130" src="./assets/RR.png">
-  </p>
+    <img height="190" src="./assets/Overview.png">
+    <img height="190" src="./assets/Related.png">
+    <img height="190" src="./assets/QnA.png">
+    <img height="190" src="./assets/RR.png">
 </div>
 
 > General product overview page, consisting of a related products section, a dedicated module to user-provided questions and answers, and a ratings and reviews module.
 ## Table of Contents
 - [Description](#description)
+- [Demonstrations](#demonstrations)
 - [Getting Started](#getting-started)
-- [Author Info](#author-info)
+- [Contributors](#contributors)
 
 ---
 
@@ -29,6 +28,8 @@ The Exact Science Apparel project is the complete redesign and reimplementation 
 - Jest
 - Enzyme
 
+## Demonstrations
+
 ## Getting Started
 
 In order to run the project locally, ensure you have the latest version of Node installed. Fork and clone the repository and in the root directory of the project run the following command:
@@ -39,7 +40,7 @@ To run the local development server and view the project in your browser run:
 
 ```npm start```
 
-## Authors
+## Contributors
 
 This project was created by the following contributors:
 
