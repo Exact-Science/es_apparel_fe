@@ -1,45 +1,45 @@
 # Exact Science Apparel
----
 
-![Project ScreenShots](./assets/Overview.png)
-![Project ScreenShots](./assets/Related.png)
-![Project ScreenShots](./assets/QnA.png)
-![Project ScreenShots](./assets/RR.png)
+<div>
+  <p align="left">
+    <img height="130" src="./assets/Overview.png">
+    <img height="130" src="./assets/Related.png">
+    <img height="130" src="./assets/QnA.png">
+    <img height="130" src="./assets/RR.png">
+  </p>
+</div>
 
 > General product overview page, consisting of a related products section, a dedicated module to user-provided questions and answers, and a ratings and reviews module.
 ## Table of Contents
 - [Description](#description)
-- [Instructions](#instructions)
-- [Resources](#resources)
+- [Getting Started](#getting-started)
 - [Author Info](#author-info)
 
 ---
 
 ## Description
+The Exact Science Apparel project is the complete redesign and reimplementation of an outdated E-commerce application. This project has the capacity to offer a fully functioning online retail experience to its users. Using agile development practices while working as a small team of engineers, this repository provides the complete front-end functionality of the system.
 
+### Technologies
 
-#### Technologies
-
-- React
-- React Router
-- SCSS
+- React/React Router
 - MaterialUI
+- SCSS
+- CircleCI
+- Jest
+- Enzyme
 
-## Instructions
+## Getting Started
 
-Install the project's dependencies
+In order to run the project locally, ensure you have the latest version of Node installed. Fork and clone the repository and in the root directory of the project run the following command:
 
 ```npm install```
 
-In order to run the project in an browser simulator, run:
+To run the local development server and view the project in your browser run:
 
 ```npm start```
 
-## Resources
-
-Various resources used here
-
-## Author Info
+## Authors
 
 This project was created by the following contributors:
 
