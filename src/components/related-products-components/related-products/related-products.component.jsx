@@ -24,7 +24,7 @@ class RelatedProducts extends React.Component {
   componentDidMount() {
     const { id } = this.props;
     let promiseArray = [];
-    const url = process.env.REACT_APP_API_ROUTE;
+    const url = `http://3.134.102.30`;
     fetch(`${url}/products/${id}/related`)
       .then((results) => results.json())
       .then((ids) => [...new Set(ids)])

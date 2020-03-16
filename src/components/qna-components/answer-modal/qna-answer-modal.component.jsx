@@ -9,7 +9,7 @@ class AnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productName: '',
+      // productName: '',
       body: '',
       name: '',
       email: '',
@@ -20,11 +20,12 @@ class AnswerModal extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props;
-    const url = process.env.REACT_APP_API_ROUTE;
-    fetch(`${url}/products/${id}`)
-      .then((results) => results.json())
-      .then((data) => this.setState({ productName: data.name }));
+    // requires a fetch to the product endpoint (separate service)
+    // const { id } = this.props;
+    // const url = process.env.REACT_APP_API_ROUTE;
+    // fetch(`${url}/products/${id}`)
+    //   .then((results) => results.json())
+    //   .then((data) => this.setState({ productName: data.name }));
   }
 
   addAnswer = (e) => {
@@ -56,7 +57,6 @@ class AnswerModal extends React.Component {
       }
 
       data.photos = imageUrls;
-
       fetch(`${url}/qa/${questionId}/answers`, {
         method: 'POST',
         headers: {
@@ -94,7 +94,16 @@ class AnswerModal extends React.Component {
   }
 
   render() {
-    const { productName, name, body, email, bodyVal, nameVal, emailVal } = this.state;
+    const {
+      /* requires use of the product endpoint (separate service) */
+      // productName,
+      name,
+      body,
+      email,
+      bodyVal,
+      nameVal,
+      emailVal,
+    } = this.state;
     const { showAddAnswerModal } = this.props;
     return (
       <div className="qna-answer-modal">
@@ -104,11 +113,12 @@ class AnswerModal extends React.Component {
               <h2 className="title">
               Submit your Answer
               </h2>
-              <h3 className="subTitle">
+              {/* requires use of the product endpoint (separate service) */}
+              {/* <h3 className="subTitle">
                 <span>
                   {productName}
                 </span>
-              </h3>
+              </h3> */}
               <div>
                 <div className="formField-container">
                   <span className="valid-field">Your answer*</span>
@@ -159,9 +169,7 @@ class AnswerModal extends React.Component {
   }
 }
 AnswerModal.propTypes = {
-  id: propTypes.string.isRequired,
   questionId: propTypes.number.isRequired,
-  questionBody: propTypes.string.isRequired,
   showAddAnswerModal: propTypes.func.isRequired,
   showAddedAnswer: propTypes.func.isRequired,
 };
